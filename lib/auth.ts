@@ -45,9 +45,6 @@ export const authOptions: NextAuthOptions = {
             return session;
         }
     },
-    pages: {
-        signIn: '/auth/signin', // Optional: your custom sign-in page
-    }
 };
 
 // Default export for utility if needed
