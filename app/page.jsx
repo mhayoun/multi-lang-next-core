@@ -8,7 +8,7 @@ import Navbar from '@/components/Navbar';
 import AdminInterface from '@/components/AdminInterface';
 import UserInterface from '@/components/UserInterface';
 import Footer from '@/components/Footer'; // 1. Import the Footer
-import { DEFAULT_FOOTER } from '@/lib/footerData'; // 2. Import your generic data
+import { DEFAULT_FOOTER } from '@/src/data/beithanoar/footerData'; // 2. Import your generic data
 
 export default function Home() {
   const logic = useMenuManager();
