@@ -1,7 +1,7 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, {NextAuthOptions} from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { UpstashRedisAdapter } from "@next-auth/upstash-redis-adapter";
-import { Redis } from "@upstash/redis";
+import {UpstashRedisAdapter} from "@next-auth/upstash-redis-adapter";
+import {Redis} from "@upstash/redis";
 
 const redis = new Redis({
     url: process.env.KV_REST_API_URL!,
@@ -19,13 +19,18 @@ export const authOptions: NextAuthOptions = {
     ],
     secret: process.env.AUTH_SECRET,
     callbacks: {
-        async signIn({ user }) {
+        async signIn({user}) {
             const allowedEmails = [
                 "yelotag@gmail.com",
                 "work2gs@gmail.com",
                 "joetiger05@gmail.com",
-                "info@beithanoar.org.il"
             ];
+
+            const clientAdmin = process.env.ADMIN_EMAIL;
+            // 3. If a client admin exists, add them to the allowed list
+            if (clientAdmin) {
+                allowedEmails.push(clientAdmin.toLowerCase().trim());
+            }
 
             const email = user.email?.toLowerCase().trim();
             if (!email) return false;
@@ -33,7 +38,7 @@ export const authOptions: NextAuthOptions = {
             return allowedEmails.includes(email);
         },
         // Recommended: Add session callback to pass user ID if needed
-        async session({ session, user }) {
+        async session({session, user}) {
             if (session.user) {
                 (session.user as any).id = user.id;
             }
