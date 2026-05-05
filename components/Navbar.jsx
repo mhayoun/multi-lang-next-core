@@ -276,9 +276,10 @@ const Navbar = ({logic, uiText}) => {
                                 </button>
                             </div>
                         ) : (
-                            <button onClick={() => signIn("google")}
-                                    className="text-[10px] font-bold uppercase text-blue-600 hover:text-blue-800 transition-all">
-                                Login
+                            <button
+                                onClick={() => signIn("google", {callbackUrl: '/'})}
+                                className="text-[10px] font-bold uppercase text-blue-600 hover:text-blue-800 transition-all"
+                            > Login
                             </button>
                         )}
                     </div>
