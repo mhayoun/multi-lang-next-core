@@ -2,12 +2,13 @@ import {useState} from 'react';
 
 // This file handles the AI interaction, clipboard operations, and backup/restore logic.
 
-export const useSubMenuActions = (logic, isHe, sub) => {
+export const useSubMenuActions = (logic, isHe, sub, menuData) => {
     const [isGenerating, setIsGenerating] = useState(false);
     const [isGeminiGenerating, setIsGeminiGenerating] = useState(false); // New state for Gemini
     const [isProcessingFile, setIsProcessingFile] = useState(false);
     const [statusMsg, setStatusMsg] = useState(null);
     const [backupContent, setBackupContent] = useState(null);
+    const [selectedTemplateId, setSelectedTemplateId] = useState('');
 
     const showStatus = (type) => {
         setStatusMsg(type);
@@ -63,7 +64,45 @@ export const useSubMenuActions = (logic, isHe, sub) => {
      */
     const handleGeminiGenerate = async (customRequest) => {
         const currentText = sub.content?.[logic.modalLang] || '';
+
         if (!currentText.trim() || isGeminiGenerating) return;
+
+        console.log("Selected ID:", selectedTemplateId);
+        console.log("Full Menu Data:", menuData);
+
+        // 2. Resolve the optional template content
+        let templateText = '';
+        if (selectedTemplateId) {
+
+            console.log('Searching for:', selectedTemplateId, 'in menuData:', menuData);
+
+            // 1. Ensure we compare apples to apples (cast both to String)
+            const targetId = String(selectedTemplateId);
+
+            for (const menu of (menuData || [])) {
+                // 2. Use find with type-safe comparison
+                const foundSub = menu.subItems?.find(s => String(s.id) === targetId);
+
+                if (foundSub) {
+                    // 3. Drill down safely into the specific language content
+                    templateText = foundSub.content?.[logic.modalLang] || '';
+
+                    // 4. Debug check: Log if we found the ID but content is empty
+                    if (!templateText) {
+                        console.warn(`Template ${targetId} found, but content for language "${logic.modalLang}" is empty.`);
+                    }
+                    break;
+                }
+            }
+        }
+
+        // 3. Build the specific format you requested
+        // Format: customRequest + currentText [+ optional template string]
+        let finalRequest = `${customRequest}\n${currentText}`;
+
+        if (templateText) {
+            finalRequest += ` based on this template: ${templateText}`;
+        }
 
         setBackupContent(currentText);
         setIsGeminiGenerating(true);
@@ -74,8 +113,8 @@ export const useSubMenuActions = (logic, isHe, sub) => {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    customRequest,
-                    currentText
+                    customRequest: finalRequest,
+                    currentText: currentText
                 })
             });
 
@@ -91,10 +130,13 @@ export const useSubMenuActions = (logic, isHe, sub) => {
             }
 
             // Gemini response structure: candidates[0].content.parts[0].text
-            const rawHtml = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            const rawHtml = data.text;
 
             if (rawHtml) {
+                console.log("Texte reçu du serveur:", rawHtml); // Debug
                 logic.handleUpdateField('content', logic.modalLang, cleanAIResponse(rawHtml));
+            } else {
+                console.error("Le champ 'text' est vide dans la réponse", data);
             }
         } catch (error) {
             console.error("Gemini Error:", error);
@@ -128,6 +170,8 @@ export const useSubMenuActions = (logic, isHe, sub) => {
         isProcessingFile,
         statusMsg,
         backupContent,
+        selectedTemplateId,     // Add this
+        setSelectedTemplateId,  // Add this
         handleAIGenerate,
         handleGeminiGenerate,
         processFileToHtml,

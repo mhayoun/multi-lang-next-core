@@ -14,7 +14,7 @@ import {SectionLabel, ActionButton} from './SubMenuEditor_Components';
 
 const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenuData, menuData}) => {
     const logic = useSubMenuEditor(sub, menuId, setMenuData, menuData);
-    const actions = useSubMenuActions(logic, isHe, sub);
+    const actions = useSubMenuActions(logic, isHe, sub, menuData);
 
     const fileInputRef = useRef(null);
     const pdfInputRef = useRef(null);
@@ -175,32 +175,9 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     ))}
                                 </div>
 
-                                <ActionButton onClick={logic.handleCopy} icon={logic.copied ? Check : Copy}
-                                              label={isHe ? (logic.copied ? 'הועתק!' : 'העתק תוכן') : (logic.copied ? 'Copied!' : 'Copy Content')}/>
-
-                                <a href="https://bestonlinehtmleditor.com/" target="_blank" rel="noopener noreferrer"
-                                   className="shrink-0 flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-md font-bold transition border bg-blue-50 border-blue-200 text-blue-600 hover:bg-blue-100">
-                                    <ExternalLink size={12}/> {isHe ? 'עורך HTML' : 'HTML Editor'}
-                                </a>
-
-                                {/* Gemini Button */}
-                                <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"
-                                   className="shrink-0 flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-md font-bold transition border bg-purple-50 border-purple-200 text-purple-600 hover:bg-purple-100">
-                                    <ExternalLink size={12}/> {isHe ? 'ג׳ימיני' : 'Gemini'}
-                                </a>
-
                                 {/* AI TOOLBOX */}
                                 <div
                                     className="flex-1 flex items-center gap-2 bg-white p-1 rounded-md border border-slate-200 shadow-sm min-w-0">
-
-                                    {/* Standard AI Action Button */}
-                                    <ActionButton
-                                        variant="ai"
-                                        onClick={() => actions.handleAIGenerate(customRequest)}
-                                        loading={actions.isGenerating}
-                                        icon={Sparkles}
-                                        label={isHe ? (actions.isGenerating ? '...' : 'ייצר AI') : (actions.isGenerating ? '...' : 'Generate AI')}
-                                    />
 
                                     {/* NEW: Gemini AI Button */}
                                     <ActionButton
@@ -224,13 +201,48 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     <textarea
                                         value={customRequest}
                                         onChange={(e) => setCustomRequest(e.target.value)}
+                                        // This part handles the auto-expansion
+                                        onInput={(e) => {
+                                            e.target.style.height = 'auto';
+                                            e.target.style.height = e.target.scrollHeight + 'px';
+                                        }}
                                         dir={logic.modalLang === 'he' ? 'rtl' : 'ltr'}
                                         placeholder={isHe ? 'בקשה מותאמת אישית...' : 'Custom request...'}
-                                        className="h-10 flex-1 text-sm p-2 bg-slate-50 border-none resize-none outline-none overflow-hidden"
+                                        className="
+                                            flex-1 text-sm p-4
+                                            bg-slate-50 border-none outline-none
+                                            min-h-[40px] max-h-[150px]
+                                            resize-none
+                                            overflow-y-auto
+                                            transition-all
+                                        "
                                         rows={1}
                                     />
                                 </div>
                             </div>
+
+                            {/* 1. THE TEMPLATE SELECTOR (Place above for better layout) */}
+                            <div
+                                className="p-4 bg-blue-50/50 rounded-2xl border border-blue-100 animate-in slide-in-from-top-2 duration-300">
+                                <select
+                                    value={actions.selectedTemplateId}
+                                    onChange={(e) => actions.setSelectedTemplateId(e.target.value)}
+                                    className="w-full mb-2 p-2 bg-slate-50 border border-slate-200 rounded-md text-xs shadow-sm outline-none focus:ring-1 focus:ring-blue-500 transition-all cursor-pointer"
+                                >
+                                    <option
+                                        value="">{isHe ? '-- (אופציונלי) בחר תבנית בסיס --' : '-- (Optional) Select Base Template --'}</option>
+                                    {menuData?.map((menu) => (
+                                        <optgroup key={menu.id} label={isHe ? menu.title.he : menu.title.en}>
+                                            {menu.subItems?.map((subItem) => (
+                                                <option key={subItem.id} value={subItem.id}>
+                                                    {isHe ? subItem.title.he : subItem.title.en}
+                                                </option>
+                                            ))}
+                                        </optgroup>
+                                    ))}
+                                </select>
+                            </div>
+
                             <button onClick={() => logic.setIsModalOpen(false)}
                                     className="ml-4 p-2 text-slate-400 hover:text-red-500 transition"><X size={24}/>
                             </button>
@@ -297,7 +309,30 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     <ExternalLink size={12}/> {isHe ? 'צופה JSON' : 'JSON Viewer'}
                                 </a>
 
+                                <ActionButton onClick={logic.handleCopy} icon={logic.copied ? Check : Copy}
+                                              label={isHe ? (logic.copied ? 'הועתק!' : 'העתק תוכן') : (logic.copied ? 'Copied!' : 'Copy Content')}/>
+
+                                <a href="https://bestonlinehtmleditor.com/" target="_blank" rel="noopener noreferrer"
+                                   className="shrink-0 flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-md font-bold transition border bg-blue-50 border-blue-200 text-blue-600 hover:bg-blue-100">
+                                    <ExternalLink size={12}/> {isHe ? 'עורך HTML' : 'HTML Editor'}
+                                </a>
+
+                                {/* Gemini Button */}
+                                <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"
+                                   className="shrink-0 flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-md font-bold transition border bg-purple-50 border-purple-200 text-purple-600 hover:bg-purple-100">
+                                    <ExternalLink size={12}/> {isHe ? 'ג׳ימיני' : 'Gemini'}
+                                </a>
+
+                                {/* Standard AI Action Button */}
+                                <ActionButton
+                                    variant="ai"
+                                    onClick={() => actions.handleAIGenerate(customRequest)}
+                                    loading={actions.isGenerating}
+                                    icon={Sparkles}
+                                    label={isHe ? (actions.isGenerating ? '...' : 'ייצר AI') : (actions.isGenerating ? '...' : 'Generate AI')}
+                                />
                             </div>
+
                             <button onClick={() => logic.setIsModalOpen(false)}
                                     className="bg-blue-600 text-white px-8 py-2 rounded-xl font-bold flex items-center gap-2 hover:bg-blue-700 transition shadow-sm">
                                 <CheckCircle2 size={18}/> {isHe ? 'סיום' : 'Close'}
