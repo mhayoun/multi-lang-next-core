@@ -1,82 +1,73 @@
-import {NextResponse} from 'next/server';
+import { NextResponse } from 'next/server';
 
 export async function POST(req) {
     try {
-        const {customRequest, currentText} = await req.json();
-        const GEMINI_KEY = process.env.GEMINI_API_KEY;
+        const { customRequest, currentText } = await req.json();
+        // Vérifie si tu utilises GEMINI_API_KEY ou GOOGLE_GENERATIVE_AI_API_KEY dans ton .env
+        const GEMINI_KEY = process.env.GEMINI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
         if (!GEMINI_KEY) {
-            return NextResponse.json({error: 'API Key missing'}, {status: 500});
+            return NextResponse.json({ error: 'API Key missing in environment' }, { status: 500 });
         }
 
-        // 1. DYNAMIC DISCOVERY (Enhanced for 2026)
-        const listUrl = `https://generativelanguage.googleapis.com/v1/models?key=${GEMINI_KEY}`;
-        const listResponse = await fetch(listUrl);
-        const listData = await listResponse.json();
-
-        let candidates = [];
-
-        if (listData.models) {
-            candidates = listData.models
-                .filter(m => m.supportedGenerationMethods.includes("generateContent"))
-                .map(m => m.name.split('/').pop()); // Extract ID like 'gemini-2.5-flash'
-        }
-
-        // 2. HARD-CODED FALLBACKS (The 2026 "Standard" list)
-        // If discovery fails, we manually try the current April 2026 aliases
-        const fallbacks = [
-            "gemini-2.5-flash",
-            "gemini-3.1-flash-lite",
-            "gemini-flash-latest",
-            "gemini-2.0-flash",
-            "gemini-pro-3.1"
+        // Liste prioritaire des modèles en Mai 2026
+        // Flash est privilégié pour éviter les timeouts et les erreurs de quota
+        const modelsToTry = [
+            "gemini-1.5-flash",
+            "gemini-1.5-pro",
+            "gemini-2.0-flash"
         ];
 
-        // Combine discovery with fallbacks, removing duplicates
-        const modelsToTry = [...new Set([...candidates, ...fallbacks])].slice(0, 5);
-
-        let lastError = null;
+        let lastErrorMessage = "";
 
         for (const modelName of modelsToTry) {
             try {
-                console.log(`🚀 Trying: ${modelName}`);
-                const API_URL = `https://generativelanguage.googleapis.com/v1/models/${modelName}:generateContent?key=${GEMINI_KEY}`;
+                const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${GEMINI_KEY}`;
 
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: [{parts: [{text: `Task: ${customRequest}\nContent: ${currentText}`}]}]
+                        contents: [{
+                            parts: [{ text: `Task: ${customRequest}\nContent: ${currentText}` }]
+                        }],
+                        // Ajout d'une configuration de sécurité pour éviter les blocages inutiles
+                        safetySettings: [
+                            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
+                            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" }
+                        ]
                     })
                 });
 
                 const data = await response.json();
 
                 if (response.ok) {
-                    console.log(`✅ SUCCESS: Model [${modelName}] is active.`);
                     return NextResponse.json(data);
                 }
 
-                lastError = data.error?.message || "Unknown error";
-                console.warn(`❌ FAIL [${modelName}]: ${lastError}`);
+                // Capture de l'erreur spécifique
+                lastErrorMessage = data.error?.message || "Unknown error";
 
-                // If the key itself is dead, stop immediately
-                // Add (lastError as any) or (lastError as string) to bypass the 'never' check
-                if ((lastError as any)?.toString().toLowerCase().includes("api_key") || response.status === 401) {
-                    return NextResponse.json({error: "Invalid API Key"}, {status: 401});
+                // Si la clé est invalide, on s'arrête tout de suite
+                if (response.status === 401 || lastErrorMessage.toLowerCase().includes("api_key")) {
+                    return NextResponse.json({ error: "Invalid API Key" }, { status: 401 });
                 }
 
+                console.warn(`Model ${modelName} failed: ${lastErrorMessage}`);
+
             } catch (err) {
-                lastError = err.message;
+                lastErrorMessage = err.message;
             }
         }
 
+        // Si on arrive ici, aucun modèle n'a fonctionné
         return NextResponse.json({
-            error: "Regional Outage or Deprecated Models",
-            details: lastError
-        }, {status: 500});
+            error: "All models failed or Regional Restriction",
+            details: lastErrorMessage
+        }, { status: 500 });
 
     } catch (error) {
-        return NextResponse.json({error: 'Server Error'}, {status: 500});
+        console.error("Critical Server Error:", error);
+        return NextResponse.json({ error: 'Server Error', details: error.message }, { status: 500 });
     }
 }
