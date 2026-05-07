@@ -17,24 +17,46 @@ export const viewport = {
 };
 
 export async function generateMetadata() {
-  const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
+    const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
+    let footerData = null;
 
-  // 1. Dynamically import the specific client's JSON
-  // Note: Adjust the path to where your src/data folder is relative to this file
-    const module = await import(`../src/data/${clientId}/footerData.js`);
-    const data = module.DEFAULT_FOOTER;
-    const contact = data?.contact;
+    try {
+        // 1. Try to fetch fresh data from Redis (via your internal API or direct utility)
+        // Note: Use full URL for server-side fetch if necessary,
+        // or call the logic that retrieves from Upstash directly.
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/settings`, { cache: 'no-store' });
+        const cloudData = await response.json();
 
-  return {
-    title: contact?.cie_name?.he || 'cie_name ???',
-    description: contact?.cie_desc?.he || 'cie_desc ???',
-    icons: {
-      // Browsers look in the 'public' folder for these
-      icon: `/${clientId}/favicon.ico`,
-      apple: `/${clientId}/apple-touch-icon.png`,
-    },
-    manifest: `/${clientId}/manifest.json`,
-  };
+        if (cloudData && cloudData.footerData) {
+            footerData = cloudData.footerData;
+            console.log("Metadata: Using Redis Data");
+        }
+    } catch (err) {
+        console.error("Metadata: Cloud fetch failed, falling back to local file", err);
+    }
+
+    // 2. Fallback to Local JS File if Redis is empty or fails
+    if (!footerData) {
+        try {
+            const module = await import(`../src/data/${clientId}/footerData.js`);
+            footerData = module.DEFAULT_FOOTER;
+            console.log("Metadata: Using Local File Data");
+        } catch (e) {
+            console.error("Metadata: Local file not found");
+        }
+    }
+
+    const contact = footerData?.contact;
+
+    return {
+        title: contact?.cie_name?.he || 'YeloTag',
+        description: contact?.cie_desc?.he || 'Digital Transformation',
+        icons: {
+            icon: `/${clientId}/favicon.ico`,
+            apple: `/${clientId}/apple-touch-icon.png`,
+        },
+        manifest: `/${clientId}/manifest.json`,
+    };
 }
 
 export default function RootLayout({children}) {
