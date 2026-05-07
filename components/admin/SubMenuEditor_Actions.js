@@ -26,6 +26,32 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
             .trim();
     };
 
+    // Inside your actions definition
+    const buildFinalPrompt = (customRequest) => {
+        const currentText = sub.content?.[logic.modalLang] || '';
+        let templateText = '';
+
+        // 1. Resolve Template logic
+        if (selectedTemplateId) {
+            const targetId = String(selectedTemplateId);
+            for (const menu of (menuData || [])) {
+                const foundSub = menu.subItems?.find(s => String(s.id) === targetId);
+                if (foundSub) {
+                    templateText = foundSub.content?.[logic.modalLang] || '';
+                    break;
+                }
+            }
+        }
+
+        // 2. Construct the exact string
+        let finalRequest = `${customRequest}\n${currentText}`;
+        if (templateText) {
+            finalRequest += ` based on this template: ${templateText}`;
+        }
+
+        return {finalRequest, currentText};
+    };
+
     const handleAIGenerate = async (customRequest) => {
         const currentText = sub.content?.[logic.modalLang] || '';
         if (!currentText.trim() || isGenerating) return;
@@ -63,57 +89,20 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
      * NEW: Gemini AI Interaction
      */
     const handleGeminiGenerate = async (customRequest) => {
-        const currentText = sub.content?.[logic.modalLang] || '';
+        // Call the builder
+        const {finalRequest, currentText} = buildFinalPrompt(customRequest);
 
         if (!currentText.trim() || isGeminiGenerating) return;
-
-        console.log("Selected ID:", selectedTemplateId);
-        //console.log("Full Menu Data:", menuData);
-
-        // 2. Resolve the optional template content
-        let templateText = '';
-        if (selectedTemplateId) {
-
-            console.log('Searching for:', selectedTemplateId);
-
-            // 1. Ensure we compare apples to apples (cast both to String)
-            const targetId = String(selectedTemplateId);
-
-            for (const menu of (menuData || [])) {
-                // 2. Use find with type-safe comparison
-                const foundSub = menu.subItems?.find(s => String(s.id) === targetId);
-
-                if (foundSub) {
-                    // 3. Drill down safely into the specific language content
-                    templateText = foundSub.content?.[logic.modalLang] || '';
-
-                    // 4. Debug check: Log if we found the ID but content is empty
-                    if (!templateText) {
-                        console.warn(`Template ${targetId} found, but content for language "${logic.modalLang}" is empty.`);
-                    }
-                    break;
-                }
-            }
-        }
-
-        // 3. Build the specific format you requested
-        // Format: customRequest + currentText [+ optional template string]
-        let finalRequest = `${customRequest}\n${currentText}`;
-
-        if (templateText) {
-            finalRequest += ` based on this template: ${templateText}`;
-        }
 
         setBackupContent(currentText);
         setIsGeminiGenerating(true);
 
         try {
-            // Point to your local API route
             const response = await fetch('/api/gemini', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    customRequest: finalRequest,
+                    customRequest: finalRequest, // This now includes templates + text
                     currentText: currentText
                 })
             });
@@ -121,22 +110,11 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
             const data = await response.json();
 
             if (!response.ok) {
-                // Stringify the data so you can see the actual Google error code/message
-                const errorMsg = typeof data.error === 'object'
-                    ? JSON.stringify(data.error)
-                    : (data.error || 'Failed to generate');
-
-                throw new Error(errorMsg);
+                throw new Error(data.error || 'Failed to generate');
             }
 
-            // Gemini response structure: candidates[0].content.parts[0].text
-            const rawHtml = data.text;
-
-            if (rawHtml) {
-                console.log("Texte reçu du serveur:", rawHtml); // Debug
-                logic.handleUpdateField('content', logic.modalLang, cleanAIResponse(rawHtml));
-            } else {
-                console.error("Le champ 'text' est vide dans la réponse", data);
+            if (data.text) {
+                logic.handleUpdateField('content', logic.modalLang, cleanAIResponse(data.text));
             }
         } catch (error) {
             console.error("Gemini Error:", error);
@@ -145,7 +123,7 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
             setIsGeminiGenerating(false);
         }
     };
-
+    
     const processFileToHtml = async (file, action, additionalParam) => {
         if (!file) return;
         setIsProcessingFile(true);
@@ -175,6 +153,7 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
         handleAIGenerate,
         handleGeminiGenerate,
         processFileToHtml,
+        buildFinalPrompt,
         handleRestore: () => {
             logic.handleUpdateField('content', logic.modalLang, backupContent);
             setBackupContent(null);

@@ -15,26 +15,33 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport = {
-  themeColor: "#000000",
+    themeColor: "#000000",
 };
 
 export async function generateMetadata() {
     const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
+
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
     let footerData = null;
 
     try {
-        // 1. Try to fetch fresh data from Redis (via your internal API or direct utility)
-        // Note: Use full URL for server-side fetch if necessary,
-        // or call the logic that retrieves from Upstash directly.
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/settings`, { cache: 'no-store' });
-        const cloudData = await response.json();
+        // Construct an absolute URL
+        const apiUrl = `${baseUrl}/api/settings`;
 
-        if (cloudData && cloudData.footerData) {
+        const response = await fetch(apiUrl, {
+            cache: 'no-store'
+        });
+
+        if (!response.ok) throw new Error(`Fetch failed: ${response.status}`);
+
+        const cloudData = await response.json();
+        if (cloudData?.footerData) {
             footerData = cloudData.footerData;
-            console.log("Metadata: Using Redis Data");
         }
     } catch (err) {
-        console.error("Metadata: Cloud fetch failed, falling back to local file", err);
+        // This will stop showing the "Invalid URL" error now
+        console.error("Metadata: Cloud fetch failed ->", err.message);
     }
 
     // 2. Fallback to Local JS File if Redis is empty or fails
@@ -44,6 +51,7 @@ export async function generateMetadata() {
             footerData = module.DEFAULT_FOOTER;
             console.log("Metadata: Using Local File Data");
         } catch (e) {
+            footerData = {};
             console.error("Metadata: Local file not found");
         }
     }

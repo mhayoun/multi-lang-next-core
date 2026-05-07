@@ -317,6 +317,18 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     <ExternalLink size={12}/> {isHe ? 'עורך HTML' : 'HTML Editor'}
                                 </a>
 
+                                {/* Copy Final AI Request */}
+                                <ActionButton
+                                    onClick={() => {
+                                        // We call the same logic that builds the prompt for the API
+                                        const prompt = actions.buildFinalPrompt(customRequest);
+                                        navigator.clipboard.writeText(prompt);
+                                    }}
+                                    icon={Copy}
+                                    variant="secondary"
+                                    label={isHe ? 'העתק בקשה סופית' : 'Copy Final Request'}
+                                />
+
                                 {/* Gemini Button */}
                                 <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"
                                    className="shrink-0 flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-md font-bold transition border bg-purple-50 border-purple-200 text-purple-600 hover:bg-purple-100">
