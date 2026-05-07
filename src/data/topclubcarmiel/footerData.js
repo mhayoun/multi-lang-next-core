@@ -35,16 +35,16 @@ export const DEFAULT_FOOTER = {
       en: "Contact Details"
     },
     cie_name: {
-      he: "בית הנוער העברי",
-      en: "Beit Hanoar HaIvri"
+      he: "קאנטרי טופ קלאב",
+      en: "Country Top Club"
     },
     cie_desc: {
-      he: "בית קהילתי ירושלמי לכל המשפחה",
-      en: "A Jerusalem community home for the whole family"
+      he: "הבית שלכם לבריאות, כושר ופנאי",
+      en: "A community home for the whole family"
     },
     address: {
-      he: "רח׳ הרצוג 105, ירושלים 92622",
-      en: "105 Herzog St., Jerusalem 92622"
+      he: "קאנטרי טופ קלאב, צהל 113 , כרמיאל",
+      en: "קאנטרי טופ קלאב, צהל 113 , כרמיאל\n"
     },
     email: "info@beithanoar.org.il",
     phones: [

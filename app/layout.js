@@ -17,7 +17,7 @@ export const viewport = {
 };
 
 export async function generateMetadata() {
-  const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "beithanoar";
+  const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
 
   // 1. Dynamically import the specific client's JSON
   // Note: Adjust the path to where your src/data folder is relative to this file
@@ -36,16 +36,6 @@ export async function generateMetadata() {
     manifest: `/${clientId}/manifest.json`,
   };
 }
-
-// export const metadata = {
-//     title: "בית הנוער העברי",
-//     description: "בית קהילתי ירושלמי לכל המשפחה",
-//     icons: {
-//         icon: '/favicon.ico', // path to your icon in the public folder
-//         apple: '/apple-touch-icon.png', // optional: for iOS devices
-//     },
-//     manifest: '/manifest.json'
-// };
 
 export default function RootLayout({children}) {
     return (
