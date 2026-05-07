@@ -110,14 +110,14 @@ export async function POST(req) {
 
                 if (response.ok) {
                     const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                    console.log('-----------')
-                    console.log(rawText)
-                    console.log('-----------')
+                    // console.log('-----------')
+                    // console.log(rawText)
+                    // console.log('-----------')
                     if (rawText && rawText.trim().length > 20) {
                         const generatedText = extractHtml(rawText);
-                        console.log(generatedText)
-                        console.log('-----------')
-                        console.log(`${logPrefix} ✅ SUCCÈS (${model.id})`);
+                        // console.log(generatedText)
+                        // console.log('-----------')
+                        // console.log(`${logPrefix} ✅ SUCCÈS (${model.id})`);
                         return NextResponse.json({
                             text: generatedText,
                             model: model.id

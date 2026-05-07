@@ -68,13 +68,13 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
         if (!currentText.trim() || isGeminiGenerating) return;
 
         console.log("Selected ID:", selectedTemplateId);
-        console.log("Full Menu Data:", menuData);
+        //console.log("Full Menu Data:", menuData);
 
         // 2. Resolve the optional template content
         let templateText = '';
         if (selectedTemplateId) {
 
-            console.log('Searching for:', selectedTemplateId, 'in menuData:', menuData);
+            console.log('Searching for:', selectedTemplateId);
 
             // 1. Ensure we compare apples to apples (cast both to String)
             const targetId = String(selectedTemplateId);

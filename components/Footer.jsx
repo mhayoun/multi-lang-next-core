@@ -92,6 +92,17 @@ const Footer = ({data, isHe = true, menuData = [], setActiveSubItem}) => {
                         <h3 className="text-xl font-bold">{isHe ? contact?.title?.he : contact?.title?.en}</h3>
                     </div>
                     <div className="space-y-4 text-slate-400 text-sm">
+
+                        {/* CIE Name & Description Display */}
+                        <div className="mb-4">
+                            <h4 className="text-white font-bold text-lg">
+                                {isHe ? contact?.cie_name?.he : contact?.cie_name?.en}
+                            </h4>
+                            <p className="italic text-slate-500">
+                                {isHe ? contact?.cie_desc?.he : contact?.cie_desc?.en}
+                            </p>
+                        </div>
+
                         {/* Address Fix: Accessing via [lang] logic */}
                         <div className="flex items-start gap-3">
                             <MapPin size={18} className="shrink-0 text-slate-500"/>

@@ -15,15 +15,37 @@ const geistMono = Geist_Mono({
 export const viewport = {
   themeColor: "#000000",
 };
-export const metadata = {
-    title: "בית הנוער העברי",
-    description: "בית קהילתי ירושלמי לכל המשפחה",
+
+export async function generateMetadata() {
+  const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "beithanoar";
+
+  // 1. Dynamically import the specific client's JSON
+  // Note: Adjust the path to where your src/data folder is relative to this file
+    const module = await import(`../src/data/${clientId}/footerData.js`);
+    const data = module.DEFAULT_FOOTER;
+    const contact = data?.contact;
+
+  return {
+    title: contact?.cie_name?.he || 'cie_name ???',
+    description: contact?.cie_desc?.he || 'cie_desc ???',
     icons: {
-        icon: '/favicon.ico', // path to your icon in the public folder
-        apple: '/apple-touch-icon.png', // optional: for iOS devices
+      // Browsers look in the 'public' folder for these
+      icon: `/${clientId}/favicon.ico`,
+      apple: `/${clientId}/apple-touch-icon.png`,
     },
-    manifest: '/manifest.json'
-};
+    manifest: `/${clientId}/manifest.json`,
+  };
+}
+
+// export const metadata = {
+//     title: "בית הנוער העברי",
+//     description: "בית קהילתי ירושלמי לכל המשפחה",
+//     icons: {
+//         icon: '/favicon.ico', // path to your icon in the public folder
+//         apple: '/apple-touch-icon.png', // optional: for iOS devices
+//     },
+//     manifest: '/manifest.json'
+// };
 
 export default function RootLayout({children}) {
     return (

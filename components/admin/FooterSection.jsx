@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Clock, MapPin, ChevronDown, ChevronUp, LayoutGrid, Phone, Mail, Bus } from 'lucide-react';
+import React, {useState} from 'react';
+import {Clock, MapPin, ChevronDown, ChevronUp, LayoutGrid, Phone, Mail, Bus} from 'lucide-react';
 
-const FooterSection = ({ logic, isHe }) => {
-    const { t, menuData, footerData, lang, updateFooter } = logic;
+const FooterSection = ({logic, isHe}) => {
+    const {t, menuData, footerData, lang, updateFooter} = logic;
     const [openIndex, setOpenIndex] = useState(0);
 
     // Deep clone helper to ensure state updates trigger correctly
@@ -11,8 +11,8 @@ const FooterSection = ({ logic, isHe }) => {
     };
 
     const footer = footerData || {
-        hours: { items: [] },
-        contact: { address: {}, email: '', phones: [], transport: {} }
+        hours: {items: []},
+        contact: {address: {}, email: '', phones: [], transport: {}}
     };
 
     const handleFooterChange = (index, field, value) => {
@@ -35,7 +35,7 @@ const FooterSection = ({ logic, isHe }) => {
             // Map to the phones array structure: 0 is Office, 1 is Fax
             if (!updatedFooter.contact.phones) updatedFooter.contact.phones = [];
             const idx = field === 'phone' ? 0 : 1;
-            const label = field === 'phone' ? { he: 'משרד', en: 'Office' } : { he: 'פקס', en: 'Fax' };
+            const label = field === 'phone' ? {he: 'משרד', en: 'Office'} : {he: 'פקס', en: 'Fax'};
 
             updatedFooter.contact.phones[idx] = {
                 label: label,
@@ -53,7 +53,7 @@ const FooterSection = ({ logic, isHe }) => {
         updateFooter(updatedFooter);
     };
 
-    const AccordionItem = ({ index, title, icon: Icon, children }) => (
+    const AccordionItem = ({index, title, icon: Icon, children}) => (
         <div className="border border-slate-200 rounded-2xl overflow-hidden bg-white mb-4 shadow-sm">
             <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -61,11 +61,11 @@ const FooterSection = ({ logic, isHe }) => {
             >
                 <div className="flex items-center gap-3">
                     <div className="bg-blue-600 p-2 rounded-lg text-white">
-                        <Icon size={18} />
+                        <Icon size={18}/>
                     </div>
                     <span className="font-bold text-slate-800">{title}</span>
                 </div>
-                {openIndex === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                {openIndex === index ? <ChevronUp size={20}/> : <ChevronDown size={20}/>}
             </button>
             {openIndex === index && (
                 <div className="p-4 space-y-4 animate-in slide-in-from-top-2 duration-200">
@@ -140,6 +140,31 @@ const FooterSection = ({ logic, isHe }) => {
                 icon={MapPin}
             >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    {/* CIE Name */}
+                    <div className="space-y-1">
+                        <label className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
+                            {isHe ? 'שם הארגון' : 'Company Name'}
+                        </label>
+                        <input
+                            className="w-full p-2 border border-slate-200 rounded-xl text-sm outline-none"
+                            value={footer.contact?.cie_name?.[lang] || ''}
+                            onChange={(e) => handleContactChange('cie_name', e.target.value, lang)}
+                        />
+                    </div>
+
+                    {/* CIE Description */}
+                    <div className="space-y-1">
+                        <label className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
+                            {isHe ? 'תיאור הארגון' : 'Company Description'}
+                        </label>
+                        <input
+                            className="w-full p-2 border border-slate-200 rounded-xl text-sm outline-none"
+                            value={footer.contact?.cie_desc?.[lang] || ''}
+                            onChange={(e) => handleContactChange('cie_desc', e.target.value, lang)}
+                        />
+                    </div>
+
                     <div className="space-y-1">
                         <label className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase">
                             <MapPin size={12}/> {isHe ? 'כתובת' : 'Address'}
