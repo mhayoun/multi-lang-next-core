@@ -5,7 +5,7 @@
   "id": "/",
   "start_url": "/",
   "_comment": "replace browser by standalone to activate desktop",
-  "display": "browser",
+  "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1d4ed8",
   "icons": [

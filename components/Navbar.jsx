@@ -187,7 +187,7 @@ const Navbar = ({logic, uiText}) => {
                 {/* --- RIGHT SIDE --- */}
                 <div className="flex items-center gap-3">
 
-                    {/* Desktop PWA Install Button - DESACTIVATE !!!!
+                    {/* Desktop PWA Install Button */}
                     {isInstallable && (
                         <button
                             onClick={debugInstall}
@@ -197,7 +197,6 @@ const Navbar = ({logic, uiText}) => {
                             <span>{logic.lang === 'he' ? 'התקן אפליקציה' : 'Install App'}</span>
                         </button>
                     )}
-                    */}
 
                     {session && (
                         <div className="hidden sm:flex bg-slate-100 rounded-full p-1 border border-slate-200">
