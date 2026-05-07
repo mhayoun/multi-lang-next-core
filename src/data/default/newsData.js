@@ -1,28 +1,54 @@
 export const DEFAULT_NEWS = [
     {
-        "id": 1776882551245,
+        "id": 1,
         "contentMode": "editor",
         "title": {
-            "he": "",
-            "en": ""
+            "he": "חדשות ועדכונים",
+            "en": "News & Updates"
         },
-        "bgImage_mob": [
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/news01_flyer-p1un5TNiCd5hromZcpY5G4cnUN1FMC.png"
-        ],
-        "bgImage_web": [
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/news01_slider-2O5Gw2k1DQyIIAjjMXUlVFNNLEfERx.jpg"
-        ],
+        "bgImage_mob": [],
+        "bgImage_web": [],
         "content": {
-            "he": "<meta charset=\"UTF-8\" />\n<meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\" />\n<title></title>\n<style type=\"text/css\">@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700;800&display=swap');\n\n        body {\n            font-family: 'Assistant', sans-serif;\n            background-color: #f4f7f9;\n            margin: 0;\n            padding: 20px;\n            display: flex;\n            justify-content: center;\n        }\n\n        .card {\n            max-width: 600px;\n            background: white;\n            border-radius: 25px;\n            overflow: hidden;\n            box-shadow: 0 15px 35px rgba(0,0,0,0.1);\n            border: 1px solid #e1e8ed;\n        }\n\n        .header {\n            background: linear-gradient(135deg, #00529b 0%, #003366 100%);\n            color: white;\n            padding: 30px 20px;\n            text-align: center;\n        }\n\n        .header h1 {\n            margin: 0;\n            font-size: 1.8rem;\n            font-weight: 800;\n        }\n\n        .header p {\n            margin: 10px 0 0;\n            opacity: 0.9;\n            font-weight: 300;\n        }\n\n        .content {\n            padding: 40px;\n            text-align: center;\n            color: #334155;\n        }\n\n        .greeting {\n            font-size: 1.2rem;\n            margin-bottom: 25px;\n        }\n\n        .offer-box {\n            background-color: #f0f9ff;\n            border: 2px dashed #00529b;\n            border-radius: 20px;\n            padding: 25px;\n            margin: 20px 0;\n        }\n\n        .special-title {\n            color: #00529b;\n            font-size: 1.5rem;\n            font-weight: 800;\n            margin-bottom: 10px;\n        }\n\n        .price {\n            font-size: 2.5rem;\n            color: #1e293b;\n            font-weight: 800;\n            margin: 10px 0;\n        }\n\n        .price span {\n            font-size: 1.2rem;\n            font-weight: 400;\n        }\n\n        .validity {\n            font-size: 0.9rem;\n            color: #64748b;\n            margin-top: 15px;\n            font-weight: bold;\n        }\n\n        .footer-wish {\n            font-size: 1.4rem;\n            color: #00529b;\n            font-weight: 700;\n            margin-top: 30px;\n        }\n\n        .cta-button {\n            display: inline-block;\n            background-color: #00529b;\n            color: white;\n            text-decoration: none;\n            padding: 15px 35px;\n            border-radius: 50px;\n            font-weight: bold;\n            margin-top: 25px;\n            transition: transform 0.2s;\n        }\n\n        .cta-button:hover {\n            transform: scale(1.05);\n        }\n\n        .schedule-link {\n            display: block;\n            margin-top: 20px;\n            color: #64748b;\n            font-size: 0.95rem;\n            text-decoration: underline;\n        }\n\n        .flag-decoration {\n            font-size: 2rem;\n            margin-bottom: 10px;\n        }\n</style>\n<div class=\"card\">\n<div class=\"header\">\n<h1>בית הנוער העברי</h1>\n\n<p>בית קהילתי ירושלמי לכל המשפחה!</p>\n</div>\n\n<div class=\"content\">\n<div class=\"greeting\">מנויים ולקוחות יקרים,</div>\n\n<div class=\"flag-decoration\">🇮🇱</div>\n\n<div class=\"offer-box\">\n<div class=\"special-title\">מבצע מיוחד ליום העצמאות!</div>\n\n<div class=\"price\">₪2550 <span>בלבד</span></div>\n\n<div style=\"font-weight: bold;\">מנוי שנתי רגיל ליחיד</div>\n\n<div class=\"validity\">בתוקף בין התאריכים: 15-23/04/2026</div>\n</div>\n\n<div class=\"footer-wish\">חג עצמאות שמח! 🇮🇱</div>\n<a class=\"cta-button\" href=\"#\">להרשמה ופרטים נוספים 02-6494111</a>\n\n<div class=\"schedule-link\">להלן תכנית הפעילות לימי הזיכרון ויום העצמאות:</div>\n</div>\n</div>\n",
-            "en": "<!DOCTYPE html>\n<html lang=\"en\" dir=\"ltr\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Independence Day Special - Beit HaNoar</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap');\n\n        body {\n            font-family: 'Inter', sans-serif;\n            background-color: #f4f7f9;\n            margin: 0;\n            padding: 20px;\n            display: flex;\n            justify-content: center;\n        }\n\n        .card {\n            max-width: 600px;\n            background: white;\n            border-radius: 25px;\n            overflow: hidden;\n            box-shadow: 0 15px 35px rgba(0,0,0,0.1);\n            border: 1px solid #e1e8ed;\n        }\n\n        .header {\n            background: linear-gradient(135deg, #00529b 0%, #003366 100%);\n            color: white;\n            padding: 30px 20px;\n            text-align: center;\n        }\n\n        .header h1 {\n            margin: 0;\n            font-size: 1.8rem;\n            font-weight: 800;\n        }\n\n        .header p {\n            margin: 10px 0 0;\n            opacity: 0.9;\n            font-weight: 300;\n            letter-spacing: 0.5px;\n        }\n\n        .content {\n            padding: 40px;\n            text-align: center;\n            color: #334155;\n        }\n\n        .greeting {\n            font-size: 1.1rem;\n            margin-bottom: 25px;\n            color: #475569;\n        }\n\n        .offer-box {\n            background-color: #f0f9ff;\n            border: 2px dashed #00529b;\n            border-radius: 20px;\n            padding: 25px;\n            margin: 20px 0;\n        }\n\n        .special-title {\n            color: #00529b;\n            font-size: 1.4rem;\n            font-weight: 800;\n            margin-bottom: 10px;\n            text-transform: uppercase;\n        }\n\n        .price {\n            font-size: 2.5rem;\n            color: #1e293b;\n            font-weight: 800;\n            margin: 10px 0;\n        }\n\n        .price span {\n            font-size: 1.2rem;\n            font-weight: 400;\n            color: #64748b;\n        }\n\n        .validity {\n            font-size: 0.9rem;\n            color: #64748b;\n            margin-top: 15px;\n            font-weight: bold;\n        }\n\n        .footer-wish {\n            font-size: 1.4rem;\n            color: #00529b;\n            font-weight: 700;\n            margin-top: 30px;\n        }\n\n        .cta-button {\n            display: inline-block;\n            background-color: #00529b;\n            color: white;\n            text-decoration: none;\n            padding: 15px 35px;\n            border-radius: 50px;\n            font-weight: bold;\n            margin-top: 25px;\n            transition: all 0.2s;\n        }\n\n        .cta-button:hover {\n            transform: scale(1.05);\n            background-color: #003366;\n            box-shadow: 0 5px 15px rgba(0,82,155,0.3);\n        }\n\n        .schedule-link {\n            display: block;\n            margin-top: 25px;\n            color: #64748b;\n            font-size: 0.9rem;\n            font-style: italic;\n        }\n\n        .flag-decoration {\n            font-size: 2rem;\n            margin-bottom: 10px;\n        }\n    </style>\n</head>\n<body>\n\n    <div class=\"card\">\n        <div class=\"header\">\n            <h1>Beit HaNoar HaIvri</h1>\n            <p>Jerusalem’s Community Center for the Whole Family</p>\n        </div>\n\n        <div class=\"content\">\n            <div class=\"greeting\">Dear Members and Customers,</div>\n            \n            <div class=\"flag-decoration\">🇮🇱</div>\n            \n            <div class=\"offer-box\">\n                <div class=\"special-title\">Independence Day Special Offer!</div>\n                <div class=\"price\">₪2550 <span>only</span></div>\n                <div style=\"font-weight: 700; color: #1e293b;\">Standard Annual Individual Membership</div>\n                <div class=\"validity\">\n                    Valid from April 15th to April 23rd, 2026\n                </div>\n            </div>\n\n            <div class=\"footer-wish\">Happy Independence Day! 🇮🇱</div>\n\n            <a href=\"#\" class=\"cta-button\">Register Now Call 02-6494111</a>\n            \n            <div class=\"schedule-link\">\n                See below for the Memorial Day and Independence Day activity schedule:\n            </div>\n        </div>\n    </div>\n\n</body>\n</html>"
+            "he": `
+                <div style="font-family: 'Assistant', sans-serif; text-align: center; padding: 20px;">
+                    <h1 style="color: #00529b;">ברוכים הבאים</h1>
+                    <p>כאן יופיעו העדכונים האחרונים של החברה.</p>
+                    <div style="margin: 20px; padding: 20px; border: 2px dashed #00529b; border-radius: 15px;">
+                        <h3>תוכן ברירת מחדל</h3>
+                        <p>ניתן לערוך תוכן זה דרך ממשק הניהול.</p>
+                    </div>
+                </div>
+            `,
+            "en": `
+                <div style="font-family: 'Inter', sans-serif; text-align: center; padding: 20px;">
+                    <h1 style="color: #00529b;">Welcome</h1>
+                    <p>Latest company updates will appear here.</p>
+                    <div style="margin: 20px; padding: 20px; border: 2px dashed #00529b; border-radius: 15px;">
+                        <h3>Default Content</h3>
+                        <p>This content can be edited via the admin dashboard.</p>
+                    </div>
+                </div>
+            `
         },
         "images": [],
-        "pdfs": [
-            {
-                "url": "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/%D7%AA%D7%9B%D7%A0%D7%99%D7%AA%20%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA%20%D7%99%D7%9E%D7%99%20%D7%96%D7%99%D7%9B%D7%A8%D7%95%D7%9F%20%D7%95%D7%99%D7%95%D7%9D%20%D7%94%D7%A2%D7%A6%D7%9E%D7%90%D7%95%D7%AA%202026-jHMxeNhaa6rcGmk2g4Qt9qT8LEpUfz.pdf",
-                "name": "תכנית פעילות ימי זיכרון ויום העצמאות 2026.pdf"
-            }
-        ],
+        "pdfs": [],
+        "linkedItemIds": []
+    },
+    {
+        "id": 2,
+        "contentMode": "editor",
+        "title": {
+            "he": "אירועים קרובים",
+            "en": "Upcoming Events"
+        },
+        "bgImage_mob": [],
+        "bgImage_web": [],
+        "content": {
+            "he": "<div style='text-align: center;'><h2>אין אירועים קרובים כרגע</h2></div>",
+            "en": "<div style='text-align: center;'><h2>No upcoming events at this time</h2></div>"
+        },
+        "images": [],
+        "pdfs": [],
         "linkedItemIds": []
     }
 ];

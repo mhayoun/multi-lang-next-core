@@ -7,23 +7,12 @@ export const DEFAULT_FOOTER = {
     },
     items: [
       {
-        label: { he: "מרכז מידע ורישום", en: "Information & Registration" },
-        value: { he: "א׳-ה׳, 8:00-19:00", en: "Sun-Thu, 8:00-19:00" }
+        label: { he: "שירות לקוחות", en: "Customer Service" },
+        value: { he: "א'-ה', 09:00-18:00", en: "Sun-Thu, 09:00-18:00" }
       },
       {
-        label: { he: "בריכה", en: "Swimming Pool" },
-        value: { he: "פירוט הפעילות בבריכה", en: "See pool schedule" },
-        isLink: true
-      },
-      {
-        label: { he: "חדר כושר", en: "Gym" },
-        value: { he: "פירוט הפעילות בחדר הכושר", en: "See gym schedule" },
-        isLink: true
-      },
-      {
-        label: { he: "ג׳ימבורי", en: "Gymboree" },
-        value: { he: "פירוט הפעילות בגימבורי", en: "See gymboree schedule" },
-        isLink: true
+        label: { he: "תמיכה טכנית", en: "Technical Support" },
+        value: { he: "א'-ה', 08:00-17:00", en: "Sun-Thu, 08:00-17:00" }
       }
     ]
   },
@@ -31,44 +20,43 @@ export const DEFAULT_FOOTER = {
   // 2. Contact Details Section
   contact: {
     title: {
-      he: "פרטי יצירת קשר",
+      he: "פרטי התקשרות",
       en: "Contact Details"
     },
     cie_name: {
-      he: "בית הנוער העברי",
-      en: "Beit Hanoar HaIvri"
+      he: "שם החברה",
+      en: "Company Name"
     },
     cie_desc: {
-      he: "בית קהילתי ירושלמי לכל המשפחה",
-      en: "A Jerusalem community home for the whole family"
+      he: "תיאור קצר של פעילות החברה כאן",
+      en: "A brief description of company activities here"
     },
     address: {
-      he: "רח׳ הרצוג 105, ירושלים 92622",
-      en: "105 Herzog St., Jerusalem 92622"
+      he: "רחוב דוגמה 1, עיר 12345",
+      en: "1 Example St., City 12345"
     },
-    email: "info@beithanoar.org.il",
+    email: "contact@example.com",
     phones: [
-      { label: { he: "משרד", en: "Office" }, number: "02-6494111" },
-      { label: { he: "פקס", en: "Fax" }, number: "02-6494100" }
+      { label: { he: "משרד", en: "Office" }, number: "00-0000000" }
     ],
     transport: {
-      title: { he: "תחבורה ציבורית", en: "Public Transport" },
-      lines: "6, 17, 19, 32"
+      title: { he: "דרכי הגעה", en: "Directions" },
+      lines: ""
     }
   },
 
   // 3. Contact Form Texts
   form: {
-    title: { he: "יצירת קשר", en: "Contact Us" },
+    title: { he: "צרו קשר", en: "Contact Us" },
     fields: {
       name: { he: "שם מלא *", en: "Full Name *" },
       phone: { he: "טלפון *", en: "Phone *" },
-      email: { he: "E-mail *", en: "E-mail *" },
+      email: { he: "אימייל *", en: "E-mail *" },
       message: { he: "הודעה", en: "Message" },
       submit: { he: "שלח הודעה", en: "Send Message" }
     },
     successMessage: {
-      he: "הודעתך נשלחה בהצלחה!",
+      he: "ההודעה נשלחה בהצלחה!",
       en: "Message sent successfully!"
     }
   },
@@ -76,8 +64,8 @@ export const DEFAULT_FOOTER = {
   // 4. Legal / Bottom Bar
   bottomBar: {
     copyright: {
-      he: "בית הנוער העברי ירושלים. כל הזכויות שמורות.",
-      en: "Hebrew Youth Center Jerusalem. All rights reserved."
+      he: "כל הזכויות שמורות לשם החברה.",
+      en: "All rights reserved to Company Name."
     }
   }
 };
