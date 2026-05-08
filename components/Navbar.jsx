@@ -186,7 +186,6 @@ const Navbar = ({logic, uiText}) => {
 
                 {/* --- RIGHT SIDE --- */}
                 <div className="flex items-center gap-3">
-
                     {/* Desktop PWA Install Button */}
                     {isInstallable && (
                         <button
