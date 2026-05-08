@@ -103,11 +103,11 @@ export async function POST(req) {
                 const data = await response.json();
 
                 if (response.ok) {
-                    console.log("Gemini Debug:", {
-                        request: customRequest,
-                        length: currentText?.length,
-                        final: finalPrompt
-                    });
+                    // console.log("Gemini Debug:", {
+                    //     request: customRequest,
+                    //     length: currentText?.length,
+                    //     final: finalPrompt
+                    // });
                     const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
                     // console.log('-----------')
                     // console.log(rawText)

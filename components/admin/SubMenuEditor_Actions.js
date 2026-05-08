@@ -56,39 +56,6 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
         return {finalRequest, currentText};
     };
 
-    const handleAIGenerate = async (customRequest) => {
-        const currentText = sub.content?.[logic.modalLang] || '';
-        if (!currentText.trim() || isGenerating) return;
-
-        setBackupContent(currentText);
-        setIsGenerating(true);
-
-        try {
-            const GROQ_KEY = process.env.NEXT_PUBLIC_GROQ_KEY;
-            const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-                method: 'POST',
-                headers: {'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    model: "llama-3.3-70b-versatile",
-                    messages: [
-                        {role: "system", content: "Return ONLY clean HTML body content."},
-                        {role: "user", content: `Task: ${customRequest}\n\nContent: ${currentText}`}
-                    ]
-                })
-            });
-
-            const data = await response.json();
-            const rawHtml = data.choices?.[0]?.message?.content;
-            if (rawHtml) {
-                logic.handleUpdateField('content', logic.modalLang, cleanAIResponse(rawHtml));
-            }
-        } catch (error) {
-            alert(isHe ? "שגיאה בחיבור ל-AI" : "AI Connection Error");
-        } finally {
-            setIsGenerating(false);
-        }
-    };
-
     /**
      * NEW: Gemini AI Interaction
      */
@@ -154,7 +121,6 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
         backupContent,
         selectedTemplateId,     // Add this
         setSelectedTemplateId,  // Add this
-        handleAIGenerate,
         handleGeminiGenerate,
         processFileToHtml,
         buildFinalPrompt,

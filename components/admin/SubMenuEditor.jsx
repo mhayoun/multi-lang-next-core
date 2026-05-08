@@ -343,14 +343,6 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     <ExternalLink size={12}/> {isHe ? 'ג׳ימיני' : 'Gemini'}
                                 </a>
 
-                                {/* Standard AI Action Button */}
-                                <ActionButton
-                                    variant="ai"
-                                    onClick={() => actions.handleAIGenerate(customRequest)}
-                                    loading={actions.isGenerating}
-                                    icon={Sparkles}
-                                    label={isHe ? (actions.isGenerating ? '...' : 'ייצר AI') : (actions.isGenerating ? '...' : 'Generate AI')}
-                                />
                             </div>
 
                             <button onClick={() => logic.setIsModalOpen(false)}
