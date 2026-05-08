@@ -113,20 +113,24 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
         }
     };
 
+    const handleRestore = () => {
+        if (backupContent) {
+            logic.handleUpdateField('content', logic.modalLang, backupContent);
+            setBackupContent(null);
+        }
+    };
+
     return {
         isGenerating,
         isGeminiGenerating,
         isProcessingFile,
         statusMsg,
         backupContent,
-        selectedTemplateId,     // Add this
-        setSelectedTemplateId,  // Add this
+        selectedTemplateId,
+        setSelectedTemplateId,  
         handleGeminiGenerate,
         processFileToHtml,
         buildFinalPrompt,
-        handleRestore: () => {
-            logic.handleUpdateField('content', logic.modalLang, backupContent);
-            setBackupContent(null);
-        }
+        handleRestore
     };
 };
