@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 
 const url = process.env.KV_REST_API_URL;
 const token = process.env.KV_REST_API_TOKEN;
+const CURRENT_CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
 
 // 1. GET: Fetch all messages
 export async function GET() {
@@ -14,9 +15,10 @@ export async function GET() {
         if (!response.ok) throw new Error('Failed to fetch');
 
         const data = await response.json();
-        const messages = data.result.map(item =>
-            typeof item === 'string' ? JSON.parse(item) : item
-        );
+
+        const messages = data.result
+            .map(item => (typeof item === 'string' ? JSON.parse(item) : item))
+            .filter(msg => msg.clientId === CURRENT_CLIENT_ID);
 
         return NextResponse.json(messages);
     } catch (error) {
