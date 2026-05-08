@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
     try {
         const body = await request.json();
-        const { name, phone, email, message } = body;
+        const { name, phone, email, message, clientId } = body;
 
         // 1. Clean the URL (removes trailing slash if it exists)
         let url = process.env.KV_REST_API_URL;
@@ -25,6 +25,7 @@ export async function POST(request) {
             },
             body: JSON.stringify({
                 id: Date.now().toString(),
+                clientId: clientId || "unknown",
                 name,
                 phone,
                 email,
