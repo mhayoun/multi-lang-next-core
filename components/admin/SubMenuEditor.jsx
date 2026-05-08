@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {
-    Trash2, FileText, Eye, Code, Maximize2, X, CheckCircle2, Link,
+    Trash2, FileText, Eye, Code, Maximize2, X, CheckCircle2, Link,Crop,
     GripVertical, Copy, Check, Video, ExternalLink, Sparkles, RotateCcw, Upload, Bot
 } from 'lucide-react';
 
@@ -18,6 +18,7 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
 
     const fileInputRef = useRef(null);
     const pdfInputRef = useRef(null);
+    const bannerInputRef = useRef(null);
 
     const getAutoInstruction = (lang) => lang === 'he'
         ? "צור קוד HTML נקי עבור תוכן זה (ללא תגיות html, head או body). שמור על רשימות וצבעים."
@@ -30,6 +31,35 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
     useEffect(() => {
         setCustomRequest(getAutoInstruction(logic.modalLang));
     }, [logic.modalLang]);
+
+    const createBannerCrop = (file) => {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = (e) => {
+                const img = new Image();
+                img.src = e.target.result;
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 900;
+                    canvas.height = 323;
+                    const ctx = canvas.getContext('2d');
+
+                    // Center crop logic (Cover)
+                    const ratio = Math.max(900 / img.width, 323 / img.height);
+                    const w = img.width * ratio;
+                    const h = img.height * ratio;
+                    const x = (900 - w) / 2;
+                    const y = (323 - h) / 2;
+
+                    ctx.drawImage(img, x, y, w, h);
+                    canvas.toBlob((blob) => {
+                        resolve(new File([blob], file.name, {type: 'image/jpeg'}));
+                    }, 'image/jpeg', 0.9);
+                };
+            };
+        });
+    };
 
     return (
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4 shadow-sm relative">
@@ -275,6 +305,7 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                         {/* MODAL FOOTER ACTIONS */}
                         <div className="p-4 border-t bg-slate-50 flex justify-between items-center">
                             <div className="flex items-center gap-2">
+                                {/* All Image to HTML */}
                                 <input type="file" ref={fileInputRef} className="hidden" accept="image/*"
                                        onChange={(e) => actions.processFileToHtml(e.target.files[0], subMenuEditor_NewSrcHtml, sub.title?.[logic.modalLang] || 'image')}/>
                                 <ActionButton
@@ -288,6 +319,29 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     label={isHe ? 'תמונה ל-HTML' : 'Image to HTML'}
                                 />
 
+                                {/* Crop Image to HTML (900x323) */}
+                                <input
+                                    type="file"
+                                    ref={bannerInputRef}
+                                    className="hidden"
+                                    accept="image/*"
+                                    onChange={async (e) => {
+                                        const cropped = await createBannerCrop(e.target.files[0]);
+                                        actions.processFileToHtml(cropped, subMenuEditor_NewSrcHtml, 'banner');
+                                    }}
+                                />
+                                <ActionButton
+                                    onClick={() => {
+                                        setLastClicked('banner');
+                                        bannerInputRef.current?.click();
+                                    }}
+                                    loading={actions.isProcessingFile && lastClicked === 'banner'}
+                                    success={actions.statusMsg === 'success' && lastClicked === 'banner'}
+                                    icon={Crop} // or Layout
+                                    label={isHe ? 'באנר ל-HTML' : 'Banner (900x323)'}
+                                />
+
+                                {/* PDF to HTML */}
                                 <input type="file" ref={pdfInputRef} className="hidden" accept=".pdf" onChange={(e) => {
                                     const text = prompt(isHe ? "טקסט לכפתור:" : "Button text:", "Download PDF");
                                     if (text) actions.processFileToHtml(e.target.files[0], subMenuEditor_NewPdfHtml, text);
