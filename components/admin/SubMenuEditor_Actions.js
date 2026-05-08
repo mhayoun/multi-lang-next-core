@@ -49,6 +49,10 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
             finalRequest += ` based on this template: ${templateText}`;
         }
 
+        // --- CONSOLE DEBUG LOGS ---
+        console.log("finalRequest=", finalRequest);
+        console.log("currentText=", currentText);
+
         return {finalRequest, currentText};
     };
 
@@ -123,7 +127,7 @@ export const useSubMenuActions = (logic, isHe, sub, menuData) => {
             setIsGeminiGenerating(false);
         }
     };
-    
+
     const processFileToHtml = async (file, action, additionalParam) => {
         if (!file) return;
         setIsProcessingFile(true);

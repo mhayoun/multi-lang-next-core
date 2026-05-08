@@ -317,16 +317,24 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     <ExternalLink size={12}/> {isHe ? 'עורך HTML' : 'HTML Editor'}
                                 </a>
 
-                                {/* Copy Final AI Request */}
                                 <ActionButton
                                     onClick={() => {
-                                        // We call the same logic that builds the prompt for the API
-                                        const prompt = actions.buildFinalPrompt(customRequest);
-                                        navigator.clipboard.writeText(prompt);
+                                        // 1. Generate the final string
+                                        const {finalRequest} = actions.buildFinalPrompt(customRequest);
+
+                                        console.log('finalRequest:', finalRequest)
+
+                                        // 2. Pass it to your copy logic
+                                        if (finalRequest) {
+                                            logic.handleCopyFinalRequest(finalRequest);
+                                        }
                                     }}
-                                    icon={Copy}
-                                    variant="secondary"
-                                    label={isHe ? 'העתק בקשה סופית' : 'Copy Final Request'}
+                                    icon={logic.copied ? Check : Copy}
+                                    success={logic.copied}
+                                    label={isHe
+                                        ? (logic.copied ? 'הועתק!' : 'העתק בקשה סופית')
+                                        : (logic.copied ? 'Copied!' : 'Copy Final Request')
+                                    }
                                 />
 
                                 {/* Gemini Button */}

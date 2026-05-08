@@ -23,6 +23,20 @@ export const useSubMenuEditor = (sub, menuId, setMenuData, menuData) => {
         }
     };
 
+    const handleCopyFinalRequest = async (finalRequest) => {
+        // Pass the value directly to the builder
+
+        console.log("Copying finalRequest:", finalRequest);
+
+        if (finalRequest) {
+            const success = await copyToClipboard(finalRequest);
+            if (success) {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            }
+        }
+    };
+
     const startResizing = () => {
         isResizing.current = true;
         document.body.style.cursor = 'col-resize';
@@ -58,17 +72,17 @@ export const useSubMenuEditor = (sub, menuId, setMenuData, menuData) => {
         setMenuData(prevData => prevData.map(menu => {
             // Find the parent Menu (e.g., 'Solutions', 'Products')
             if (menu.id == menuId) {
-                console.log('found menu.id='+menu.id + ' subId='+subId);
+                console.log('found menu.id=' + menu.id + ' subId=' + subId);
                 return {
                     ...menu,
                     // The ?. ensures we don't crash if subMenus is missing
                     subItems: menu.subItems?.map(sub => {
                         // Find the specific SubMenu by ID
-                        console.log('sub.id='+sub.id);
+                        console.log('sub.id=' + sub.id);
                         if (sub.id == subId) {
                             console.log("✅ Found Target SubMenu. Old Data:", sub);
                             // Merge existing sub-menu data with the new keys (like 'youtubes')
-                            const updatedSub = { ...sub, ...newData };
+                            const updatedSub = {...sub, ...newData};
                             console.log("🚀 New Merged SubMenu:", updatedSub);
                             return updatedSub;
                         }
@@ -87,6 +101,7 @@ export const useSubMenuEditor = (sub, menuId, setMenuData, menuData) => {
         copied, leftWidth,
         handleUpdateField,
         handleCopy,
+        handleCopyFinalRequest,
         startResizing,
         updateSubMenu
     };
