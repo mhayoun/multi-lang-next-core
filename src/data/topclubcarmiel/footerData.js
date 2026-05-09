@@ -1,83 +1,137 @@
 export const DEFAULT_FOOTER = {
-  // 1. Working Hours Section
-  hours: {
-    title: {
-      he: "שעות פעילות",
-      en: "Opening Hours"
+  "hours": {
+    "title": {
+      "he": "שעות פעילות",
+      "en": "Opening Hours"
     },
-    items: [
+    "items": [
       {
-        label: { he: "מרכז מידע ורישום", en: "Information & Registration" },
-        value: { he: "א׳-ה׳, 8:00-19:00", en: "Sun-Thu, 8:00-19:00" }
+        "label": {
+          "he": "קאנטרי \"טופ קלאב\" כרמיאל",
+          "en": "Information & Registration"
+        },
+        "value": {
+          "he": "א׳-ה׳, 8:00-19:00",
+          "en": "Sun-Thu, 8:00-19:00"
+        }
       },
       {
-        label: { he: "בריכה", en: "Swimming Pool" },
-        value: { he: "פירוט הפעילות בבריכה", en: "See pool schedule" },
-        isLink: true
+        "label": {
+          "he": "בריכה",
+          "en": "Swimming Pool"
+        },
+        "value": {
+          "he": "פירוט הפעילות בבריכה",
+          "en": "See pool schedule"
+        },
+        "isLink": true,
+        "linkedSubItemId": "101"
       },
       {
-        label: { he: "חדר כושר", en: "Gym" },
-        value: { he: "פירוט הפעילות בחדר הכושר", en: "See gym schedule" },
-        isLink: true
+        "label": {
+          "he": "אקדמיה לשחייה",
+          "en": "Gym"
+        },
+        "value": {
+          "he": "כלי לחיים, לביטחון עצמי ולבריאות הגוף🌊",
+          "en": "See gym schedule"
+        },
+        "isLink": true,
+        "linkedSubItemId": "1778233788879"
       },
       {
-        label: { he: "ג׳ימבורי", en: "Gymboree" },
-        value: { he: "פירוט הפעילות בגימבורי", en: "See gymboree schedule" },
-        isLink: true
+        "label": {
+          "he": "אקדמיה לטניס",
+          "en": "History"
+        },
+        "value": {
+          "he": "מצוינות, אסטרטגיה וכושר על המגרש 🎾",
+          "en": "Pioneer of Community Centers in Israel!"
+        },
+        "isLink": true,
+        "linkedSubItemId": "1778235108737"
       }
     ]
   },
-
-  // 2. Contact Details Section
-  contact: {
-    title: {
-      he: "פרטי יצירת קשר",
-      en: "Contact Details"
+  "contact": {
+    "title": {
+      "he": "פרטי יצירת קשר",
+      "en": "Contact Details"
     },
-    cie_name: {
-      he: "קאנטרי טופ קלאב",
-      en: "Country Top Club"
+    "address": {
+      "he": "צהל 113 , כרמיאל",
+      "en": "105 Herzog St., Jerusalem 92622 1111"
     },
-    cie_desc: {
-      he: "הבית שלכם לבריאות, כושר ופנאי",
-      en: "A community home for the whole family"
-    },
-    address: {
-      he: "קאנטרי טופ קלאב, צהל 113 , כרמיאל",
-      en: "קאנטרי טופ קלאב, צהל 113 , כרמיאל\n"
-    },
-    email: "info@beithanoar.org.il",
-    phones: [
-      { label: { he: "משרד", en: "Office" }, number: "02-6494111" },
-      { label: { he: "פקס", en: "Fax" }, number: "02-6494100" }
+    "email": "m-top@m-karmiel.org",
+    "phones": [
+      {
+        "label": {
+          "he": "משרד",
+          "en": "Office"
+        },
+        "number": "049583331"
+      },
+      {
+        "label": {
+          "he": "פקס",
+          "en": "Fax"
+        },
+        "number": "049583332"
+      }
     ],
-    transport: {
-      title: { he: "תחבורה ציבורית", en: "Public Transport" },
-      lines: "6, 17, 19, 32"
-    }
-  },
-
-  // 3. Contact Form Texts
-  form: {
-    title: { he: "יצירת קשר", en: "Contact Us" },
-    fields: {
-      name: { he: "שם מלא *", en: "Full Name *" },
-      phone: { he: "טלפון *", en: "Phone *" },
-      email: { he: "E-mail *", en: "E-mail *" },
-      message: { he: "הודעה", en: "Message" },
-      submit: { he: "שלח הודעה", en: "Send Message" }
+    "transport": {
+      "title": {
+        "he": "תחבורה ציבורית",
+        "en": "Public Transport"
+      },
+      "lines": "",
+      "he": "6, 17, 19, 32, 15"
     },
-    successMessage: {
-      he: "הודעתך נשלחה בהצלחה!",
-      en: "Message sent successfully!"
+    "phone": "02-6494111",
+    "fax": "02-6494100",
+    "cie_name": {
+      "he": "קאנטרי טופ קלאב"
+    },
+    "cie_desc": {
+      "he": "הבית שלכם לבריאות, כושר ופנאי"
     }
   },
-
-  // 4. Legal / Bottom Bar
-  bottomBar: {
-    copyright: {
-      he: "בית הנוער העברי ירושלים. כל הזכויות שמורות.",
-      en: "Hebrew Youth Center Jerusalem. All rights reserved."
+  "form": {
+    "title": {
+      "he": "יצירת קשר",
+      "en": "Contact Us"
+    },
+    "fields": {
+      "name": {
+        "he": "שם מלא *",
+        "en": "Full Name *"
+      },
+      "phone": {
+        "he": "טלפון *",
+        "en": "Phone *"
+      },
+      "email": {
+        "he": "E-mail *",
+        "en": "E-mail *"
+      },
+      "message": {
+        "he": "הודעה",
+        "en": "Message"
+      },
+      "submit": {
+        "he": "שלח הודעה",
+        "en": "Send Message"
+      }
+    },
+    "successMessage": {
+      "he": "הודעתך נשלחה בהצלחה!",
+      "en": "Message sent successfully!"
+    }
+  },
+  "bottomBar": {
+    "copyright": {
+      "he": "בית הנוער העברי ירושלים. כל הזכויות שמורות.",
+      "en": "Hebrew Youth Center Jerusalem. All rights reserved."
     }
   }
 };

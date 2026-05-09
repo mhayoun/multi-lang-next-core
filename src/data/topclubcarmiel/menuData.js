@@ -1,645 +1,283 @@
 export const DEFAULT_MENU = [
-    {
-        "id": 1,
-        "title": {
-            "he": "מועדון ספורט - בריכה וחדר כושר",
-            "en": "Sports Club - Pool and Gym"
-        },
-        "bgImage": "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/pool01-EseDJJLNyIkpmpKjl8dZdV7ZRaw5Y0.jpg",
-        "subItems": [
-            {
-                "id": 101,
-                "title": {
-                    "he": "מידע כללי, מנויים ומבצעים",
-                    "en": "General Info, Membership & Promos"
-                },
-                "content": {
-                    "he": "\n                        <div style=\"font-size: 1.25rem; line-height: 1.6;\">\n                            <p><strong>✨ החופש להתאמן ולהירגע במקום אחד! ✨</strong></p>\n                            <ul style=\"list-style: none; padding: 0;\">\n                                <li>🏊‍♂️ בריכה וחדר כושר - החל מ-5:30 בבוקר</li>\n                                <li>🧖‍♀️ סאונה יבשה ורטובה מפנקת</li>\n                                <li>🕒 שעות שחייה נפרדות וכלליות מדי יום</li>\n                                <li>💪 שיעורי עיצוב וחיזוק הגוף בבוקר</li>\n                            </ul>\n                            <div style=\"background: #f0f7ff; border-radius: 12px; padding: 15px; margin-top: 15px; border-right: 5px solid #2563eb;\">\n                                <p style=\"margin: 0;\"><strong>🔥 מבצע פתיחת שנה מטורף! 🔥</strong></p>\n                                <p style=\"font-size: 1.5rem; color: #2563eb; margin: 5px 0;\"><strong>20% הנחה למנוי שנתי! 🎟️</strong></p>\n                            </div>\n                            <p style=\"margin-top: 15px;\">🚗 חניה צמודה בחינם! | 📍 הרב הרצוג 105</p>\n                            <p>📞 <strong>02-6494111 📱</strong></p>\n                        </div>\n                    ",
-                    "en": "\n                        <div style=\"font-size: 1.25rem; line-height: 1.6;\">\n                            <p><strong>✨ The Freedom to Train & Relax! ✨</strong></p>\n                            <ul style=\"list-style: none; padding: 0;\">\n                                <li>🏊‍♂️ Pool & Gym - Starting from 5:30 AM</li>\n                                <li>🧖‍♀️ Relaxing Dry & Wet Sauna</li>\n                                <li>🕒 Daily General & Separate Swimming</li>\n                                <li>💪 Morning Body Sculpting Classes</li>\n                            </ul>\n                            <div style=\"background: #f0f7ff; border-radius: 12px; padding: 15px; margin-top: 15px; border-left: 5px solid #2563eb;\">\n                                <p style=\"margin: 0;\"><strong>🔥 Crazy New Year Sale! 🔥</strong></p>\n                                <p style=\"font-size: 1.5rem; color: #2563eb; margin: 5px 0;\"><strong>20% OFF Annual Membership! 🎟️</strong></p>\n                            </div>\n                            <p style=\"margin-top: 15px;\">🚗 Free On-Site Parking! | 📍 105 Herzog St.</p>\n                            <p>📞 <strong>02-6494111 📱</strong></p>\n                        </div>\n                    "
-                },
-                "images": [],
-                "pdfs": [],
-                "linkedItemIds": [
-                    102,
-                    103,
-                    104,
-                    105,
-                    106
-                ]
-            },
-            {
-                "id": 102,
-                "title": {
-                    "he": "שעות פעילות הבריכה",
-                    "en": "Pool Opening Hours"
-                },
-                "content": {
-                    "he": "<body class=\"bg-slate-50 text-slate-900 leading-relaxed\">\n  <main class=\"max-w-2xl mx-auto px-4 py-8 space-y-6\">\n\n        <section class=\"bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden\">\n            <div class=\"bg-blue-50 px-6 py-4 border-b border-blue-100\">\n                <h2 class=\"text-xl font-bold text-blue-800\">הנחיות בריכה ומידע כללי</h2>\n            </div>\n            <div class=\"p-6 space-y-4\">\n                <ul class=\"space-y-3\">\n                    <li class=\"flex items-start\">\n                        <span class=\"text-blue-600 ml-2 mt-1\">●</span>\n                        <span>תוקף התוכנית: 1.9.25 עד 30.06.26.</span>\n                    </li>\n                    <li class=\"flex items-start text-red-600 font-medium\">\n                        <span class=\"ml-2 mt-1\">●</span>\n                        <span>שימו לב: התוכנית נתונה לשינויים עקב המצב הביטחוני.</span>\n                    </li>\n                    <li class=\"flex items-start\">\n                        <span class=\"text-blue-600 ml-2 mt-1\">●</span>\n                        <span>בימים ראשון וחמישי בין השעות 13:30-14:30 מלתחות הנשים יהיו סגורות לטובת עבודות אחזקה.</span>\n                    </li>\n                    <li class=\"flex items-start\">\n                        <span class=\"text-blue-600 ml-2 mt-1\">●</span>\n                        <span>עבודות סגירה ואחזקה נוספות מתבצעות החל מהשעה 22:20.</span>\n                    </li>\n                </ul>\n            </div>\n        </section>\n\n        <section class=\"bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden\">\n            <div class=\"bg-emerald-50 px-6 py-4 border-b border-emerald-100\">\n                <h2 class=\"text-xl font-bold text-emerald-800\">מועדון הכושר והבריאות</h2>\n            </div>\n            <div class=\"p-6 space-y-4\">\n                <div class=\"space-y-3\">\n                    <p class=\"font-semibold text-slate-700\">כללי הצטרפות ובטיחות:</p>\n                    <ul class=\"space-y-2\">\n                        <li class=\"flex items-start\">\n                            <span class=\"text-emerald-600 ml-2 mt-1\">✓</span>\n                            <span>חדר הכושר פתוח לגילאי 14 ומעלה בלבד.</span>\n                        </li>\n                        <li class=\"flex items-start\">\n                            <span class=\"text-emerald-600 ml-2 mt-1\">✓</span>\n                            <span>חובה להציג אישור רפואי על כשירות או חתימה על הצהרת בריאות במזכירות (בהתאם לחוק הספורט).</span>\n                        </li>\n                        <li class=\"flex items-start\">\n                            <span class=\"text-emerald-600 ml-2 mt-1\">✓</span>\n                            <span>עדכון תוכנית אחרון: 17.11.25.</span>\n                        </li>\n                    </ul>\n                </div>\n\n                <hr class=\"border-slate-100\">\n\n                <div class=\"space-y-3\">\n                    <p class=\"font-semibold text-slate-700\">התעמלות בוקר - בהדרכת אינה גורביץ:</p>\n                    <ul class=\"space-y-2 bg-slate-50 p-4 rounded-lg text-sm\">\n                        <li><strong>ימי שני ורביעי:</strong> נשים 09:00-09:45</li>\n                        <li><strong>ימי חמישי:</strong> \n                            <ul class=\"mr-4 mt-1 space-y-1\">\n                                <li>• נשים: 09:45-10:30 וגם 10:30-11:15</li>\n                                <li>• גברים: 10:45-11:30</li>\n                            </ul>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </section>\n\n    </main>\n\n    <footer class=\"text-center p-6 text-slate-400 text-xs\">\n        &copy; 2026 בית הנוער העברי ירושלים.\n    </footer>\n\n</body>\n",
-                    "en": "<body class=\"bg-slate-50 text-slate-900 leading-relaxed\" style=\"direction: ltr;\">\n  <main class=\"max-w-2xl mx-auto px-4 py-8 space-y-6\">\n\n        <section class=\"bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden\">\n            <div class=\"bg-blue-50 px-6 py-4 border-b border-blue-100\">\n                <h2 class=\"text-xl font-bold text-blue-800\">Pool Guidelines & General Information</h2>\n            </div>\n            <div class=\"p-6 space-y-4\">\n                <ul class=\"space-y-3\">\n                    <li class=\"flex items-start\">\n                        <span class=\"text-blue-600 mr-2 mt-1\">●</span>\n                        <span>Program Validity: 01/09/25 to 30/06/26.</span>\n                    </li>\n                    <li class=\"flex items-start text-red-600 font-medium\">\n                        <span class=\"mr-2 mt-1\">●</span>\n                        <span>Please Note: The schedule is subject to change due to the security situation.</span>\n                    </li>\n                    <li class=\"flex items-start\">\n                        <span class=\"text-blue-600 mr-2 mt-1\">●</span>\n                        <span>On Sundays and Thursdays between 13:30-14:30, the women's locker rooms will be closed for maintenance work.</span>\n                    </li>\n                    <li class=\"flex items-start\">\n                        <span class=\"text-blue-600 mr-2 mt-1\">●</span>\n                        <span>Additional closing and maintenance work begins starting from 22:20.</span>\n                    </li>\n                </ul>\n            </div>\n        </section>\n\n        <section class=\"bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden\">\n            <div class=\"bg-emerald-50 px-6 py-4 border-b border-emerald-100\">\n                <h2 class=\"text-xl font-bold text-emerald-800\">Fitness & Health Club</h2>\n            </div>\n            <div class=\"p-6 space-y-4\">\n                <div class=\"space-y-3\">\n                    <p class=\"font-semibold text-slate-700\">Membership & Safety Rules:</p>\n                    <ul class=\"space-y-2\">\n                        <li class=\"flex items-start\">\n                            <span class=\"text-emerald-600 mr-2 mt-1\">✓</span>\n                            <span>The gym is open to ages 14 and up only.</span>\n                        </li>\n                        <li class=\"flex items-start\">\n                            <span class=\"text-emerald-600 mr-2 mt-1\">✓</span>\n                            <span>A medical certificate of fitness or a signed health declaration at the office is mandatory (per the Sports Law).</span>\n                        </li>\n                        <li class=\"flex items-start\">\n                            <span class=\"text-emerald-600 mr-2 mt-1\">✓</span>\n                            <span>Last program update: 17/11/25.</span>\n                        </li>\n                    </ul>\n                </div>\n\n                <hr class=\"border-slate-100\">\n\n                <div class=\"space-y-3\">\n                    <p class=\"font-semibold text-slate-700\">Morning Exercise - Led by Ina Gurevich:</p>\n                    <ul class=\"space-y-2 bg-slate-50 p-4 rounded-lg text-sm\">\n                        <li><strong>Mondays and Wednesdays:</strong> Women 09:00-09:45</li>\n                        <li><strong>Thursdays:</strong> \n                            <ul class=\"ml-4 mt-1 space-y-1\">\n                                <li>• Women: 09:45-10:30 and 10:30-11:15</li>\n                                <li>• Men: 10:45-11:30</li>\n                            </ul>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </section>\n\n    </main>\n\n    <footer class=\"text-center p-6 text-slate-400 text-xs\">\n        &copy; 2026 Jerusalem Hebrew Youth House (Beit HaNoar HaIvri).\n    </footer>\n\n</body>"
-                },
-                "images": [
-                    "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/pool2-iQd6yDO0OFHJeLksFWExLQaTLDz1D6.jpeg",
-                    "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym-RiZL2JZy0UICJMABxSuRKCt7YK0mxB.jpeg",
-                    "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/sona-XFy2xhZZgODK48q5hhJDwyPKrtAemG.jpeg"
-                ],
-                "pdfs": [
-                    {
-                        "url": "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/%D7%A9%D7%A2%D7%95%D7%AA%20%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA%20%D7%94%D7%91%D7%A8%D7%99%D7%9B%D7%94-mVrPOsT7UyMsH76ciL8NdGvgb0QC78.pdf",
-                        "name": "שעות פעילות הבריכה.pdf"
-                    }
-                ],
-                "linkedItemIds": [
-                    101,
-                    103,
-                    104,
-                    105,
-                    106
-                ]
-            },
-            {
-                "id": 103,
-                "title": {
-                    "he": "תוכנית הפעילות חדר הכושר",
-                    "en": "Gym Activity Schedule"
-                },
-                "content": {
-                    "he": "<body style=\"direction: rtl; font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 15px; background-color: #f9f9f9;\">\n\n    <div style=\"max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);\">\n        \n        <header style=\"text-align: center; border-bottom: 2px solid #ee3124; padding-bottom: 10px; margin-bottom: 20px;\">\n            <h2 style=\"margin: 0; color: #ee3124;\">אימון מהנה :)</h2>\n            <p style=\"margin: 5px 0; font-weight: bold;\">שעות פעילות חדר כושר: 01/09/2025-30/06/2026</p>\n        </header>\n\n        <div style=\"overflow-x: auto;\">\n            <table style=\"width: 100%; border-collapse: collapse; text-align: center; font-size: 14px;\">\n                <thead>\n                    <tr style=\"background-color: #f2f2f2;\">\n                        <th style=\"border: 1px solid #ddd; padding: 8px;\">יום</th>\n                        <th style=\"border: 1px solid #ddd; padding: 8px;\">שעות פעילות</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr>\n                        <td style=\"border: 1px solid #ddd; padding: 8px; font-weight: bold;\">ראשון, שלישי, חמישי</td>\n                        <td style=\"border: 1px solid #ddd; padding: 8px;\">05:30-13:00 <br> 14:30-22:00</td>\n                    </tr>\n                    <tr>\n                        <td style=\"border: 1px solid #ddd; padding: 8px; font-weight: bold;\">שני, רביעי</td>\n                        <td style=\"border: 1px solid #ddd; padding: 8px;\">05:30-22:00 <br> <small>(רצוף)</small></td>\n                    </tr>\n                    <tr>\n                        <td style=\"border: 1px solid #ddd; padding: 8px; font-weight: bold;\">שישי</td>\n                        <td style=\"border: 1px solid #ddd; padding: 8px;\">05:30-17:00</td>\n                    </tr>\n                    <tr>\n                        <td style=\"border: 1px solid #ddd; padding: 8px; font-weight: bold;\">שבת</td>\n                        <td style=\"border: 1px solid #ddd; padding: 8px;\">08:00-15:00</td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n\n        <div style=\"background: #fff3cd; border-right: 5px solid #ffc107; padding: 10px; margin: 20px 0; font-size: 14px;\">\n            <strong>⚠️ הערה חשובה:</strong><br>\n            בימים ראשון וחמישי בין השעות 12:30-14:30 לא תתאפשר כניסה למלתחות נשים לטובת עבודות אחזקה.\n        </div>\n\n        <div style=\"margin-bottom: 20px;\">\n            <h4 style=\"margin-bottom: 8px; color: #444;\">נהלים ותוכנית פעילות:</h4>\n            <ul style=\"padding-right: 20px; margin: 0; font-size: 15px;\">\n                <li>חובה להתאמן עם מגבת, נעלי ספורט ובגדי ספורט.</li>\n                <li>יש לחתום על נהלים והצהרת בריאות במשרד המזכירות.</li>\n            </ul>\n        </div>\n\n        <div style=\"border-top: 1px solid #eee; padding-top: 15px; font-size: 14px; color: #666;\">\n            <p style=\"margin: 4px 0;\">📍 <strong>מיקום:</strong> בריכה</p>\n            <p style=\"margin: 4px 0;\">👥 <strong>מתאים לגיל:</strong> ילדים ונוער, בוגרים, גמלאים</p>\n            <p style=\"margin: 4px 0;\">📅 <strong>יום הפעילות:</strong> כל השבוע</p>\n        </div>\n\n    </div>\n\n</body>",
-                    "en": "<body style=\"direction: ltr; font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 15px; background-color: #f9f9f9;\">\n\n    <div style=\"max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);\">\n        \n        <header style=\"text-align: center; border-bottom: 2px solid #ee3124; padding-bottom: 10px; margin-bottom: 20px;\">\n            <h2 style=\"margin: 0; color: #ee3124;\">Have a great workout! :)</h2>\n            <p style=\"margin: 5px 0; font-weight: bold;\">Gym Operating Hours: 01/09/2025-30/06/2026</p>\n        </header>\n\n        <div style=\"overflow-x: auto;\">\n            <table style=\"width: 100%; border-collapse: collapse; text-align: center; font-size: 14px;\">\n                <thead>\n                    <tr style=\"background-color: #f2f2f2;\">\n                        <th style=\"border: 1px solid #ddd; padding: 8px;\">Day</th>\n                        <th style=\"border: 1px solid #ddd; padding: 8px;\">Operating Hours</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr>\n                        <td style=\"border: 1px solid #ddd; padding: 8px; font-weight: bold;\">Sun, Tue, Thu</td>\n                        <td style=\"border: 1px solid #ddd; padding: 8px;\">05:30-13:00 <br> 14:30-22:00</td>\n                    </tr>\n                    <tr>\n                        <td style=\"border: 1px solid #ddd; padding: 8px; font-weight: bold;\">Mon, Wed</td>\n                        <td style=\"border: 1px solid #ddd; padding: 8px;\">05:30-22:00 <br> <small>(Continuous)</small></td>\n                    </tr>\n                    <tr>\n                        <td style=\"border: 1px solid #ddd; padding: 8px; font-weight: bold;\">Friday</td>\n                        <td style=\"border: 1px solid #ddd; padding: 8px;\">05:30-17:00</td>\n                    </tr>\n                    <tr>\n                        <td style=\"border: 1px solid #ddd; padding: 8px; font-weight: bold;\">Saturday</td>\n                        <td style=\"border: 1px solid #ddd; padding: 8px;\">08:00-15:00</td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n\n        <div style=\"background: #fff3cd; border-left: 5px solid #ffc107; padding: 10px; margin: 20px 0; font-size: 14px;\">\n            <strong>⚠️ Important Note:</strong><br>\n            On Sundays and Thursdays between 12:30-14:30, entry to the women's locker rooms will not be permitted due to maintenance work.\n        </div>\n\n        <div style=\"margin-bottom: 20px;\">\n            <h4 style=\"margin-bottom: 8px; color: #444;\">Regulations and Activity Plan:</h4>\n            <ul style=\"padding-left: 20px; margin: 0; font-size: 15px;\">\n                <li>Training is mandatory with a towel, athletic shoes, and sportswear.</li>\n                <li>Regulations and health declarations must be signed at the secretariat office.</li>\n            </ul>\n        </div>\n\n        <div style=\"border-top: 1px solid #eee; padding-top: 15px; font-size: 14px; color: #666;\">\n            <p style=\"margin: 4px 0;\">📍 <strong>Location:</strong> Pool</p>\n            <p style=\"margin: 4px 0;\">👥 <strong>Suitable for:</strong> Children & Youth, Adults, Seniors</p>\n            <p style=\"margin: 4px 0;\">📅 <strong>Activity Days:</strong> All week</p>\n        </div>\n\n    </div>\n\n</body>"
-                },
-                "images": [
-                    "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym-YBHnf0H5QQsTf8oiB6olGsbe3NZJ7A.jpeg",
-                    "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym2-Q5Q8h2h98kmEzLoI4f1X9MSqWfR5mb.webp",
-                    "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym3-nwch67kGtrdAMvXWgQgo0LtHBXHLe4.webp"
-                ],
-                "pdfs": [
-                    {
-                        "url": "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/%D7%A9%D7%A2%D7%95%D7%AA%20%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA%20%D7%94%D7%91%D7%A8%D7%99%D7%9B%D7%94-S5TbR6BvNwG0IC6SoK3EOZ7LIvigzk.pdf",
-                        "name": "שעות פעילות הבריכה.pdf"
-                    },
-                    {
-                        "url": "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/%D7%A9%D7%A2%D7%95%D7%AA%20%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA%20%D7%97%D7%93%D7%A8%20%D7%94%D7%9B%D7%95%D7%A9%D7%A8-jqxxAnV2hcnzLFa8k9h7qildyBbwXq.pdf",
-                        "name": "שעות פעילות חדר הכושר.pdf"
-                    }
-                ]
-            },
-            {
-                "id": 104,
-                "title": {
-                    "he": "תוכנית מועדון ספורט גמלאים",
-                    "en": "Seniors Sports Club Program"
-                },
-                "content": {
-                    "he": "",
-                    "en": ""
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 105,
-                "title": {
-                    "he": "מידע כללי ומחירים",
-                    "en": "General Info & Prices"
-                },
-                "content": {
-                    "he": "",
-                    "en": ""
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 106,
-                "title": {
-                    "he": "הרשמה",
-                    "en": "Registration"
-                },
-                "content": {
-                    "he": "",
-                    "en": ""
-                },
-                "images": [],
-                "pdfs": []
-            }
-        ]
+  {
+    "id": 1,
+    "title": {
+      "he": "בריכות וסאונות",
+      "en": "Pools and Saunas"
     },
-    {
-        "id": 2,
+    "bgImage": "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool6-CkFY4zErBQYENqwtmQfFfl50bEnI5c.jpg",
+    "subItems": [
+      {
+        "id": 101,
         "title": {
-            "he": "ספורט ופנאי לילדים ונוער",
-            "en": "Sport and Leisure for Children and Youth"
+          "he": "מתחם המים - בריכות וסאונות",
+          "en": "Water complex: Pools and Saunas"
         },
-        "bgImage": "",
-        "subItems": [
-            {
-                "id": 201,
-                "title": {
-                    "he": "ג'ודו - מועדון תלפ\"ז",
-                    "en": "Judo - Tel-Paz Club"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🏆 <strong>מגדלים את האלופים הבאים!</strong> 🥋<br/>מקצועיות ללא פשרות, משמעת ויחס אישי לכל ילד וילדה. 🌟</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🏆 <strong>Raising the Next Champions!</strong> 🥋<br/>Uncompromising professionalism, discipline, and personal care. 🌟</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 202,
-                "title": {
-                    "he": "טאקוונדו - רענן שנהב",
-                    "en": "Taekwondo - Raanan Senah"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🥋 <strong>טאקוונדו עם רענן שנהב!</strong> 👊<br/>ערכים, ביטחון עצמי ומצוינות ספורטיבית. <br/>⚡ ⚡ ⚡</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🥋 <strong>Taekwondo with Raanan Senah!</strong> 👊<br/>Values, self-confidence, and athletic excellence. <br/>⚡ ⚡ ⚡</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 203,
-                "title": {
-                    "he": "כדורסל - אגודות",
-                    "en": "Basketball - Associations"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🏀 <strong>קולעים לסל עם המקצוענים!</strong> 🏀<ul style=\"padding-right: 20px;\"><li>⭐ אליצור ירושלים: 053-2420750</li><li>⭐ הפועל ירושלים (נערות): 02-6242694</li></ul></div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🏀 <strong>Shoot Hoops with the Pros!</strong> 🏀<ul style=\"padding-left: 20px;\"><li>⭐ Elitzur JLM: 053-2420750</li><li>⭐ Hapoel JLM (Girls): 02-6242694</li></ul></div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 204,
-                "title": {
-                    "he": "כדורגל - מועדון רומא קלאב",
-                    "en": "Football - Roma Club"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">⚽ <strong>הצטרפו למועדון רומא!</strong> ⚽<br/>חוויית כדורגל מלהיבה ומגבשת. <br/>📞 <strong>054-4500018 ⚽</strong></div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">⚽ <strong>Join the Roma Club!</strong> ⚽<br/>An exciting and bonding football experience. <br/>📞 <strong>054-4500018 ⚽</strong></div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 205,
-                "title": {
-                    "he": "נבחרות שחייה - אגודת שחייני ירושלים",
-                    "en": "Swimming Teams - Jerusalem Swimmers Association"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🌊 <strong>שוחים עם הטובים ביותר!</strong> 🏊‍♂️<br/>האגודה המובילה והוותיקה בישראל. <br/>📞 02-6794004 💦</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🌊 <strong>Swim with the Best!</strong> 🏊‍♂️<br/>The leading and oldest club in Israel. <br/>📞 02-6794004 💦</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 206,
-                "title": {
-                    "he": "כדורעף חופים / פוצ'יוולי",
-                    "en": "Beach Volleyball / Footvolley"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🏖️ <strong>חול, שמש וספורט!</strong> 🏐<br/>בהדרכת אוהד ברקון במגרש חול מקצועי. <br/>☀️ 🏐 ☀️</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🏖️ <strong>Sand, Sun, and Sport!</strong> 🏐<br/>Led by Ohad Barkon on a pro sand court. <br/>☀️ 🏐 ☀️</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 207,
-                "title": {
-                    "he": "ספורט חוויתי - עטר סיאני",
-                    "en": "Experiential Sport - Atar Siani"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🧠 <strong>ספורט משולב טיפול</strong> 🤸‍♂️<br/>קבוצות קטנות לגילאי 4 עד כיתה ב'. <br/>🌈 גוף ונפש בתנועה!</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🧠 <strong>Sport-Therapy Fusion</strong> 🤸‍♂️<br/>Small groups for ages 4 to 2nd Grade. <br/>🌈 Body & mind in motion!</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 208,
-                "title": {
-                    "he": "פארקור-אקרובטיקה - עידן סרי",
-                    "en": "Parkour-Acrobatics - Idan Sari"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🔥 <strong>פארקור: אתגר ללא גבולות!</strong> 🤸‍♂️<br/>מזרנים, מתנפחים ומכשולים מטורפים! <br/>💣 💨 💣</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🔥 <strong>Parkour: Limits are for Losers!</strong> 🤸‍♂️<br/>Mats, inflatables, and crazy obstacles! <br/>💣 💨 💣</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 209,
-                "title": {
-                    "he": "קונטקידס (להורה וילד)",
-                    "en": "ContaKids (Parent & Child)"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">👶 <strong>רוקדים עם אמא ואבא!</strong> 🫂<br/>זמן איכות של מגע, תנועה וכיף לגילאי 2-5. <br/>❤️ ✨ ❤️</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">👶 <strong>Dancing with Mom & Dad!</strong> 🫂<br/>Quality time, touch, and fun for ages 2-5. <br/>❤️ ✨ ❤️</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 210,
-                "title": {
-                    "he": "מתחם \"הנוער העברי\"",
-                    "en": "\"The Hebrew Youth\" Complex"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🪖 <strong>הכנה לקרבי - הכי חזק שיש!</strong> 👊<br/>אימונים מטורפים במגרש חול ייעודי. <br/>🦾 🇮🇱 🦾</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🪖 <strong>Combat Prep - Go Hard!</strong> 👊<br/>Intense training on a specialized sand court. <br/>🦾 🇮🇱 🦾</div>"
-                },
-                "images": [],
-                "pdfs": []
-            }
+        "content": {
+          "he": "<div dir=\"rtl\" style=\"font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #334155; max-width: 800px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;\">\n\n    <header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #0ea5e9; padding-bottom: 20px;\">\n        <h1 style=\"color: #0369a1; font-size: 2.5rem; margin-bottom: 10px; margin-top: 0;\">קאנטרי \"טופ קלאב\"</h1>\n        <p style=\"font-size: 1.2rem; font-weight: 600; color: #0ea5e9;\">🌊 בואו לצלול לחוויה שכולה בריאות, חופש ורוגע 🌊</p>\n    </header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool-5IldZAYRxHaaLCZcovzCeB835KA4GE.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n\n    <div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 5px solid #0ea5e9;\">\n        <p style=\"font-weight: bold; font-size: 1.1rem; color: #0369a1; margin: 0;\">\n            <span style=\"margin-left: 8px;\">🏊‍♂️</span>\n            עולם שלם של מים – חוויית שחייה ללא הגבלה:\n        </p>\n        <ul style=\"list-style: none; padding: 0; margin-top: 15px;\">\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>בריכה מחוממת ומקורה:</strong> פועלת לאורך כל השנה.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>בריכה קיצית:</strong> בריכה חיצונית גדולה ומרעננת.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>בריכת פעוטות:</strong> מתחם מים בטוח ומותאם לקטנטנים.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>ג'קוזי ענק ומפנק:</strong> לשחרור השרירים והפגת מתחים.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>סאונה יבשה ורטובה:</strong> לטיהור הגוף וחוויה מרגיעה.</li>\n        </ul>\n    </div>\n\n    <section style=\"margin-bottom: 30px;\">\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border-right: 5px solid #64748b;\">\n            <p style=\"margin: 0; font-weight: bold; color: #1e293b;\">🛡️ בטיחות מעל הכל</p>\n            <p style=\"font-size: 1.1rem; color: #334155; margin: 10px 0;\">צוות מצילים מקצועי, אדיב ומיומן עומד לרשותכם לשמירה על סביבת שחייה בטובה.</p>\n        </div>\n    </section>\n\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;\">\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🌳 מדשאות רחבות</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🪑 פינות ישיבה</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">👨‍👩‍👧‍👦 בילוי משפחתי</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">✨ אווירה פסטורלית</div>\n    </div>\n\n    <section style=\"background-color: #ffffff; padding: 10px; margin-bottom: 30px;\">\n        <p style=\"font-size: 1.1rem; color: #475569; text-align: center;\">\n            מסביב לבריכות תמצאו מרחבים ציבוריים רחבי ידיים ומדשאות מטופחות. זהו המקום האידיאלי להתמקם עם כל המשפחה ולצבור רגעים של יחד.\n        </p>\n    </section>\n\n    <section style=\"background-color: #f1f5f9; padding: 25px; border-radius: 12px; margin-bottom: 30px; text-align: center;\">\n        <h3 style=\"margin-top: 0; color: #0f172a; font-size: 1.4rem;\">רוצים להצטרף? צרו קשר:</h3>\n        <div style=\"display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px;\">\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">חייגו אלינו:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #0369a1;\">📞 04-9583331</p>\n            </div>\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">שלחו וואטסאפ:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #25d366;\">💬 054-4628304</p>\n            </div>\n        </div>\n    </section>\n\n    <footer style=\"background-color: #0369a1; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n        <h3 style=\"margin: 0; color: #f8fafc;\">מחכים לכם בקאנטרי טופ קלאב!</h3>\n        <p style=\"margin: 10px 0 0 0; opacity: 0.9;\">החופש שלכם מתחיל כאן</p>\n    </footer>\n\n</div>",
+          "en": "<div dir=\"ltr\" style=\"font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #334155; max-width: 800px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;\">\n\n    <header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #0ea5e9; padding-bottom: 20px;\">\n        <h1 style=\"color: #0369a1; font-size: 2.5rem; margin-bottom: 10px; margin-top: 0;\">\"Top Club\" Country Club</h1>\n        <p style=\"font-size: 1.2rem; font-weight: 600; color: #0ea5e9;\">🌊 Dive into an experience of health, freedom, and relaxation 🌊</p>\n    </header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool-5IldZAYRxHaaLCZcovzCeB835KA4GE.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n    <div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #0ea5e9;\">\n        <p style=\"font-weight: bold; font-size: 1.1rem; color: #0369a1; margin: 0;\">\n            <span style=\"margin-right: 8px;\">🏊‍♂️</span>\n            A whole world of water – unlimited swimming experience:\n        </p>\n        <ul style=\"list-style: none; padding: 0; margin-top: 15px;\">\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>Heated Indoor Pool:</strong> Open year-round.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>Summer Pool:</strong> A large and refreshing outdoor pool.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>Toddler Pool:</strong> A safe water area tailored for the little ones.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>Huge Luxurious Jacuzzi:</strong> To release tension and soothe muscles.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>Dry & Wet Sauna:</strong> For body purification and a relaxing experience.</li>\n        </ul>\n    </div>\n\n    <section style=\"margin-bottom: 30px;\">\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border-left: 5px solid #64748b;\">\n            <p style=\"margin: 0; font-weight: bold; color: #1e293b;\">🛡️ Safety Above All</p>\n            <p style=\"font-size: 1.1rem; color: #334155; margin: 10px 0;\">Our professional, courteous, and skilled lifeguard team is at your service to ensure a safe swimming environment.</p>\n        </div>\n    </section>\n\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;\">\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🌳 Spacious Lawns</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🪑 Seating Areas</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">👨‍👩‍👧‍👦 Family Fun</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">✨ Pastoral Atmosphere</div>\n    </div>\n\n    <section style=\"background-color: #ffffff; padding: 10px; margin-bottom: 30px;\">\n        <p style=\"font-size: 1.1rem; color: #475569; text-align: center;\">\n            Surrounding the pools, you will find expansive public spaces and well-maintained lawns. It is the ideal place to settle in with the whole family and enjoy moments together.\n        </p>\n    </section>\n\n    <section style=\"background-color: #f1f5f9; padding: 25px; border-radius: 12px; margin-bottom: 30px; text-align: center;\">\n        <h3 style=\"margin-top: 0; color: #0f172a; font-size: 1.4rem;\">Want to join? Contact us:</h3>\n        <div style=\"display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px;\">\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">Call us:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #0369a1;\">📞 04-9583331</p>\n            </div>\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">WhatsApp us:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #25d366;\">💬 054-4628304</p>\n            </div>\n        </div>\n    </section>\n\n    <footer style=\"background-color: #0369a1; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n        <h3 style=\"margin: 0; color: #f8fafc;\">We look forward to seeing you at Top Club Country Club!</h3>\n        <p style=\"margin: 10px 0 0 0; opacity: 0.9;\">Your freedom starts here</p>\n    </footer>\n\n</div>"
+        },
+        "images": [
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool9-f9OVvOnab4WPQYRQEGB1WRG03UcLbl.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool4-zoV4oGjVWyOtd2prnBL2OqiZL9r2ex.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool5-hfdMEbAT8VhtlvKpAnHVwytgTs7a2m.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool3-6lg5OrnzpgQXD5JLYkYzTUME5nuXbJ.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool2-Q4XxNy3P5FgYXL2o7owQTzYoIwk81V.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool-e0TPLRKuAmvMCBXe4OuU9vBDabvjX8.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool10-8uUCj8sEsamimLz1xzk5if0nmfOxE2.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool8-WQMLPWxxFdf5RNJs2IOUpuXSaZ5N24.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool7-OSLuC06O31LSq0mZJb1ktHXtiS2Q4R.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/pool6-vAeTg4PefxpAZg4qI0xclhaI0C1bpB.jpg"
+        ],
+        "pdfs": [],
+        "linkedItemIds": [
+          101,
+          1778222913891,
+          1778232688090,
+          1778233788879,
+          1778235108737,
+          1778239255579,
+          1778235613725
         ]
+      }
+    ]
+  },
+  {
+    "id": 1778222869976,
+    "title": {
+      "he": "חדר הכושר",
+      "en": "Gym"
     },
-    {
-        "id": 3,
+    "bgImage": "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/gym08-DtAcBAy7zX7vUnCnCxvuSYYcHq9wGD.jpg",
+    "subItems": [
+      {
+        "id": 1778222913891,
         "title": {
-            "he": "פנאי לנשים ולגברים",
-            "en": "Leisure for Women and Men"
+          "he": "מתחם חדר הכושר",
+          "en": "The gym complex"
         },
-        "bgImage": "",
-        "subItems": [
-            {
-                "id": 301,
-                "title": {
-                    "he": "כדורעף חופים / פוצ'יוולי",
-                    "en": "Beach Volleyball / Footvolley"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🔥 <strong>חדש! פוצ'יוולי למבוגרים!</strong> 🏐<br/>אימונים מקצועיים על החול. <br/>💥 🏐 💥</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🔥 <strong>New! Footvolley for Adults!</strong> 🏐<br/>Professional training on the sand. <br/>💥 🏐 💥</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 302,
-                "title": {
-                    "he": "אייקידו - איציק אסלן",
-                    "en": "Aikido - Itzik Aslan"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🥋 <strong>אייקידו: הגנה עצמית ושלווה</strong><br/>שיטה יפנית מסורתית. 🧘‍♂️<br/>📞 <strong>050-2126999</strong></div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🥋 <strong>Aikido: Self-Defense & Peace</strong><br/>Traditional Japanese method. 🧘‍♂️<br/>📞 <strong>050-2126999</strong></div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 303,
-                "title": {
-                    "he": "סדנה שנתית Groundwork",
-                    "en": "Groundwork - Annual Workshop"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">💃 <strong>Groundwork: רוקדים תנועה</strong> 💃<br/>סדנה שנתית מעמיקה. <br/>📞 יעל: 054-4551402</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">💃 <strong>Groundwork: Movement Dance</strong> 💃<br/>Annual in-depth workshop. <br/>📞 Yael: 054-4551402</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 304,
-                "title": {
-                    "he": "הכשרת מורי יוגה - זהר שפירא",
-                    "en": "Yoga Teacher Training - Zohar Shapira"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🧘 <strong>להפוך למורי יוגה!</strong> 🧘‍♀️<br/>הכשרה מקצועית ושיעורי העמקה. <br/>🌸 📞 050-3773337</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🧘 <strong>Become a Yoga Teacher!</strong> 🧘‍♀️<br/>Professional training & deep practice. <br/>🌸 📞 050-3773337</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 305,
-                "title": {
-                    "he": "אכילה נכונה - חלי ממן",
-                    "en": "Healthy Eating - Heli Maman"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🥗 <strong>מרזים ובריאים עם חלי ממן!</strong> 🥗<br/>ליווי אישי וקבוצתי מנצח. <br/>📞 052-5956049 🍏</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🥗 <strong>Get Healthy with Heli Maman!</strong> 🥗<br/>Winning group & personal support. <br/>📞 052-5956049 🍏</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 306,
-                "title": {
-                    "he": "ליגת כדורגל נשים (חובבות)",
-                    "en": "Women's Football League (Amateur)"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">⚽ <strong>ליגת כדורגל לנשים!</strong> ⚽<br/>אווירה מדהימה וכושר שיא. <br/>📞 055-6628118 ⚽</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">⚽ <strong>Women's Football League!</strong> ⚽<br/>Amazing vibes & peak fitness. <br/>📞 055-6628118 ⚽</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 307,
-                "title": {
-                    "he": "ירושלמיות רוקדות - מחול נשי",
-                    "en": "Jerusalemites Dancing - Women’s Dance"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🎭 <strong>מחול, תנועה וביטוי עצמי</strong> 🎭<br/>תיאטרון מחול ירושלים. <br/>🌟 📞 02-679562</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🎭 <strong>Dance, Motion & Expression</strong> 🎭<br/>Jerusalem Dance Theater. <br/>🌟 📞 02-679562</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 308,
-                "title": {
-                    "he": "ריקוד חופשי לנשים - מירב שחר",
-                    "en": "Free Dance for Women - Meirav Shahar"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🎶 <strong>לרקוד כאילו אף אחד לא רואה!</strong> 🎶<br/>מוזיקה אקלקטית ושחרור טוטאלי. <br/>✨ 💃 ✨</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🎶 <strong>Dance Like No One is Watching!</strong> 🎶<br/>Eclectic music & total release. <br/>✨ 💃 ✨</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 309,
-                "title": {
-                    "he": "ניה לנשים - רונית לוין",
-                    "en": "Nia for Women - Ronit Levin"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🌿 <strong>ניה: ריקוד הגוף והנפש</strong> 🌿<br/>שילוב אומנויות לחימה ומחול. <br/>💫 🌈 💫</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🌿 <strong>Nia: Body & Soul Dance</strong> 🌿<br/>Martial arts & dance fusion. <br/>💫 🌈 💫</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 310,
-                "title": {
-                    "he": "נפגשות - פרויקט חברתי",
-                    "en": "\"Nifgashot\" - Social Project"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🤰 <strong>מעגל נשים מחבק</strong> 🤰<br/>היריון, לידה ומה שביניהם. <br/>🌸 💞 🌸</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🤰 <strong>Hugging Women's Circle</strong> 🤰<br/>Pregnancy, birth & everything in between. <br/>🌸 💞 🌸</div>"
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 311,
-                "title": {
-                    "he": "קבוצת תמיכה - לידה שקטה",
-                    "en": "Support Group - Stillbirth"
-                },
-                "content": {
-                    "he": "<div style=\"font-size: 1.2rem;\">🤍 <strong>אנחנו כאן איתך.</strong> 🤍<br/>תמיכה לנשים אחרי לידה שקטה. <br/>📞 מלכה: 050-8946213</div>",
-                    "en": "<div style=\"font-size: 1.2rem;\">🤍 <strong>We Are Here With You.</strong> 🤍<br/>Support for women after stillbirth. <br/>📞 Malka: 050-8946213</div>"
-                },
-                "images": [],
-                "pdfs": []
-            }
+        "content": {
+          "he": "<header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #10b981; padding-bottom: 20px;\">\n    <h1 style=\"color: #059669; font-size: 2.2rem; margin-bottom: 10px;\">מתחם חדר הכושר – טופ קלאב</h1>\n    <p style=\"font-size: 1.2rem; font-weight: 600; color: #064e3b;\">המקום בו היעדים שלכם הופכים למציאות ⚡</p>\n</header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/gym10-ZGczGXqoTpyeVxMzDsx8I8R2ntkjfO.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n\n<div style=\"background-color: #f0fdf4; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 5px solid #10b981;\">\n    <p style=\"font-weight: bold; font-size: 1.1rem; color: #064e3b; margin: 0;\">\n        בקאנטרי \"טופ קלאב\" כרמיאל, אנחנו מאמינים שכושר הוא דרך חיים.\n    </p>\n    <p style=\"margin-top: 10px;\">מתחם הכושר והאימונים אצלנו הוא מגוון ומקצועי ומעניק לכל מתאמן ומתאמנת, מהנוער ועד הגיל השלישי, את הכלים המדויקים להצלחה.</p>\n</div>\n\n<section style=\"margin-bottom: 30px;\">\n    <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;\">\n        <p style=\"margin: 0; font-size: 1.1rem; line-height: 1.8;\">\n            חדר הכושר אצלנו בנוי מ-<strong>3 מפלסים</strong> וחוויית אימון בסטנדרט אחר. המבנה הייחודי מאפשר זרימה ונוחות מקסימלית, ומחולק למפלסים ייעודיים המאפשרים לכל אחד למצוא את המקום המדויק עבורו.\n        </p>\n    </div>\n</section>\n\n<div style=\"background-color: #eff6ff; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 5px solid #3b82f6;\">\n    <h2 style=\"color: #1e40af; margin-top: 0; font-size: 1.4rem;\">🏃‍♂️ קומה 1: מתחם ה-Cardio והאימון הפונקציונלי</h2>\n    <p style=\"font-weight: bold; color: #1e3a8a;\">שיפור סיבולת לב-ריאה, שריפת קלוריות ותנועתיות:</p>\n    <ul style=\"padding-right: 20px; margin-top: 10px;\">\n        <li style=\"margin-bottom: 8px;\"><strong>הליכונים חדישים:</strong> מצוידים במסכי טאץ' לחוויית אימון אינטראקטיבית.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>מכשור אירובי:</strong> אליפטיקלים, אופני כושר, מכשירי חתירה וסטפרים מהשורה הראשונה.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>סטודיו ספינינג:</strong> חדר רכיבה ייעודי לאימונים יחידניים וקבוצתיים בעצימות גבוהה.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>מתחם פונקציונלי:</strong> מאובזר בגומיות, כדורי כוח, מזרנים ועוד.</li>\n    </ul>\n</div>\n\n<div style=\"background-color: #fef2f2; padding: 20px; border-radius: 12px; margin-bottom: 30px; border-right: 5px solid #ef4444;\">\n    <h2 style=\"color: #991b1b; margin-top: 0; font-size: 1.4rem;\">💪 קומה 2 + גלריה: מתחם הכוח</h2>\n    <p style=\"font-weight: bold; color: #7f1d1d;\">לבניית שריר, התחזקות ועבודה עם משקלים:</p>\n    <ul style=\"padding-right: 20px; margin-top: 10px;\">\n        <li style=\"margin-bottom: 8px;\"><strong>משקולות חופשיים:</strong> מבחר רחב של משקולות ומוטות אולימפיים.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>מכשירי כוח מתקדמים:</strong> מערך מכשירים ייעודי לכל קבוצות השרירים בגוף.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>Smith Machine:</strong> לעבודה בטוחה ויציבה עם משקלים גבוהים.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>מתחם משקל גוף:</strong> מתקני מתח, מקבילים ותחנות עבודה לליבה ובטן.</li>\n    </ul>\n</div>\n\n<div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;\">\n    <div style=\"text-align: center; padding: 15px; background: #f8fafc; border-radius: 8px; font-weight: bold; color: #059669; border: 1px solid #d1fae5;\">✨ חופש תנועה ומרחב</div>\n    <div style=\"text-align: center; padding: 15px; background: #f8fafc; border-radius: 8px; font-weight: bold; color: #059669; border: 1px solid #d1fae5;\">🔝 תחזוקה ללא פשרות</div>\n</div>\n\n<section style=\"background-color: #f1f5f9; padding: 20px; border-radius: 12px; margin-bottom: 30px;\">\n    <h3 style=\"margin-top: 0; color: #0f172a; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px;\">🌟 אימונים אישיים – ליווי צמוד לתוצאות</h3>\n    <p>רוצים לקחת את האימון שלכם צעד אחד קדימה? הצוות שלנו כאן בשבילכם:</p>\n    <ul style=\"list-style: none; padding: 0;\">\n        <li style=\"margin-bottom: 10px;\"><strong>🎯 תוכנית מותאמת אישית:</strong> חיטוב, בניית שריר, סיבולת או ירידה במשקל.</li>\n        <li style=\"margin-bottom: 10px;\"><strong>👥 אימוני נוער ומבוגרים:</strong> התמחות בשיפור כושר גופני וביטחון עצמי לנוער לצד אימונים ייעודיים לגיל השלישי.</li>\n    </ul>\n</section>\n\n<footer style=\"background-color: #064e3b; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n    <h3 style=\"margin-top: 0; color: #ecfdf5;\">רוצים גם להצטרף?</h3>\n    <p style=\"margin: 10px 0; font-size: 1.1rem;\">\n        📞 <strong>בטלפון:</strong> 04-9583331<br>\n        💬 <strong>בוואטסאפ:</strong> 054-4628304\n    </p>\n    <p style=\"font-size: 1.2rem; font-weight: bold; margin-top: 15px; color: #34d399;\">קאנטרי טופ קלאב כרמיאל</p>\n</footer>\n",
+          "en": "\n<header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #10b981; padding-bottom: 20px;\">\n    <h1 style=\"color: #059669; font-size: 2.2rem; margin-bottom: 10px;\">The Gym Complex – Top Club</h1>\n    <p style=\"font-size: 1.2rem; font-weight: 600; color: #064e3b;\">Where your goals become reality ⚡</p>\n</header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/gym10-ZGczGXqoTpyeVxMzDsx8I8R2ntkjfO.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n\n<div style=\"background-color: #f0fdf4; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #10b981;\">\n    <p style=\"font-weight: bold; font-size: 1.1rem; color: #064e3b; margin: 0;\">\n        At \"Top Club\" Country Club Karmiel, we believe that fitness is a way of life.\n    </p>\n    <p style=\"margin-top: 10px;\">Our diverse and professional fitness complex provides every trainee—from youth to seniors—with the precise tools for success.</p>\n</div>\n\n<section style=\"margin-bottom: 30px;\">\n    <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;\">\n        <p style=\"margin: 0; font-size: 1.1rem; line-height: 1.8;\">\n            Our gym is built across <strong>3 levels</strong>, offering a training experience of a different standard. The unique design allows for maximum flow and comfort, featuring dedicated levels that help everyone find their exact place.\n        </p>\n    </div>\n</section>\n\n<!-- Floor 1 -->\n<div style=\"background-color: #eff6ff; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid #3b82f6;\">\n    <h2 style=\"color: #1e40af; margin-top: 0; font-size: 1.4rem;\">🏃‍♂️ Floor 1: Cardio & Functional Training</h2>\n    <p style=\"font-weight: bold; color: #1e3a8a;\">Improving cardiovascular endurance, burning calories, and mobility:</p>\n    <ul style=\"padding-left: 20px; margin-top: 10px;\">\n        <li style=\"margin-bottom: 8px;\"><strong>Modern Treadmills:</strong> Equipped with touchscreens for an interactive workout.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>Aerobic Equipment:</strong> Top-tier ellipticals, stationary bikes, rowing machines, and steppers.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>Spinning Studio:</strong> A dedicated cycling room for high-intensity individual and group sessions.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>Functional Area:</strong> Fully equipped with resistance bands, medicine balls, mats, and more.</li>\n    </ul>\n</div>\n\n<!-- Floor 2 -->\n<div style=\"background-color: #fef2f2; padding: 20px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #ef4444;\">\n    <h2 style=\"color: #991b1b; margin-top: 0; font-size: 1.4rem;\">💪 Floor 2 + Gallery: The Strength Complex</h2>\n    <p style=\"font-weight: bold; color: #7f1d1d;\">Building muscle, gaining strength, and weight training:</p>\n    <ul style=\"padding-left: 20px; margin-top: 10px;\">\n        <li style=\"margin-bottom: 8px;\"><strong>Free Weights:</strong> A wide selection of dumbbells and Olympic bars.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>Advanced Strength Machines:</strong> A comprehensive array of equipment for all muscle groups.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>Smith Machine:</strong> For safe and stable training with heavy loads.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>Bodyweight Area:</strong> Pull-up bars, parallel bars, and core/abdominal workstations.</li>\n    </ul>\n</div>\n\n<div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;\">\n    <div style=\"text-align: center; padding: 15px; background: #f8fafc; border-radius: 8px; font-weight: bold; color: #059669; border: 1px solid #d1fae5;\">✨ Freedom of Movement</div>\n    <div style=\"text-align: center; padding: 15px; background: #f8fafc; border-radius: 8px; font-weight: bold; color: #059669; border: 1px solid #d1fae5;\">🔝 Uncompromising Maintenance</div>\n</div>\n\n<section style=\"background-color: #f1f5f9; padding: 20px; border-radius: 12px; margin-bottom: 30px;\">\n    <h3 style=\"margin-top: 0; color: #0f172a; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px;\">🌟 Personal Training – Close Guidance for Results</h3>\n    <p>Want to take your training a step further? Our certified coaching team is here for you:</p>\n    <ul style=\"list-style: none; padding: 0;\">\n        <li style=\"margin-bottom: 10px;\"><strong>🎯 Personalized Programs:</strong> Toning, muscle building, endurance, or weight loss.</li>\n        <li style=\"margin-bottom: 10px;\"><strong>👥 Youth & Adult Training:</strong> Expertise in improving fitness and self-confidence for teens, alongside dedicated senior fitness programs.</li>\n    </ul>\n</section>\n\n<footer style=\"background-color: #064e3b; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n    <h3 style=\"margin-top: 0; color: #ecfdf5;\">Want to Join?</h3>\n    <p style=\"margin: 10px 0; font-size: 1.1rem;\">\n        📞 <strong>Phone:</strong> 04-9583331<br>\n        💬 <strong>WhatsApp:</strong> 054-4628304\n    </p>\n    <p style=\"font-size: 1.2rem; font-weight: bold; margin-top: 15px; color: #34d399;\">Top Club Country Club Karmiel</p>\n</footer>\n"
+        },
+        "images": [
+          "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym09-Jz8jWjG5Xr9g3s8ToL2Qg4DOrGHisE.jpg",
+          "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym08-bg02YQBj5R5pZOl4i4aSLQRPRSIHuX.jpg",
+          "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym06-4Mymhs9fflyZwKjw8fWcb8zWV0Ocyf.jpg",
+          "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym05-7N69OeRNYb0qP10ZGv3HjQtPpCWyi7.jpg",
+          "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym04-ljRonpDZsqWoZpC1k9S6KIlp6RKoBW.jpg",
+          "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym03-eyiQ4VQXMyFpg2lhx131JIzQSJCvtn.jpg",
+          "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym02-SFwyBZMoWGWzwKTMbvQywdVWP4EBH1.jpg",
+          "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/gym01-Ik5dJ5jQ00AeCVriWXPXODo5vOHHpx.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/gym10-KxO5ZJdCrqOCi1e6NMgsuat4bhbiHa.jpg"
+        ],
+        "pdfs": [],
+        "linkedItemIds": [
+          101,
+          1778222913891,
+          1778232688090,
+          1778233788879,
+          1778235108737,
+          1778239255579,
+          1778235613725
         ]
+      }
+    ]
+  },
+  {
+    "id": 1778232613154,
+    "title": {
+      "he": "שיעורי הסטודיו",
+      "en": "Studio lessons"
     },
-    {
-        "id": 4,
+    "bgImage": "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio04-fgO3vwwRyxRjWjk9ZcLFgRhPC0HEAD.jpg",
+    "subItems": [
+      {
+        "id": 1778232688090,
         "title": {
-            "he": "מרכז ספורט ופנאי לאזרחים ותיקים",
-            "en": "Sports & Leisure Center for Seniors"
+          "he": "שיעורי הסטודיו",
+          "en": "Studio lessons"
         },
-        "bgImage": "",
-        "subItems": [
-            {
-                "id": 401,
-                "title": {
-                    "he": "מועדון ספורט לגמלאים",
-                    "en": "Seniors Sports Club"
-                },
-                "content": {
-                    "he": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>בריכה • חדר כושר • העשרה</strong></p>\n                        <p>מנוי בוקר מוזל לגמלאים הכולל:</p>\n                        <ul style=\"list-style-type: disc; padding-right: 20px;\">\n                            <li>בריכת שחייה</li>\n                            <li>חדר כושר</li>\n                            <li>סאונה חמה ורטובה</li>\n                            <li>שיעורי עיצוב וחיזוק הגוף</li>\n                            <li>הרצאות מתחומי הבריאות, הספורט, הגוף והנפש</li>\n                        </ul>\n                        <div style=\"margin-top: 15px; color: #d97706; font-weight: bold; font-size: 1.4rem;\">\n                            ₪ 193 לחודש (ברכישת מנוי שנתי)\n                        </div>\n                    </div>\n                ",
-                    "en": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>Pool • Gym • Enrichment</strong></p>\n                        <p>Discounted morning membership for seniors including:</p>\n                        <ul style=\"list-style-type: disc; padding-left: 20px;\">\n                            <li>Swimming Pool</li>\n                            <li>Gym</li>\n                            <li>Hot & Wet Sauna</li>\n                            <li>Body Sculpting & Strengthening Classes</li>\n                            <li>Lectures on Health, Sports, and Mind-Body wellness</li>\n                        </ul>\n                        <div style=\"margin-top: 15px; color: #d97706; font-weight: bold; font-size: 1.4rem;\">\n                            ₪ 193 per month (with annual membership)\n                        </div>\n                    </div>\n                "
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 402,
-                "title": {
-                    "he": "להקת \"ירושלים של זהב\"",
-                    "en": "\"Jerusalem of Gold\" Dance Troupe"
-                },
-                "content": {
-                    "he": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>ניהול אומנותי: \"קולבן דאנס\"</strong></p>\n                        <p>להקת מחול ייצוגית לאזרחים ותיקים, בעלת רפורטואר עשיר בריקודי עמים וכל הזמנים.</p>\n                        <p>מעטפת מקצועית, אווירה מגובשת והשתתפות בהופעות ופסטיבלים בארץ ובחו\"ל.</p>\n                        <p><em>חזרות בימי ג' בוקר</em></p>\n                    </div>\n                ",
-                    "en": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>Artistic Direction: \"Kolben Dance\"</strong></p>\n                        <p>A representative dance troupe for seniors, featuring a rich repertoire of folk dances and classics.</p>\n                        <p>Professional support, a cohesive atmosphere, and participation in performances and festivals in Israel and abroad.</p>\n                        <p><em>Rehearsals on Tuesday mornings</em></p>\n                    </div>\n                "
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 403,
-                "title": {
-                    "he": "ציור",
-                    "en": "Painting"
-                },
-                "content": {
-                    "he": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>בהדרכת אליה קוץ</strong></p>\n                        <p>הדרכה מקצועית וסבלנית, המשולבת לימוד טכניקות שונות.</p>\n                    </div>\n                ",
-                    "en": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>Instructor: Elia Kutz</strong></p>\n                        <p>Professional and patient guidance, integrating the study of various painting techniques.</p>\n                    </div>\n                "
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 404,
-                "title": {
-                    "he": "מועדון ברידג'",
-                    "en": "Bridge Club"
-                },
-                "content": {
-                    "he": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>EASY BRIDGE</strong></p>\n                        <p>לימוד, תרגול ומשחק, בהנחיה מקצועית ובאווירה מהנה.</p>\n                        <p>📞 <strong>052-5688781</strong></p>\n                    </div>\n                ",
-                    "en": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>EASY BRIDGE</strong></p>\n                        <p>Learning, practice, and play with professional guidance in a fun atmosphere.</p>\n                        <p>📞 <strong>052-5688781</strong></p>\n                    </div>\n                "
-                },
-                "images": [],
-                "pdfs": []
-            }
+        "content": {
+          "he": "<!-- כותרת -->\n<header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #8b5cf6; padding-bottom: 20px;\">\n    <h1 style=\"color: #6d28d9; font-size: 2.2rem; margin-bottom: 10px; margin-top: 0;\">סטודיו טופ קלאב – עולם של תנועה</h1>\n    <p style=\"font-size: 1.2rem; font-weight: 600; color: #4c1d95;\">תוכן, אנרגיה וכושר במתחם אחד 🧘✨</p>\n</header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio02-L2dulRXIfoNgmV9Kkiiss2gYYH93kG.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n<div style=\"margin: 20px 0; text-align: center;\">\n    <a href=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio-F8QzIEYpKtyLjq3x3AEJyZ18oEtpiZ.pdf\" target=\"_blank\" style=\"display: inline-block; background-color: #2563eb; color: #ffffff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-family: system-ui, sans-serif; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);\">\n        📥 מערכת החוגים 2026\n    </a>\n</div>\n<!-- פסקת פתיחה -->\n<div style=\"background-color: #f5f3ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 5px solid #8b5cf6;\">\n    <p style=\"font-weight: bold; font-size: 1.1rem; color: #4c1d95; margin: 0;\">\n        הסטודיו המאובזר שלנו מציע עולם עשיר של תוכן ותנועה, עם מערכת חוגים מגוונת שמתאימה לכל רמה.\n    </p>\n</div>\n\n<!-- כרטיסי מידע (גריד) -->\n<section style=\"margin-bottom: 30px;\">\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;\">\n        \n        <!-- מגוון חוגים -->\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; border-right: 5px solid #ec4899;\">\n            <h3 style=\"color: #be185d; margin-top: 0;\">🌈 מגוון חוגים</h3>\n            <p style=\"margin: 0; line-height: 1.6;\">מעיצוב וחיטוב, דרך אימוני כוח ועד חוגים לשיפור הגמישות והיציבה.</p>\n        </div>\n\n        <!-- אביזרי אימון -->\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; border-right: 5px solid #3b82f6;\">\n            <h3 style=\"color: #1d4ed8; margin-top: 0;\">🏋️ אביזרי אימון</h3>\n            <p style=\"margin: 0; line-height: 1.6;\">אנחנו מקפידים על התחדשות מתמדת באביזרים איכותיים שהופכים כל שיעור לחוויה אפקטיבית.</p>\n        </div>\n\n        <!-- הדרכה מקצועית -->\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; border-right: 5px solid #10b981;\">\n            <h3 style=\"color: #047857; margin-top: 0;\">🎓 הדרכה מקצועית</h3>\n            <p style=\"margin: 0; line-height: 1.6;\">מיטב המדריכים של האזור מובילים את הקבוצות שלנו באנרגיות טובות ובמקצועיות רבה.</p>\n        </div>\n        \n    </div>\n</section>\n\n<!-- רשימת חוגים -->\n<div style=\"background-color: #fff7ed; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 5px solid #f97316;\">\n    <h2 style=\"color: #9a3412; margin-top: 0; font-size: 1.4rem;\">🏃‍♀️ חוגי הסטודיו שלנו:</h2>\n    <p style=\"margin-bottom: 10px;\">אירובי ועיצוב, פונקציונלי, קיקבוקס, פלדנקרייז, תרגילי בטן ומתיחות, זומבה, פילאטיס, התעמלות במים, זומבה במים, צפיפות העצם, Tabata, יוגה, ריקודי עם ופילאטיס בדופק גבוה.</p>\n</div>\n\n<!-- טניס שולחן -->\n<section style=\"background: #eff6ff; border-radius: 12px; padding: 20px; border: 1px solid #bfdbfe; margin-bottom: 30px; text-align: center;\">\n    <h3 style=\"color: #1e40af; margin-top: 0;\">🏓 מתחם טניס שולחן</h3>\n    <p style=\"margin: 0; font-size: 1.1rem;\">\n        מדי יום בין השעות <strong>13:00-17:00</strong> הסטודיו מארח משחקי טניס שולחן עם שולחנות מקצועיים.\n    </p>\n</section>\n\n<!-- פוטר/יצירת קשר -->\n<footer style=\"background-color: #4c1d95; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n    <h3 style=\"margin-top: 0; color: #ede9fe;\">רוצים גם להצטרף?</h3>\n    <p style=\"margin: 10px 0; font-size: 1.1rem;\">\n        📞 <strong>בטלפון:</strong> 04-9583331<br>\n        💬 <strong>בוואטסאפ:</strong> 054-4628304\n    </p>\n    <p style=\"font-size: 1.2rem; font-weight: bold; margin-top: 15px; color: #a78bfa;\">קאנטרי טופ קלאב כרמיאל</p>\n</footer>\n",
+          "en": "<!-- Header -->\n<header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #8b5cf6; padding-bottom: 20px;\">\n    <h1 style=\"color: #6d28d9; font-size: 2.2rem; margin-bottom: 10px; margin-top: 0;\">Top Club Studio – A World of Movement</h1>\n    <p style=\"font-size: 1.2rem; font-weight: 600; color: #4c1d95;\">Content, energy, and fitness in one place 🧘✨</p>\n</header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio02-L2dulRXIfoNgmV9Kkiiss2gYYH93kG.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n\n<div style=\"margin: 20px 0; text-align: center;\">\n    <a href=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio-F8QzIEYpKtyLjq3x3AEJyZ18oEtpiZ.pdf\" target=\"_blank\" style=\"display: inline-block; background-color: #2563eb; color: #ffffff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-family: system-ui, sans-serif; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);\">\n        📥 2026 Class Schedule\n    </a>\n</div>\n\n<!-- Intro Paragraph -->\n<div style=\"background-color: #f5f3ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #8b5cf6;\">\n    <p style=\"font-weight: bold; font-size: 1.1rem; color: #4c1d95; margin: 0;\">\n        Our fully-equipped studio offers a rich world of content and movement, with a diverse class schedule suitable for every level.\n    </p>\n</div>\n\n<!-- Info Cards (Grid) -->\n<section style=\"margin-bottom: 30px;\">\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;\">\n        \n        <!-- Variety of Classes -->\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; border-left: 5px solid #ec4899;\">\n            <h3 style=\"color: #be185d; margin-top: 0;\">🌈 Variety of Classes</h3>\n            <p style=\"margin: 0; line-height: 1.6;\">From toning and sculpting to strength training and classes for improved flexibility and posture.</p>\n        </div>\n\n        <!-- Training Equipment -->\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; border-left: 5px solid #3b82f6;\">\n            <h3 style=\"color: #1d4ed8; margin-top: 0;\">🏋️ Training Equipment</h3>\n            <p style=\"margin: 0; line-height: 1.6;\">We maintain a constant renewal of high-quality equipment that turns every lesson into an effective experience.</p>\n        </div>\n\n        <!-- Professional Instruction -->\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; border-left: 5px solid #10b981;\">\n            <h3 style=\"color: #047857; margin-top: 0;\">🎓 Professional Instruction</h3>\n            <p style=\"margin: 0; line-height: 1.6;\">The best instructors in the region lead our groups with great energy and high professionalism.</p>\n        </div>\n        \n    </div>\n</section>\n\n<!-- Class List -->\n<div style=\"background-color: #fff7ed; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #f97316;\">\n    <h2 style=\"color: #9a3412; margin-top: 0; font-size: 1.4rem;\">🏃‍♀️ Our Studio Classes:</h2>\n    <p style=\"margin-bottom: 10px;\">Aerobics & Sculpting, Functional Training, Kickboxing, Feldenkrais, Abdominal & Stretching, Zumba, Pilates, Water Aerobics, Aqua Zumba, Bone Density, Tabata, Yoga, Folk Dancing, and High-Pulse Pilates.</p>\n</div>\n\n<!-- Table Tennis -->\n<section style=\"background: #eff6ff; border-radius: 12px; padding: 20px; border: 1px solid #bfdbfe; margin-bottom: 30px; text-align: center;\">\n    <h3 style=\"color: #1e40af; margin-top: 0;\">🏓 Table Tennis Area</h3>\n    <p style=\"margin: 0; font-size: 1.1rem;\">\n        Every day between <strong>1:00 PM - 5:00 PM</strong>, the studio hosts table tennis games with professional tables.\n    </p>\n</section>\n\n<!-- Footer/Contact -->\n<footer style=\"background-color: #4c1d95; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n    <h3 style=\"margin-top: 0; color: #ede9fe;\">Want to join us?</h3>\n    <p style=\"margin: 10px 0; font-size: 1.1rem;\">\n        📞 <strong>Phone:</strong> 04-9583331<br>\n        💬 <strong>WhatsApp:</strong> 054-4628304\n    </p>\n    <p style=\"font-size: 1.2rem; font-weight: bold; margin-top: 15px; color: #a78bfa;\">Top Club Country Club Carmiel</p>\n</footer>"
+        },
+        "images": [
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio11-aQoEJuRx2tU4LagJR2kwPrw4ugFx7y.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio10-L4aGiEY7uuiY6Yt5c4dJTMdx0f4SFJ.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio09-L8mLnD9eSuryLPjnLoQQvmAEGYyrkw.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio08-hT3THhIPBSB3MqdkuIAYqHTe10J7UC.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio07-eJ1265DPT4f7ZPomATrXTDsfubjjC6.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio06-H6Gt8DraVI8WR97PJrlKHwxSOc1eiH.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio05-nbdsX0Mpk4fT9U8ja8Hh1qjEfJ3WR0.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio04-WQg0t4Nv5xYp4bWqovoPtTAaNx64pp.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio03-Z4ElgL0YnErU1RIasb0rJZRC0X9IeM.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/studio02-TYa3n6WuUidh3S8vWydSpAoB6kLORQ.jpg"
+        ],
+        "pdfs": [],
+        "linkedItemIds": [
+          101,
+          1778222913891,
+          1778232688090,
+          1778233788879,
+          1778235108737,
+          1778239255579
         ]
+      }
+    ]
+  },
+  {
+    "id": 1778233725113,
+    "title": {
+      "he": "אקדמיות לספורט - שחייה וטניס",
+      "en": "Swimming and tennis sports academies"
     },
-    {
-        "id": 5,
+    "bgImage": "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academy-mQoqhRzeWVBDTJutEduJ7TF9nsCFTP.png",
+    "subItems": [
+      {
+        "id": 1778233788879,
         "title": {
-            "he": "מרכז מחול ותנועה",
-            "en": "Dance & Movement Center"
+          "he": "אקדמיה לשחייה",
+          "en": "Swimming Academy"
         },
-        "bgImage": "",
-        "subItems": [
-            {
-                "id": 501,
-                "title": {
-                    "he": "קפיטל לטינה",
-                    "en": "Capital Latina"
-                },
-                "content": {
-                    "he": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>מועדון חברתי לריקודים לטיניים ייחודי ובלעדי בירושלים!</strong></p>\n                        <p>לימוד מקצועי עם מדריכים מהמובילים בארץ. הבית של הסלסה, הבצ'אטה והזוק לסטודנטים, חיילים משוחררים וצעירים בנפשם.</p>\n                        <p><strong>הרקדה במוצ\"ש:</strong> אווירה תוססת ומהנה, לימוד והנחייה בתחילת הערב והרקדה אל תוך הלילה. אירוח אומנים מובילים מחו\"ל.</p>\n                    </div>\n                ",
-                    "en": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>A unique and exclusive social Latin dance club in Jerusalem!</strong></p>\n                        <p>Professional instruction with leading instructors in Israel. The home of Salsa, Bachata, and Zouk for students, discharged soldiers, and the young at heart.</p>\n                        <p><strong>Saturday Night Dancing:</strong> Vibrant atmosphere, instruction at the start of the evening, and dancing into the night. Hosting leading international artists.</p>\n                    </div>\n                "
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 502,
-                "title": {
-                    "he": "הרקדות",
-                    "en": "Folk Dancing (Harkadot)"
-                },
-                "content": {
-                    "he": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p>ריקודי עם ישראלים, ריקודי עמים וכל הזמנים עם מיטב המרקידים:</p>\n                        <ul style=\"list-style-type: none; padding: 0;\">\n                            <li>• בועז כהן • שמעון מרדכי</li>\n                            <li>• חיים צמח • עופר אלפסי</li>\n                            <li>• דבי פחימה • אבנר נעים</li>\n                        </ul>\n                    </div>\n                ",
-                    "en": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p>Israeli and international folk dancing with top instructors:</p>\n                        <ul style=\"list-style-type: none; padding: 0;\">\n                            <li>• Boaz Cohen • Shimon Mordechai</li>\n                            <li>• Haim Tzemach • Ofer Alfasi</li>\n                            <li>• Debbie Fahima • Avner Naim</li>\n                        </ul>\n                    </div>\n                "
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 503,
-                "title": {
-                    "he": "להקת \"שורשים\"",
-                    "en": "\"Shorashim\" Troupe"
-                },
-                "content": {
-                    "he": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>ניהול אומנותי: \"קולבן דאנס\"</strong></p>\n                        <p>להקת מחול ישראלי, בעלת ותק ומוניטין רב. אווירה מגובשת והשתתפות בפסטיבלים ואירועים בארץ ובחו\"ל.</p>\n                        <p><em>חזרות בימי ב' בערב</em></p>\n                    </div>\n                ",
-                    "en": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>Artistic Direction: \"Kolben Dance\"</strong></p>\n                        <p>An established Israeli dance troupe with a great reputation. Cohesive atmosphere and participation in festivals and events in Israel and abroad.</p>\n                        <p><em>Rehearsals on Monday evenings</em></p>\n                    </div>\n                "
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 504,
-                "title": {
-                    "he": "מחול מזרחי וצועני לנשים",
-                    "en": "Oriental & Gypsy Dance for Women"
-                },
-                "content": {
-                    "he": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>בהדרכת נטלי דביר</strong></p>\n                        <p>כוריאוגרפית, יוצרת, ומעוררת השראה.</p>\n                        <p>📞 <strong>054-4418924</strong></p>\n                    </div>\n                ",
-                    "en": "\n                    <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                        <p><strong>Instructor: Natalie Dvir</strong></p>\n                        <p>Choreographer, creator, and inspirational guide.</p>\n                        <p>📞 <strong>054-4418924</strong></p>\n                    </div>\n                "
-                },
-                "images": [],
-                "pdfs": []
-            }
-        ]
-    },
-    {
-        "id": 6,
-        "title": {
-            "he": "מרכז המחול המוביל בירושלים",
-            "en": "The Leading Dance Center in Jerusalem"
+        "content": {
+          "he": "\n<div dir=\"rtl\" style=\"font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #334155; max-width: 800px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;\">\n\n    <!-- כותרת -->\n    <header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #0ea5e9; padding-bottom: 20px;\">\n        <h1 style=\"color: #0369a1; font-size: 2.5rem; margin-bottom: 10px; margin-top: 0;\">אקדמיה לשחייה - טופ קלאב</h1>\n        <p style=\"font-size: 1.2rem; font-weight: 600; color: #0ea5e9;\">🌊 כלי לחיים, לביטחון עצמי ולבריאות הגוף 🌊</p>\n    </header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academypool01-go6O6Yksn9TRgkBFANIApZiiG0GXKf.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n\n    <!-- פסקת פתיחה -->\n    <div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 5px solid #0ea5e9;\">\n        <p style=\"font-weight: bold; font-size: 1.1rem; color: #0369a1; margin: 0;\">\n            באקדמיה שלנו אנחנו מלווים את השחיינים מהצעד הראשון במים ועד לרמת נבחרת:\n        </p>\n    </div>\n\n    <!-- גריד חוגים וקורסים -->\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;\">\n        \n        <!-- חוגי שחייה -->\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border-right: 5px solid #3b82f6;\">\n            <h3 style=\"color: #1e40af; margin-top: 0;\">🏊‍♂️ חוגים ושיפור סגנון</h3>\n            <p style=\"margin: 0; font-size: 1rem; color: #334155;\">\n                לימוד ושכלול ארבעת הסגנונות: חתירה, גב, חזה ופרפר. דגש על בניית סיבולת ושיפור טכניקה.\n            </p>\n        </div>\n\n        <!-- קורסי צעדים ראשונים -->\n        <div style=\"background: #f0fdf4; border-radius: 12px; padding: 20px; border-right: 5px solid #22c55e;\">\n            <h3 style=\"color: #166534; margin-top: 0;\">👶 צעדים ראשונים</h3>\n            <p style=\"margin: 0; font-size: 1rem; color: #334155;\">\n                הבסיס הכי חשוב לילדים מגיל 4 ומעלה: הקניית ביטחון, לימוד ציפה נכונה ושליטה בנשימה.\n            </p>\n        </div>\n    </div>\n\n    <!-- חוויה תחרותית -->\n    <section style=\"margin-bottom: 30px;\">\n        <div style=\"background: #fef2f2; border-radius: 12px; padding: 20px; border-right: 5px solid #ef4444; text-align: center;\">\n            <p style=\"margin: 0; font-weight: bold; color: #991b1b; font-size: 1.2rem;\">🏆 חוויה תחרותית</p>\n            <p style=\"font-size: 1.1rem; color: #334155; margin: 10px 0;\">\n                השתתפות בתחרויות מקומיות וארציות המעניקות לשחיינים תחושת הישגיות וגאווה.\n            </p>\n        </div>\n    </section>\n\n    <!-- סיכום -->\n    <section style=\"background-color: #ffffff; padding: 10px; margin-bottom: 30px;\">\n        <p style=\"font-size: 1.1rem; color: #475569; text-align: center; font-weight: 500;\">\n            בסיום הקורס הילדים מוכנים להשתלבות בחוגי השחייה המקדמים שלנו, עם כל הכלים להצלחה במים.\n        </p>\n    </section>\n\n    <!-- צור קשר -->\n    <section style=\"background-color: #f1f5f9; padding: 25px; border-radius: 12px; margin-bottom: 30px; text-align: center;\">\n        <h3 style=\"margin-top: 0; color: #0f172a; font-size: 1.4rem;\">לפרטים והרשמה לאקדמיה:</h3>\n        <div style=\"display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px;\">\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">חייגו אלינו:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #0369a1;\">📞 04-9583331</p>\n            </div>\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">שלחו וואטסאפ:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #25d366;\">💬 054-4628304</p>\n            </div>\n        </div>\n    </section>\n\n    <!-- פוטר -->\n    <footer style=\"background-color: #0369a1; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n        <h3 style=\"margin: 0; color: #f8fafc;\">מחכים לכם באקדמיה לשחייה!</h3>\n        <p style=\"margin: 10px 0 0 0; opacity: 0.9;\">מזנקים יחד לעתיד בריא יותר</p>\n    </footer>\n\n</div>\n\n",
+          "en": "\n<div dir=\"ltr\" style=\"font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #334155; max-width: 800px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;\">\n\n    <!-- Header -->\n    <header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #0ea5e9; padding-bottom: 20px;\">\n        <h1 style=\"color: #0369a1; font-size: 2.5rem; margin-bottom: 10px; margin-top: 0;\">Top Club Swimming Academy</h1>\n        <p style=\"font-size: 1.2rem; font-weight: 600; color: #0ea5e9;\">🌊 A tool for life, self-confidence, and physical health 🌊</p>\n    </header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academypool01-go6O6Yksn9TRgkBFANIApZiiG0GXKf.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n    <!-- Intro Paragraph -->\n    <div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #0ea5e9;\">\n        <p style=\"font-weight: bold; font-size: 1.1rem; color: #0369a1; margin: 0;\">\n            At our academy, we accompany swimmers from their first step in the water to the competitive team level:\n        </p>\n    </div>\n\n    <!-- Classes and Courses Grid -->\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;\">\n        \n        <!-- Swimming Classes -->\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border-left: 5px solid #3b82f6;\">\n            <h3 style=\"color: #1e40af; margin-top: 0;\">🏊‍♂️ Classes & Style Improvement</h3>\n            <p style=\"margin: 0; font-size: 1rem; color: #334155;\">\n                Learning and refining the four swimming strokes: Freestyle, Backstroke, Breaststroke, and Butterfly. Focus on building endurance and technical improvement.\n            </p>\n        </div>\n\n        <!-- First Steps Courses -->\n        <div style=\"background: #f0fdf4; border-radius: 12px; padding: 20px; border-left: 5px solid #22c55e;\">\n            <h3 style=\"color: #166534; margin-top: 0;\">👶 First Steps</h3>\n            <p style=\"margin: 0; font-size: 1rem; color: #334155;\">\n                The most important foundation for children aged 4 and up: building water confidence, learning correct buoyancy, and breath control.\n            </p>\n        </div>\n    </div>\n\n    <!-- Competitive Experience -->\n    <section style=\"margin-bottom: 30px;\">\n        <div style=\"background: #fef2f2; border-radius: 12px; padding: 20px; border-left: 5px solid #ef4444; text-align: center;\">\n            <p style=\"margin: 0; font-weight: bold; color: #991b1b; font-size: 1.2rem;\">🏆 Competitive Experience</p>\n            <p style=\"font-size: 1.1rem; color: #334155; margin: 10px 0;\">\n                Participation in local and national competitions, giving swimmers a sense of achievement and pride.\n            </p>\n        </div>\n    </section>\n\n    <!-- Summary -->\n    <section style=\"background-color: #ffffff; padding: 10px; margin-bottom: 30px;\">\n        <p style=\"font-size: 1.1rem; color: #475569; text-align: center; font-weight: 500;\">\n            Upon completion of the course, children are ready to integrate into our advanced swimming classes with all the tools for success in the water.\n        </p>\n    </section>\n\n    <!-- Contact Section -->\n    <section style=\"background-color: #f1f5f9; padding: 25px; border-radius: 12px; margin-bottom: 30px; text-align: center;\">\n        <h3 style=\"margin-top: 0; color: #0f172a; font-size: 1.4rem;\">For details and registration:</h3>\n        <div style=\"display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px;\">\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">Call us:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #0369a1;\">📞 04-9583331</p>\n            </div>\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">WhatsApp us:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #25d366;\">💬 054-4628304</p>\n            </div>\n        </div>\n    </section>\n\n    <!-- Footer -->\n    <footer style=\"background-color: #0369a1; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n        <h3 style=\"margin: 0; color: #f8fafc;\">We look forward to seeing you at the Swimming Academy!</h3>\n        <p style=\"margin: 10px 0 0 0; opacity: 0.9;\">Diving together into a healthier future</p>\n    </footer>\n\n</div>\n\n"
         },
-        "bgImage": "",
-        "subItems": [
-            {
-                "id": 601,
-                "title": {
-                    "he": "תיאטרון מחול ירושלים",
-                    "en": "Jerusalem Dance Theater"
-                },
-                "content": {
-                    "he": "\n                        <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                            <p><strong>מייסדת תמרה מיאלניק</strong></p>\n                            <ul style=\"list-style-type: disc; padding-right: 20px;\">\n                                <li>בי\"ס מקצועי למחול קלאסי, המוכר ע\"י משרד התרבות ועיריית ירושלים.</li>\n                                <li>דורות של רקדנים אשר בוגריו השתלבו בלהקות מחול בארץ ובחו\"ל.</li>\n                                <li>לעמותה להקת מחול מקצועית - בוגרת, המוכרת ע\"י משרד התרבות והספורט ומופיעה בארץ ובחו\"ל.</li>\n                                <li>שיעורי בלט קלאסי, מחול מודרני, מיקס דנס ומסלול מקצועי - תחרותי.</li>\n                                <li>קבוצות מותאמות לגילאי גן, יסודי, חטיבה ותיכון.</li>\n                            </ul>\n                            <div style=\"margin-top: 15px; font-weight: bold;\">\n                                פרטים באתר | בטלפון 02-6795626\n                            </div>\n                        </div>\n                    ",
-                    "en": "\n                        <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                            <p><strong>Founder: Tamara Mielnik</strong></p>\n                            <ul style=\"list-style-type: disc; padding-left: 20px;\">\n                                <li>Professional school for classical dance, recognized by the Ministry of Culture and Jerusalem Municipality.</li>\n                                <li>Generations of dancers whose graduates have joined dance companies in Israel and abroad.</li>\n                                <li>A professional adult dance company association, recognized by the Ministry of Culture and Sport, performing in Israel and abroad.</li>\n                                <li>Classical ballet, modern dance, mix dance classes, and a professional-competitive track.</li>\n                                <li>Groups tailored for preschool, elementary, middle school, and high school ages.</li>\n                            </ul>\n                            <div style=\"margin-top: 15px; font-weight: bold;\">\n                                Details on website | Phone: 02-6795626\n                            </div>\n                        </div>\n                    "
-                },
-                "images": [],
-                "pdfs": []
-            },
-            {
-                "id": 602,
-                "title": {
-                    "he": "מחולה",
-                    "en": "Mehola"
-                },
-                "content": {
-                    "he": "\n                        <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                            <p><strong>בניהולה של שוקי הופמן - מייסדת</strong></p>\n                            <p>בית ספר למחול הוותיק והמוביל בארץ! בתחומי המחול העכשווי, היפ הופ ופולקלור ישראלי.</p>\n                            <ul style=\"list-style-type: disc; padding-right: 20px;\">\n                                <li>מהווה בית לילדים ונוער - מגדל דורות של רקדנים, מורים וכוריאוגרפים בעלי שם ארצי ואף עולמי.</li>\n                                <li>השיעורים מועברים ע\"י מורים בכירים המובילים בתחומם.</li>\n                                <li>שילוב שיעורי טכניקה, גמישות ואקרודאנס.</li>\n                                <li>במסגרת הלהקות הייצוגיות משתתפים רקדני מחולה בהפקות שונות ופסטיבלים בארץ ובחו\"ל.</li>\n                                <li>שיעורים וקבוצות מותאמות רמה וגיל: גן, יסודי, חטיבה, תיכון ולהקה בוגרת.</li>\n                            </ul>\n                            <div style=\"margin-top: 15px; font-weight: bold;\">\n                                פרטים באתר | בטלפון 02-5636663\n                            </div>\n                        </div>\n                    ",
-                    "en": "\n                        <div style=\"font-size: 1.2rem; line-height: 1.6;\">\n                            <p><strong>Managed by Shuki Hoffman - Founder</strong></p>\n                            <p>The oldest and leading dance school in Israel! Specializing in Contemporary Dance, Hip-Hop, and Israeli Folklore.</p>\n                            <ul style=\"list-style-type: disc; padding-left: 20px;\">\n                                <li>A home for children and youth - raising generations of dancers, teachers, and choreographers with national and world renown.</li>\n                                <li>Lessons are delivered by senior teachers who are leaders in their fields.</li>\n                                <li>Integration of technique, flexibility, and Acro-dance classes.</li>\n                                <li>As part of the representative troupes, Mehola dancers participate in various productions and festivals in Israel and abroad.</li>\n                                <li>Classes and groups tailored by level and age: Preschool, Elementary, Middle School, High School, and Adult Company.</li>\n                            </ul>\n                            <div style=\"margin-top: 15px; font-weight: bold;\">\n                                Details on website | Phone: 02-5636663\n                            </div>\n                        </div>\n                    "
-                },
-                "images": [],
-                "pdfs": []
-            }
+        "images": [
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academypool01-71BqP3m1H3wPpEpcJflUh3Tg7KQ7xA.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academypool02-Y7d55Paf9p8oAvGX0mx0Jhyow5vTHr.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academypool03-0rSKSyB99adszeEkt046ASfL9d4u9m.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academypool04-9zWzbYsuxRBIjPIOnneQtcFwWsHFbw.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academypool05-pyvqCHDeVor3ROxMXImIC9d8fbpmrB.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academypool06-Aqz7N5n6p5em7GlLF3nubqb9qSBCCn.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/academypool07-RnugDzQE16LKcnJZl88a3xZ4vPxccc.jpg"
+        ],
+        "pdfs": [],
+        "linkedItemIds": [
+          101,
+          1778222913891,
+          1778232688090,
+          1778233788879,
+          1778235108737,
+          1778239255579
         ]
-    },
-    {
-      "id": 7,
-      "title": {
-        "he": "הסטוריה",
-        "en": "History"
       },
-      "bgImage": "",
-      "subItems": [
-        {
-          "id": 1776944515667,
-          "title": {
-            "he": "",
-            "en": ""
-          },
-          "content": {
-            "he": "<div style=\"direction: rtl; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.8; color: #333; max-width: 800px; margin: auto; padding: 20px;\">\n  <h1 style=\"color: #1a5ea8; border-bottom: 2px solid #1a5ea8; padding-bottom: 10px;\">מאז ועד היום – בית ירושלמי לכל המשפחה!</h1>\n  \n  <p style=\"font-weight: bold; font-size: 1.1rem;\">\n    בית הנוער העברי נוסד בירושלים ע\"י \"הסתדרות נשים עבריות\", שפעלו בהתנדבות בשילוב עובדות סוציאליות, במטרה להעניק סיוע חינוכי, תרבותי וסוציאלי לתושבי העיר.\n  </p>\n\n  <section style=\"background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin: 20px 0;\">\n    <h2 style=\"color: #2c3e50; font-size: 1.3rem;\">היסטוריה וציוני דרך</h2>\n    <p>משכנו הראשון של הבית היה ברחוב יפו, ובהמשך עבר לרחובות שטראוס והילל. בשלהי שנות ה-50, גובש הרעיון להקים מרכז קהילתי עברי מודרני ברחוב הרב הרצוג 105. בשנת 1964 הונחה אבן הפינה במעמד נשיא המדינה זלמן שזר ואישי ציבור נוספים.</p>\n  </section>\n\n  <p>\n    בשנת 1967 נפתח הבית רשמית כמרכז הקהילתי הראשון בארץ. הוא שימש כפורץ דרך ומודל לחיקוי עבור מרכזים קהילתיים רבים בישראל. במסגרתו פעלו פרויקטים נרחבים: אולפן לעברית, מעונות יום, ספריה, מועדוני נוער ופעילות ענפה לגיל השלישי.\n  </p>\n\n  <div style=\"border-right: 4px solid #1a5ea8; padding-right: 15px; margin: 20px 0; font-style: italic;\">\n    במלחמת ששת הימים, שימש בית הנוער העברי כמקלט חיוני לרבים מתושבי קטמון.\n  </div>\n\n  <footer style=\"margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #1a5ea8; font-weight: bold;\">\n    כיום, הבית פועל כמרכז עירוני תוסס המשרת רבבות מתושבי ירושלים – מפעוטות ועד הגיל השלישי, משחר ועד חצות.\n  </footer>\n</div>",
-            "en": "<div style=\"direction: ltr; font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.8; color: #333; max-width: 800px; margin: auto; padding: 20px;\">\n  <h1 style=\"color: #1a5ea8; border-bottom: 2px solid #1a5ea8; padding-bottom: 10px;\">A Jerusalem Home for the Whole Family!</h1>\n  \n  <p style=\"font-weight: bold; font-size: 1.1rem;\">\n    The Hebrew Youth Center was founded in Jerusalem by the \"Hebrew Women's Organization.\" Combining volunteer spirit with professional social work, they aimed to support the city's neighborhoods through educational, cultural, and social initiatives.\n  </p>\n\n  <section style=\"background-color: #f0f7ff; padding: 15px; border-radius: 8px; margin: 20px 0;\">\n    <h2 style=\"color: #2c3e50; font-size: 1.3rem;\">Historical Milestones</h2>\n    <p>Originally located on Jaffa Street, the center moved to Strauss and Hillel Streets before finding its permanent home at 105 Rabbi Herzog Street. In 1964, the cornerstone was laid in the presence of President Zalman Shazar, marking the beginning of a new era for community services in Israel.</p>\n  </section>\n\n  <p>\n    By 1967, the building was completed, serving as the first community center of its kind in Israel. It became a pioneer model, housing Hebrew language Ulpans, daycares, libraries, active youth clubs, and senior citizen centers. It focused heavily on integrating new immigrants into Israeli society.\n  </p>\n\n  <div style=\"border-left: 4px solid #1a5ea8; padding-left: 15px; margin: 20px 0; font-style: italic; color: #444;\">\n    During the Six-Day War, the Hebrew Youth Center served as a vital shelter for many residents of the Katamon neighborhood.\n  </div>\n\n  <footer style=\"margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #1a5ea8; font-weight: bold;\">\n    Today, the center remains a vibrant urban hub serving tens of thousands of Jerusalem residents daily, from toddlers to seniors, from dawn until after midnight.\n  </footer>\n</div>"
-          },
-          "images": [
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_046-o0V0sdRKD1tUcCCdeAYIxWHWwTVAsO.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_007-4eNIGRh65fBHqR8avrgfz0S6vI3MFD.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_008-TDJnYdvSc57JxM4LI5dV2dgVs7nm1p.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_009-cWr5y1uJ9fax9udCbIM6T9r1VhUSXi.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_010-MSrrA68lX3ELpK2nvFxlz6sH7R8ONy.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_001-Vwyk2poljl7EJ0MgoIqNf3NLqd1AGn.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_002-QXkhjGIRlySwsaIn9zUKlCKQYvEKoZ.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_011-vwkU2wGf4rGEg9DCuJ2v7dTNh9j4uF.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_014-gAxZP7V1g7Yr7T2xUGLbBdeg7eIe5F.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_015-RZAv0hL8q3qlqxNUaER5jKOFJ9UH7H.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_016-cwHz5v4O0sheaERn1voRyqMCjA6WFe.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_017-A3Y1wfFo2zFKaVhoXuMNWcCHxSuOMl.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_018-KWdPuYCGfQLEse0QvOfJz7cP1JLFym.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_021-FKTp3iqslMUYgjqlOPit09Zrj15TV0.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_022-kkQcnpjByNdmQZ6iJXPUg1PGO7Pp6L.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_023-3AMWU9tqvEUic8Hgy1QSTca9aOyRr7.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_024-UuamAGiR4MYsHoaj3H3R25a7N2wAEe.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_025-Z0CeZDVcsKqu2RLaUBXxYfRKeWhC0c.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_026-ed7ysbt58uP6cD9fiVwY04l5KqS99S.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_027-KqRedLVsxOixiS9ktDEhb9xxmtATal.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_028-F2lFQsSepqc2HFdsHW4KXQsJB7zttN.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_029-fJfd3fb16iKrkSLMFkgB5nEobKECAa.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_030-iH5RqQBaT54QES2OXKeb1bpBr4AB1f.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_031-h8U9uZnA7Ru4FAGRuqi464iimpNpr4.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_032-r97mbqll6HaZZND8clCLc52aWue9Wz.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_033-rQOrD3egqSG1kWtupWGIggjVGSiaxO.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_034-HdmIAoHsItImNpbN0ZUkOvjlSPmhZu.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_035-SNBgO36y7tZEZYnqAI9xFuZO1D8ERT.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_036-JQgOOVjI90DgmrmO2D3OudOB8xwuTa.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_037-H423abbcqGFKRvVGOZXTX72OLkkGj7.jpg",
-            "https://0mghjtzeg9quale8.public.blob.vercel-storage.com/bh_his_038-h2hMlAfJBUafHH4JzWa7NCRXNLZ4bK.jpg"
-          ],
-          "pdfs": [],
-          "linkedItemIds": []
-        }
-      ]
-    },
-    {
-        id: 8, // Unique ID
-        title: {
-            he: 'יצירת קשר',
-            en: 'Contact Us'
+      {
+        "id": 1778235108737,
+        "title": {
+          "he": "אקדמיה לטניס",
+          "en": "Tennis Academy"
         },
-        type: 'contact',    // Crucial for telling React to render the Form
-        bgImage: '',
-        subItems: []
-    }
+        "content": {
+          "he": "\n<header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #10b981; padding-bottom: 20px;\">\n    <h1 style=\"color: #059669; font-size: 2.2rem; margin-bottom: 10px; margin-top: 0;\">אקדמיה לטניס – טופ קלאב</h1>\n    <p style=\"font-size: 1.2rem; font-weight: 600; color: #064e3b;\">מצוינות, אסטרטגיה וכושר על המגרש 🎾✨</p>\n</header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/acadenyTennis02-8lDSyVmhHiHbuCDTqKAwgDKkAM5cbs.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n\n<div style=\"background-color: #f0fdf4; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 5px solid #10b981;\">\n    <p style=\"font-weight: bold; font-size: 1.1rem; color: #064e3b; margin: 0;\">\n        מגרשי הטניס המקצועיים שלנו מחכים לכם. האקדמיה משלבת כושר גופני גבוה, קואורדינציה וחשיבה אסטרטגית מהצעד הראשון.\n    </p>\n</div>\n\n<div style=\"background-color: #eff6ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 5px solid #3b82f6;\">\n    <h2 style=\"color: #1e40af; margin-top: 0; font-size: 1.4rem;\">🎾 חוגי טניס לכל הגילאים</h2>\n    <p style=\"font-weight: bold; color: #1e3a8a;\">אנחנו מאמינים שטניס מתאים לכולם, בכל שלב בחיים:</p>\n    <ul style=\"padding-right: 20px; margin-top: 10px;\">\n        <li style=\"margin-bottom: 8px;\"><strong>👶 גיל הרך (4+):</strong> לימוד יסודות המחבט דרך משחק והנאה, פיתוח קואורדינציה בסיסית.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>👦 ילדים ונוער:</strong> פיתוח טכניקה מדויקת, חבטות הגשה ומשחקי יחידים וזוגות תחרותיים וחברתיים.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>👨 מבוגרים:</strong> קבוצות אימון המשלבות כושר אירובי אינטנסיבי עם שיפור המשחק הטקטי.</li>\n    </ul>\n</div>\n\n<div style=\"background-color: #fef2f2; padding: 20px; border-radius: 12px; margin-bottom: 30px; border-right: 5px solid #ef4444;\">\n    <h2 style=\"color: #991b1b; margin-top: 0; font-size: 1.4rem;\">🎯 אימונים אישיים (One-on-One)</h2>\n    <p style=\"font-weight: bold; color: #7f1d1d;\">רוצים להתקדם מהר יותר? להגיע לתוצאות שיא בזמן קצר?</p>\n    <p style=\"margin-top: 10px;\">אנו מציעים מערך של אימונים אישיים עם המאמנים הבכירים שלנו. אימון מותאם אישית שמתמקד בנקודות החוזק שלכם ועובד על שיפור הדיוק והביצועים.</p>\n</div>\n\n<footer style=\"background-color: #064e3b; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n    <h3 style=\"margin-top: 0; color: #ecfdf5;\">רוצים גם להצטרף לאקדמיה?</h3>\n    <p style=\"margin: 10px 0; font-size: 1.1rem;\">\n        📞 <strong>בטלפון:</strong> 04-9583331<br>\n        💬 <strong>בוואטסאפ:</strong> 054-4628304\n    </p>\n    <p style=\"font-size: 1.2rem; font-weight: bold; margin-top: 15px; color: #34d399;\">קאנטרי טופ קלאב כרמיאל</p>\n</footer>\n",
+          "en": "\n<header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #10b981; padding-bottom: 20px;\">\n    <h1 style=\"color: #059669; font-size: 2.2rem; margin-bottom: 10px; margin-top: 0;\">Tennis Academy – Top Club</h1>\n    <p style=\"font-size: 1.2rem; font-weight: 600; color: #064e3b;\">Excellence, Strategy, and Fitness on the Court 🎾✨</p>\n</header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/acadenyTennis02-8lDSyVmhHiHbuCDTqKAwgDKkAM5cbs.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n\n<div style=\"background-color: #f0fdf4; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #10b981; direction: ltr;\">\n    <p style=\"font-weight: bold; font-size: 1.1rem; color: #064e3b; margin: 0;\">\n        Our professional tennis courts are waiting for you. The academy combines high physical fitness, coordination, and strategic thinking from the very first step.\n    </p>\n</div>\n\n<div style=\"background-color: #eff6ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #3b82f6; direction: ltr;\">\n    <h2 style=\"color: #1e40af; margin-top: 0; font-size: 1.4rem;\">🎾 Tennis Classes for All Ages</h2>\n    <p style=\"font-weight: bold; color: #1e3a8a;\">We believe that tennis is for everyone, at every stage of life:</p>\n    <ul style=\"padding-left: 20px; margin-top: 10px;\">\n        <li style=\"margin-bottom: 8px;\"><strong>👶 Early Childhood (4+):</strong> Learning racket basics through play and fun, developing basic coordination.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>👦 Children & Youth:</strong> Developing precise technique, serves, and competitive or social singles and doubles play.</li>\n        <li style=\"margin-bottom: 8px;\"><strong>👨 Adults:</strong> Training groups that combine intensive aerobic fitness with tactical game improvement.</li>\n    </ul>\n</div>\n\n<div style=\"background-color: #fef2f2; padding: 20px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #ef4444; direction: ltr;\">\n    <h2 style=\"color: #991b1b; margin-top: 0; font-size: 1.4rem;\">🎯 Personal Training (One-on-One)</h2>\n    <p style=\"font-weight: bold; color: #7f1d1d;\">Want to progress faster? Reach peak results in a short time?</p>\n    <p style=\"margin-top: 10px;\">We offer a range of personal training sessions with our senior coaches. Personalized training that focuses on your strengths and works on improving accuracy and performance.</p>\n</div>\n\n<footer style=\"background-color: #064e3b; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n    <h3 style=\"margin-top: 0; color: #ecfdf5;\">Want to join the academy?</h3>\n    <p style=\"margin: 10px 0; font-size: 1.1rem;\">\n        📞 <strong>Phone:</strong> 04-9583331<br>\n        💬 <strong>WhatsApp:</strong> 054-4628304\n    </p>\n    <p style=\"font-size: 1.2rem; font-weight: bold; margin-top: 15px; color: #34d399;\">Top Club Country Club Carmiel</p>\n</footer>\n"
+        },
+        "images": [
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/acadenyTennis01-AmC2rVbPoBdNjmPLBxlkTRShANDshu.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/acadenyTennis02-cRth0W7mZqkA65TPjqvjtTk0XRMUj7.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/acadenyTennis03-z2TySp5usqAg8kwAX9xnaUaCRa6BMx.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/acadenyTennis04-OJYVQ2l4ViuNJ7Xi1LfNDW4yISMDZf.jpg"
+        ],
+        "pdfs": [],
+        "linkedItemIds": [
+          101,
+          1778222913891,
+          1778232688090,
+          1778233788879,
+          1778239255579
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1778239220438,
+    "title": {
+      "he": "הבריכה הקייצית ",
+      "en": "The summer pool"
+    },
+    "bgImage": "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer04-6sBEiZEPJIeOuh5xSLFKksNLcKka9t.jpg",
+    "subItems": [
+      {
+        "id": 1778239255579,
+        "title": {
+          "he": "הבריכה הקייצית של \"טופ קלאב\"",
+          "en": "The summer pool of \"Top Club\""
+        },
+        "content": {
+          "he": "\n<div dir=\"rtl\" style=\"font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #334155; max-width: 800px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;\">\n\n    <header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #0ea5e9; padding-bottom: 20px;\">\n        <h1 style=\"color: #0369a1; font-size: 2.5rem; margin-bottom: 10px; margin-top: 0;\">הבריכה הקייצית של \"טופ קלאב\"</h1>\n        <p style=\"font-size: 1.2rem; font-weight: 600; color: #0ea5e9;\">☀️ חוויית בילוי, פנאי וספורט תחת כיפת השמיים ☀️</p>\n    </header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer13-mDiXQncF2kknZUIBlBpu8D7k4vLj3f.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n    \n    <div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 5px solid #0ea5e9;\">\n        <p style=\"font-weight: bold; font-size: 1.1rem; color: #0369a1; margin: 0;\">\n            כשהטמפרטורות עולות, אין מקום מושלם יותר מהבריכה הקיצית שלנו. מתחם גדול ומרווח המעניק חוויית רחצה לכל גיל:\n        </p>\n        <ul style=\"list-style: none; padding: 0; margin-top: 15px;\">\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>בריכה חצי אולימפית:</strong> בריכה גדולה ומרעננת לשחייה מהנה.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>בריכת פעוטות:</strong> מתחם בטוח ומוגן המותאם במיוחד לקטנטנים.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>שחיות שחרית ולילה:</strong> חוויית שחייה בזמנים המועדפים עליכם.</li>\n        </ul>\n    </div>\n\n    <section style=\"margin-bottom: 30px;\">\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border-right: 5px solid #64748b;\">\n            <p style=\"margin: 0; font-weight: bold; color: #1e293b;\">📅 מידע חשוב</p>\n            <p style=\"font-size: 1.1rem; color: #334155; margin: 10px 0;\">\n                הבריכה הקיצית פתוחה בין החודשים <strong>מאי ועד ספטמבר</strong>. \n                <br>מועדי השחיות הליליות מתפרסמים באופן שוטף.\n            </p>\n        </div>\n    </section>\n\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;\">\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🌳 מרחבים ירוקים</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">⛱️ פתרונות הצללה</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🍉 אזור פיקניק</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🥂 אירועים על המים</div>\n    </div>\n\n    <section style=\"background-color: #ffffff; padding: 10px; margin-bottom: 30px;\">\n        <p style=\"font-size: 1.1rem; color: #475569; text-align: center;\">\n            המתחם שלנו תוכנן ליום שלם של הנאה: מדשאות רחבות ידיים, שולחנות וכיסאות לשימוש חופשי, ואווירה ייחודית המאפשרת גם קיום אירועים פרטיים ועסקיים (בתיאום מראש).\n        </p>\n    </section>\n\n    <section style=\"background-color: #f1f5f9; padding: 25px; border-radius: 12px; margin-bottom: 30px; text-align: center;\">\n        <h3 style=\"margin-top: 0; color: #0f172a; font-size: 1.4rem;\">למידע נוסף ותיאום אירועים:</h3>\n        <div style=\"display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px;\">\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">חייגו אלינו:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #0369a1;\">📞 04-9583331</p>\n            </div>\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">שלחו וואטסאפ:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #25d366;\">💬 054-4628304</p>\n            </div>\n        </div>\n    </section>\n\n    <footer style=\"background-color: #0369a1; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n        <h3 style=\"margin: 0; color: #f8fafc;\">מחכים לכם בבריכה של טופ קלאב!</h3>\n        <p style=\"margin: 10px 0 0 0; opacity: 0.9;\">הקיץ שלכם מתחיל כאן</p>\n    </footer>\n\n</div>\n",
+          "en": "\n<div dir=\"ltr\" style=\"font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #334155; max-width: 800px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;\">\n\n    <header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #0ea5e9; padding-bottom: 20px;\">\n        <h1 style=\"color: #0369a1; font-size: 2.5rem; margin-bottom: 10px; margin-top: 0;\">The \"Top Club\" Summer Pool</h1>\n        <p style=\"font-size: 1.2rem; font-weight: 600; color: #0ea5e9;\">☀️ An open-air recreation, leisure, and sports experience ☀️</p>\n    </header>\n\n    <div style=\"text-align: center; margin-bottom: 25px;\">\n        <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer13-mDiXQncF2kknZUIBlBpu8D7k4vLj3f.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n    </div>\n    \n    <div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #0ea5e9;\">\n        <p style=\"font-weight: bold; font-size: 1.1rem; color: #0369a1; margin: 0;\">\n            When temperatures rise, there is no place more perfect than our summer pool. A large and spacious complex providing a swimming experience for all ages:\n        </p>\n        <ul style=\"list-style: none; padding: 0; margin-top: 15px;\">\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>Semi-Olympic Pool:</strong> A large and refreshing pool for an enjoyable swim.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>Toddler Pool:</strong> A safe and protected water area specially adapted for little ones.</li>\n            <li style=\"margin-bottom: 12px;\">🔹 <strong>Morning and Night Swims:</strong> Enjoy swimming at your preferred times.</li>\n        </ul>\n    </div>\n\n    <section style=\"margin-bottom: 30px;\">\n        <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border-left: 5px solid #64748b;\">\n            <p style=\"margin: 0; font-weight: bold; color: #1e293b;\">📅 Important Information</p>\n            <p style=\"font-size: 1.1rem; color: #334155; margin: 10px 0;\">\n                The summer pool is open from <strong>May to September</strong>. \n                <br>Night swimming schedules are published regularly.\n            </p>\n        </div>\n    </section>\n\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;\">\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🌳 Green Spaces</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">⛱️ Shading Solutions</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🍉 Picnic Area</div>\n        <div style=\"text-align: center; padding: 15px; background: #f0fdf4; border-radius: 8px; font-weight: bold; color: #166534; border: 1px solid #dcfce7;\">🥂 Events by the Water</div>\n    </div>\n\n    <section style=\"background-color: #ffffff; padding: 10px; margin-bottom: 30px;\">\n        <p style=\"font-size: 1.1rem; color: #475569; text-align: center;\">\n            Our complex was designed for a full day of enjoyment: extensive lawns, tables and chairs for free use, and a unique atmosphere that also allows for private and business events (by prior arrangement).\n        </p>\n    </section>\n\n    <section style=\"background-color: #f1f5f9; padding: 25px; border-radius: 12px; margin-bottom: 30px; text-align: center;\">\n        <h3 style=\"margin-top: 0; color: #0f172a; font-size: 1.4rem;\">For more information and event coordination:</h3>\n        <div style=\"display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 15px;\">\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">Call us:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #0369a1;\">📞 04-9583331</p>\n            </div>\n            <div style=\"background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; min-width: 200px;\">\n                <p style=\"margin: 0; color: #64748b; font-size: 0.9rem;\">WhatsApp us:</p>\n                <p style=\"margin: 5px 0; font-size: 1.3rem; font-weight: bold; color: #25d366;\">💬 054-4628304</p>\n            </div>\n        </div>\n    </section>\n\n    <footer style=\"background-color: #0369a1; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n        <h3 style=\"margin: 0; color: #f8fafc;\">We’re waiting for you at the Top Club pool!</h3>\n        <p style=\"margin: 10px 0 0 0; opacity: 0.9;\">Your summer starts here</p>\n    </footer>\n\n</div>\n"
+        },
+        "images": [
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer01-BI5WH8fRgV2JNO0yZNfZM7d6d33Nur.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer02-buwK6rUbqSl7nzT0uZ8Xu2uWFjHLIH.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer03-cDsMXHWMdZM7l756e5qNWexXGqgIfz.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer04-GHy8vJ21MUrd9MzHWIluRz2CjWdHTP.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer05-adTIXFOMoqCCBz9yTINO1caiz4TFFi.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer06-qcg5DybO6XFE0BGgy21hX7UaHBGPV5.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer07-2yGZOc8LQpcPF2thTBDqjplAo1jSZD.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer08-rVZNs82UKPolTrTQXglIYyvs2OOpVs.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer09-JUaklyxHeThGplQQsbI7ZxKvJmnp4l.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer10-W7MewEdXNwEoRxbJYPyWjz8LCXM6zp.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer11-9aKIFdW4lo6FlsZ3X0xqwDAdUN9oBO.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer12-Sd8hel7LSzzcsVQgVoQGKgTt0aTdxu.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/summer13-RR3v0cMUOTA42DfT3gDLXOh9Vknoca.jpg"
+        ],
+        "pdfs": [],
+        "linkedItemIds": [
+          101,
+          1778222913891,
+          1778232688090,
+          1778233788879,
+          1778235108737,
+          1778235613725
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1778235525092,
+    "title": {
+      "he": "קבלה ושירות לקוחות",
+      "en": "Reception and customer service"
+    },
+    "bgImage": "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/customer01-bziNIzXzb52KKnxPi4e6EMLjxHq2bM.jpg",
+    "subItems": [
+      {
+        "id": 1778235613725,
+        "title": {
+          "he": "קבלה ושירות לקוחות",
+          "en": "Reception and customer service"
+        },
+        "content": {
+          "he": "\n<header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #0284c7; padding-bottom: 20px;\">\n    <h1 style=\"color: #0369a1; font-size: 2.2rem; margin-bottom: 10px; margin-top: 0;\">קבלה ושירות לקוחות – טופ קלאב</h1>\n    <p style=\"font-size: 1.2rem; font-weight: 600; color: #075985;\">הלב הפועם של הקאנטרי – מחויבים לחוויה שלכם 🤝</p>\n</header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/customer03-MQNqME1A9ZvVO8TSXy2p0KaBsOyJHH.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n<div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 5px solid #0ea5e9;\">\n    <p style=\"font-weight: bold; font-size: 1.1rem; color: #0369a1; margin: 0;\">\n        בקאנטרי \"טופ קלאב\" כרמיאל, החוויה שלכם מתחילה עוד לפני שנכנסתם למים.\n    </p>\n    <p style=\"margin-top: 10px; color: #334155;\">נציגי הקבלה שלנו מחכים לכם בסבר פנים יפות, אנרגיות חיוביות ומחויבות מלאה לשירות איכותי, אישי ומקצועי.</p>\n</div>\n\n<section style=\"margin-bottom: 30px;\">\n    <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;\">\n        <p style=\"margin: 0; font-size: 1.1rem; line-height: 1.8; text-align: center; color: #0369a1;\">\n            <strong>מה אנחנו מציעים לכם בדלפקי השירות?</strong>\n        </p>\n    </div>\n</section>\n\n<div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 5px solid #3b82f6;\">\n    <h2 style=\"color: #1e40af; margin-top: 0; font-size: 1.4rem;\">📝 שירותי הרשמה ומידע</h2>\n    <p style=\"font-weight: bold; color: #1e3a8a;\">רוצים להצטרף למשפחת \"טופ קלאב\"?</p>\n    <ul style=\"padding-right: 20px; margin-top: 10px; color: #334155;\">\n        <li style=\"margin-bottom: 8px;\">הצגת מסלולי מנויים מגוונים המותאמים אישית.</li>\n        <li style=\"margin-bottom: 8px;\">הסברים מפורטים על כל מתקני הקאנטרי והחוגים.</li>\n        <li style=\"margin-bottom: 8px;\">סיוע בבחירת המסלול המשתלם ביותר עבורכם ועבור משפחתכם.</li>\n    </ul>\n</div>\n\n<div style=\"background-color: #f5f3ff; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 5px solid #8b5cf6;\">\n    <h2 style=\"color: #4c1d95; margin-top: 0; font-size: 1.4rem;\">📞 מענה טלפוני ופרונטלי</h2>\n    <p style=\"font-weight: bold; color: #4338ca;\">אנחנו זמינים עבורכם לכל שאלה:</p>\n    <ul style=\"padding-right: 20px; margin-top: 10px; color: #334155;\">\n        <li style=\"margin-bottom: 8px;\">מענה מהיר, סבלני ומקצועי בכל נושא.</li>\n        <li style=\"margin-bottom: 8px;\">מידע מעודכן על שעות פעילות, חוגים ושינויים.</li>\n        <li style=\"margin-bottom: 8px;\">עדכונים שוטפים על אירועים מיוחדים והטבות למנויים.</li>\n    </ul>\n</div>\n\n<div style=\"background-color: #ecfeff; padding: 20px; border-radius: 12px; margin-bottom: 30px; border-right: 5px solid #06b6d4;\">\n    <h2 style=\"color: #0e7490; margin-top: 0; font-size: 1.4rem;\">📍 הדרכה והתמצאות</h2>\n    <p style=\"font-weight: bold; color: #155e75;\">מצטרפים חדשים? ברוכים הבאים!</p>\n    <p style=\"margin-top: 10px; color: #334155;\">צוות הקבלה ישמח לתת לכם הסבר מקיף על פריסת המתקנים, מיקומי הסטודיו, הבריכות ומגרשי הטניס, כדי שתרגישו בנוח מהרגע הראשון.</p>\n</div>\n\n<div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;\">\n    <div style=\"text-align: center; padding: 15px; background: #f0f9ff; border-radius: 8px; font-weight: bold; color: #0369a1; border: 1px solid #bae6fd;\">✨ שירות עם חיוך</div>\n    <div style=\"text-align: center; padding: 15px; background: #f0f9ff; border-radius: 8px; font-weight: bold; color: #0369a1; border: 1px solid #bae6fd;\">🔝 מקצועיות ללא פשרות</div>\n</div>\n\n<section style=\"background-color: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 30px; text-align: center; border: 1px solid #e2e8f0;\">\n    <h3 style=\"margin-top: 0; color: #0369a1; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;\">אנחנו כאן בשבילכם!</h3>\n    <p style=\"color: #475569; line-height: 1.6;\">\n        צוות שירות הלקוחות של קאנטרי \"טופ קלאב\" רואה בשירות ערך עליון.<br>\n        חשוב לנו שתקבלו לא רק את מתקני הספורט הטובים ביותר, אלא גם את היחס האדיב והחם ביותר.\n    </p>\n</section>\n\n<footer style=\"background-color: #0c4a6e; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n    <h3 style=\"margin-top: 0; color: #f0f9ff;\">יש לכם שאלה? אנחנו מחכים לכם!</h3>\n    <p style=\"margin: 10px 0; font-size: 1.1rem;\">\n        📞 <strong>בטלפון:</strong> 04-9583331<br>\n        💬 <strong>בוואטסאפ:</strong> 054-4628304\n    </p>\n    <p style=\"font-size: 1.2rem; font-weight: bold; margin-top: 15px; color: #38bdf8;\">קאנטרי טופ קלאב כרמיאל</p>\n</footer>\n",
+          "en": "Here is the English translation of the \"Top Club\" customer service page, maintaining all the original HTML styling and structure.\n\n```html\n<header style=\"text-align: center; margin-bottom: 30px; border-bottom: 3px solid #0284c7; padding-bottom: 20px;\">\n    <h1 style=\"color: #0369a1; font-size: 2.2rem; margin-bottom: 10px; margin-top: 0;\">Reception & Customer Service – Top Club</h1>\n    <p style=\"font-size: 1.2rem; font-weight: 600; color: #075985;\">The Heart of the Country Club – Committed to Your Experience 🤝</p>\n</header>\n\n<div style=\"text-align: center; margin-bottom: 25px;\">\n    <img src=\"https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/customer03-MQNqME1A9ZvVO8TSXy2p0KaBsOyJHH.jpg\" alt=\"banner\" style=\"max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">\n</div>\n\n<div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #0ea5e9;\">\n    <p style=\"font-weight: bold; font-size: 1.1rem; color: #0369a1; margin: 0;\">\n        At \"Top Club\" Carmiel, your experience begins even before you hit the water.\n    </p>\n    <p style=\"margin-top: 10px; color: #334155;\">Our reception representatives are waiting for you with a warm welcome, positive energy, and a full commitment to high-quality, personal, and professional service.</p>\n</div>\n\n<section style=\"margin-bottom: 30px;\">\n    <div style=\"background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;\">\n        <p style=\"margin: 0; font-size: 1.1rem; line-height: 1.8; text-align: center; color: #0369a1;\">\n            <strong>What do we offer at our service desks?</strong>\n        </p>\n    </div>\n</section>\n\n<div style=\"background-color: #f0f9ff; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid #3b82f6;\">\n    <h2 style=\"color: #1e40af; margin-top: 0; font-size: 1.4rem;\">📝 Registration & Information Services</h2>\n    <p style=\"font-weight: bold; color: #1e3a8a;\">Want to join the \"Top Club\" family?</p>\n    <ul style=\"padding-left: 20px; margin-top: 10px; color: #334155;\">\n        <li style=\"margin-bottom: 8px;\">Presentation of various personalized membership plans.</li>\n        <li style=\"margin-bottom: 8px;\">Detailed explanations of all club facilities and classes.</li>\n        <li style=\"margin-bottom: 8px;\">Assistance in choosing the most cost-effective plan for you and your family.</li>\n    </ul>\n</div>\n\n<div style=\"background-color: #f5f3ff; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid #8b5cf6;\">\n    <h2 style=\"color: #4c1d95; margin-top: 0; font-size: 1.4rem;\">📞 Phone & Face-to-Face Support</h2>\n    <p style=\"font-weight: bold; color: #4338ca;\">We are available for any question:</p>\n    <ul style=\"padding-left: 20px; margin-top: 10px; color: #334155;\">\n        <li style=\"margin-bottom: 8px;\">Fast, patient, and professional responses on any topic.</li>\n        <li style=\"margin-bottom: 8px;\">Up-to-date information on opening hours, classes, and changes.</li>\n        <li style=\"margin-bottom: 8px;\">Regular updates on special events and member benefits.</li>\n    </ul>\n</div>\n\n<div style=\"background-color: #ecfeff; padding: 20px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #06b6d4;\">\n    <h2 style=\"color: #0e7490; margin-top: 0; font-size: 1.4rem;\">📍 Guidance & Orientation</h2>\n    <p style=\"font-weight: bold; color: #155e75;\">New members? Welcome aboard!</p>\n    <p style=\"margin-top: 10px; color: #334155;\">The reception team will be happy to give you a comprehensive explanation of the facility layout, studio locations, pools, and tennis courts, so you feel comfortable from the very first moment.</p>\n</div>\n\n<div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;\">\n    <div style=\"text-align: center; padding: 15px; background: #f0f9ff; border-radius: 8px; font-weight: bold; color: #0369a1; border: 1px solid #bae6fd;\">✨ Service with a Smile</div>\n    <div style=\"text-align: center; padding: 15px; background: #f0f9ff; border-radius: 8px; font-weight: bold; color: #0369a1; border: 1px solid #bae6fd;\">🔝 Uncompromising Professionalism</div>\n</div>\n\n<section style=\"background-color: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 30px; text-align: center; border: 1px solid #e2e8f0;\">\n    <h3 style=\"margin-top: 0; color: #0369a1; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;\">We are here for you!</h3>\n    <p style=\"color: #475569; line-height: 1.6;\">\n        The customer service team at \"Top Club\" Country Club views service as a top value.<br>\n        It is important to us that you receive not only the best sports facilities but also the kindest and warmest treatment.\n    </p>\n</section>\n\n<footer style=\"background-color: #0c4a6e; color: white; padding: 25px; border-radius: 12px; text-align: center;\">\n    <h3 style=\"margin-top: 0; color: #f0f9ff;\">Have a question? We're waiting for you!</h3>\n    <p style=\"margin: 10px 0; font-size: 1.1rem;\">\n        📞 <strong>Phone:</strong> 04-9583331<br>\n        💬 <strong>WhatsApp:</strong> 054-4628304\n    </p>\n    <p style=\"font-size: 1.2rem; font-weight: bold; margin-top: 15px; color: #38bdf8;\">Top Club Country Club Carmiel</p>\n</footer>\n\n```"
+        },
+        "images": [
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/customer03-ls0XqATn7L551opGh5xVOpvYFpWF1n.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/customer01-dRV16jIDZ4Kfbp3YPxIXmhPgbyrsTo.jpg",
+          "https://fnxzwfhssvf26qru.public.blob.vercel-storage.com/customer02-sBnGBm6TNxiOCO9U7iJjrPVYuo4mBW.jpg"
+        ],
+        "pdfs": [],
+        "linkedItemIds": [
+          101,
+          1778222913891,
+          1778232688090,
+          1778233788879,
+          1778235108737,
+          1778239255579
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": {
+      "he": "יצירת קשר",
+      "en": "Contact Us"
+    },
+    "type": "contact",
+    "bgImage": "",
+    "subItems": []
+  }
 ];
