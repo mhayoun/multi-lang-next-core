@@ -2,7 +2,6 @@ import withPWAInit from 'next-pwa';
 
 const withPWA = withPWAInit({
   dest: 'public',
-  // Désactivé en dev par défaut pour éviter les problèmes de cache
   disable: process.env.NODE_ENV === 'development',
   register: true,
   skipWaiting: true,
@@ -11,11 +10,24 @@ const withPWA = withPWAInit({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactCompiler: true,
-  // Support for your local network development
   experimental: {
     allowedDevOrigins: ['192.168.150.139', 'localhost:3000'],
   },
-  // FIX: Ensures the browser reaches the static JSON files in your subdirectories
+  // FIX 1: Force correct MIME type for manifest files
+  async headers() {
+    return [
+      {
+        source: '/:tenant/manifest.json',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/manifest+json',
+          },
+        ],
+      },
+    ];
+  },
+  // FIX 2: Stop Next.js routing from swallowing the static files
   async rewrites() {
     return [
       {

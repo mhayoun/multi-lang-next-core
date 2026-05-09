@@ -1,10 +1,7 @@
-// Generic name so it doesn't conflict between different CIEs
 const CACHE_NAME = 'cie-pwa-cache-v1';
 
 const ASSETS_TO_CACHE = [
   '/',
-  // We remove the specific manifest path here because
-  // each CIE has a different manifest location.
 ];
 
 self.addEventListener('install', (event) => {
@@ -30,12 +27,26 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// The most important part for the Install Button
+// FIX 3: Improved Fetch Handler
 self.addEventListener('fetch', (event) => {
-  // Simple Network-First strategy
+  // Only handle GET requests and same-origin requests
+  if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
   event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.match(event.request);
-    })
+    fetch(event.request)
+      .then((response) => {
+        // Only return valid network responses
+        // If we get an error or a redirect (like to the homepage), we check cache
+        if (!response || response.status !== 200 || response.type !== 'basic') {
+          return caches.match(event.request).then((cached) => cached || response);
+        }
+        return response;
+      })
+      .catch(() => {
+        // If the network is down completely, use the cache
+        return caches.match(event.request);
+      })
   );
 });
