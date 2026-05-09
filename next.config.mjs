@@ -1,5 +1,11 @@
 import withPWAInit from 'next-pwa';
 
+// Debug: Check environment on startup
+console.log('--- NEXT CONFIG STARTUP ---');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('CLIENT_ID:', process.env.NEXT_PUBLIC_CLIENT_ID);
+console.log('---------------------------');
+
 const withPWA = withPWAInit({
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
@@ -13,8 +19,10 @@ const nextConfig = {
   experimental: {
     allowedDevOrigins: ['192.168.150.139', 'localhost:3000'],
   },
-  // FIX 1: Force correct MIME type for manifest files
+
   async headers() {
+    // Debug log when headers are initialized
+    console.log('[NextConfig] Applying PWA MIME type headers...');
     return [
       {
         source: '/:tenant/manifest.json',
@@ -27,8 +35,10 @@ const nextConfig = {
       },
     ];
   },
-  // FIX 2: Stop Next.js routing from swallowing the static files
+
   async rewrites() {
+    // Debug log when rewrites are initialized
+    console.log('[NextConfig] Initializing Multi-Tenant Rewrites...');
     return [
       {
         source: '/topclubcarmiel/:path*',
@@ -40,6 +50,7 @@ const nextConfig = {
       },
     ];
   },
+
   images: {
     remotePatterns: [
       {

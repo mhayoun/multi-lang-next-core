@@ -1,35 +1,27 @@
 const CACHE_NAME = 'cie-pwa-cache-v1';
-
-const ASSETS_TO_CACHE = [
-  '/',
-];
+const ASSETS_TO_CACHE = ['/'];
 
 self.addEventListener('install', (event) => {
+  console.log('[SW] Install Event active');
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
   );
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
-          }
-        })
-      );
-    })
-  );
+  console.log('[SW] Activate Event active');
+  self.clients.claim();
 });
 
-// FIX 3: Improved Fetch Handler
 self.addEventListener('fetch', (event) => {
-  // Only handle GET requests and same-origin requests
+  const url = new URL(event.request.url);
+
+  // DEBUG: Specifically track manifest requests
+  if (url.pathname.includes('manifest.json')) {
+    console.log(`[SW Debug] Fetching manifest: ${url.pathname}`);
+  }
+
   if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
     return;
   }
@@ -37,15 +29,19 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        // Only return valid network responses
-        // If we get an error or a redirect (like to the homepage), we check cache
-        if (!response || response.status !== 200 || response.type !== 'basic') {
+        if (url.pathname.includes('manifest.json')) {
+          console.log(`[SW Debug] Manifest Response Status: ${response.status}, Type: ${response.type}, Content-Type: ${response.headers.get('content-type')}`);
+        }
+
+        if (!response || response.status !== 200) {
           return caches.match(event.request).then((cached) => cached || response);
         }
         return response;
       })
-      .catch(() => {
-        // If the network is down completely, use the cache
+      .catch((err) => {
+        if (url.pathname.includes('manifest.json')) {
+          console.error(`[SW Debug] Manifest Fetch Failed:`, err);
+        }
         return caches.match(event.request);
       })
   );
