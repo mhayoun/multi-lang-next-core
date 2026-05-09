@@ -222,10 +222,10 @@ const Navbar = ({logic, uiText}) => {
                     {logic.footerData?.contact?.phones?.[0]?.number && (
                         <a
                             href={`tel:${logic.footerData.contact.phones[0].number}`}
-                            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full hover:bg-green-100 transition-colors group"
+                            className="flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full hover:bg-green-100 transition-colors group"
                         >
                             <Phone size={14} className="group-hover:animate-pulse"/>
-                            <span className="text-[11px] font-black tracking-tight">
+                            <span className="hidden sm:inline text-[11px] font-black tracking-tight">
                                 {logic.footerData.contact.phones[0].number}
                             </span>
                         </a>
