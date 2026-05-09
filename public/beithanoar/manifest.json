@@ -2,34 +2,35 @@
   "name": "בית הנוער העברי",
   "short_name": "בית הנוער העברי",
   "description": "בית הנוער העברי-ירושלים",
-  "id": "/",
+  "id": "/?tenant=beithanoar",
   "start_url": "/",
+  "scope": "/",
   "_comment": "replace browser by standalone to activate desktop",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1d4ed8",
   "icons": [
     {
-      "src": "/bethanoar/icon-192x192.png",
+      "src": "/beithanoar/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/bethanoar/icon-512x512.png",
+      "src": "/beithanoar/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
-      "src": "/bethanoar/screenshots/desktop.png",
+      "src": "/beithanoar/screenshots/desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Interface Beithanoar sur Ordinateur"
     },
     {
-      "src": "/bethanoar/screenshots/mobile.png",
+      "src": "/beithanoar/screenshots/mobile.png",
       "sizes": "750x1334",
       "type": "image/png",
       "label": "Interface Beithanoar sur Mobile"
