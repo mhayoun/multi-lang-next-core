@@ -1,10 +1,9 @@
 {
   "name": "טופ קלאב כרמיאל",
-  "short_name": "קאנטרי טופ קלאב כרמיאל",
+  "short_name": "טופ קלאב",
   "description": "הבית שלכם לבריאות, כושר ופנאי",
-  "id": "/",
+  "id": "/?tenant=topclubcarmiel",
   "start_url": "/",
-  "_comment": "replace browser by standalone to activate desktop",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1d4ed8",
@@ -12,12 +11,14 @@
     {
       "src": "/topclubcarmiel/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/topclubcarmiel/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "screenshots": [
@@ -26,13 +27,14 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Interface sur Ordinateur"
+      "label": "ממשק מחשב"
     },
     {
       "src": "/topclubcarmiel/screenshots/mobile.png",
       "sizes": "750x1334",
       "type": "image/png",
-      "label": "Interface sur Mobile"
+      "form_factor": "narrow",
+      "label": "ממשק נייד"
     }
   ]
 }
