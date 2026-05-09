@@ -31,7 +31,7 @@ export const authOptions: NextAuthOptions = {
             if (clientAdmin) {
                 allowedEmails.push(clientAdmin.toLowerCase().trim());
             }
-
+            console.log(allowedEmails);
             const email = user.email?.toLowerCase().trim();
             if (!email) return false;
 
