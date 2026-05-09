@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useMemo} from 'react';
-import {Settings, User, LogOut, Menu, X, ChevronDown, Search, Download} from 'lucide-react';
+import {Settings, User, LogOut, Menu, X, ChevronDown, Search, Download, Phone} from 'lucide-react';
 import {LANGUAGES} from '@/lib/data';
 import {signIn, signOut, useSession} from "next-auth/react";
 import usePWAInstall from "@/components/usePWAInstall";
@@ -216,6 +216,19 @@ const Navbar = ({logic, uiText}) => {
                                 <Settings size={12}/> {uiText.switch}
                             </button>
                         </div>
+                    )}
+
+                    {/* NEW: Phone Number Display */}
+                    {logic.footerData?.contact?.phones?.[0]?.number && (
+                        <a
+                            href={`tel:${logic.footerData.contact.phones[0].number}`}
+                            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full hover:bg-green-100 transition-colors group"
+                        >
+                            <Phone size={14} className="group-hover:animate-pulse"/>
+                            <span className="text-[11px] font-black tracking-tight">
+                                {logic.footerData.contact.phones[0].number}
+                            </span>
+                        </a>
                     )}
 
                     {/* Desktop Search Bar */}

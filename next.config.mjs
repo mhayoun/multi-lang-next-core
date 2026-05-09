@@ -16,9 +16,6 @@ const withPWA = withPWAInit({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactCompiler: true,
-  experimental: {
-    allowedDevOrigins: ['192.168.150.139', 'localhost:3000'],
-  },
 
   async headers() {
     // Debug log when headers are initialized
