@@ -225,7 +225,7 @@ const Navbar = ({logic, uiText}) => {
                             className="flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full hover:bg-green-100 transition-colors group"
                         >
                             <Phone size={14} className="group-hover:animate-pulse flex-shrink-0"/>
-                            <span className="hidden sm:inline text-[11px] font-black tracking-tight">
+                            <span className="hidden sm:inline text-[11px] font-black tracking-tight whitespace-nowrap">
                                 {logic.footerData.contact.phones[0].number}
                             </span>
                         </a>
