@@ -6,7 +6,7 @@
   "start_url": "/",
   "scope": "/",
   "_comment": "replace browser by standalone to activate desktop",
-  "display": "browser",
+  "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1d4ed8",
   "icons": [
@@ -27,13 +27,13 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Interface Beithanoar sur Ordinateur"
+      "label": "Interface sur Ordinateur"
     },
     {
       "src": "/default/screenshots/mobile.png",
       "sizes": "750x1334",
       "type": "image/png",
-      "label": "Interface Beithanoar sur Mobile"
+      "label": "Interface sur Mobile"
     }
   ]
 }
