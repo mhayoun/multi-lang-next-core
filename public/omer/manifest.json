@@ -1,0 +1,39 @@
+{
+  "name": "omerי",
+  "short_name": "omer",
+  "description": "omer",
+  "id": "/?tenant=omer",
+  "start_url": "/",
+  "scope": "/",
+  "_comment": "replace browser by standalone to activate desktop",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    {
+      "src": "/omer/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/omer/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/omer/screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Interface sur Ordinateur"
+    },
+    {
+      "src": "/omer/screenshots/mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "label": "Interface sur Mobile"
+    }
+  ]
+}
