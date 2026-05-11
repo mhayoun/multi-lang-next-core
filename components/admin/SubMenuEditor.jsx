@@ -21,8 +21,8 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
     const bannerInputRef = useRef(null);
 
     const getAutoInstruction = (lang) => lang === 'he'
-        ? "צור קוד HTML נקי עבור תוכן זה (ללא תגיות html, head או body). שמור על רשימות וצבעים."
-        : "Generate clean HTML code for this content for web and mobile (excluding html, head, or body tags). Preserve bullet points and colors.";
+        ? "צור קודצור קוד HTML נקי עבור תוכן זה (ללא תגיות html, head או body). שמור על רשימות וצבעים. אנא כבד את הטקסט וספק קוד HTML בלבד."
+        : "Generate clean HTML code for this content for web and mobile (excluding html, head, or body tags). Preserve bullet points and colors. Please respect the text and provide only html code";
 
     const [customRequest, setCustomRequest] = useState(getAutoInstruction(logic.modalLang));
 

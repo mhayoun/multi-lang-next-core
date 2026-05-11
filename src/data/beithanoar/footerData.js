@@ -58,14 +58,6 @@ export const DEFAULT_FOOTER = {
       "he": "פרטי יצירת קשר",
       "en": "Contact Details"
     },
-    "cie_name": {
-      "he": "בית הנוער העברי",
-      "en": "Beit Hanoar HaIvri"
-    },
-    "cie_desc": {
-      "he": "בית קהילתי ירושלמי לכל המשפחה",
-      "en": "A Jerusalem community home for the whole family"
-    },
     "address": {
       "he": "רח׳ הרצוג 105, ירושלים 92622 ",
       "en": "105 Herzog St., Jerusalem 92622 1111"
@@ -96,7 +88,13 @@ export const DEFAULT_FOOTER = {
       "he": "6, 17, 19, 32, 15"
     },
     "phone": "02-6494111",
-    "fax": "02-6494100"
+    "fax": "02-6494100",
+    "cie_name": {
+      "he": "בית הנוער העברי"
+    },
+    "cie_desc": {
+      "he": "בית קהילתי ירושלמי לכל המשפחה"
+    }
   },
   "form": {
     "title": {
