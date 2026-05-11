@@ -8,7 +8,6 @@ import AdminTabs from '@/components/admin/AdminTabs';
 import {useAdminLogic} from '@/components/admin/useAdminLogic';
 
 
-
 const AdminInterface = ({logic, currentLang = 'he'}) => {
     const isHe = currentLang === 'he';
 
@@ -22,7 +21,7 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
     const {
         menuData, newsData, footerData, handleFileUpload, removeFile, addMenu,
         addSubMenu, removeMenu, addNews, removeNews, logo, setLogo,
-        setMenuData, setNewsData, setFooterData, t
+        setMenuData, setNewsData, setFooterData, siteSettings, setSiteSettings, t
     } = logic;
 
     const exportData = () => {
@@ -42,6 +41,26 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
         downloadJSON(menuData, 'DEFAULT_MENU.json');
         downloadJSON(newsData, 'DEFAULT_NEWS.json');
         downloadJSON(footerData, 'DEFAULT_FOOTER.json');
+    };
+
+    const exportFullData = () => {
+        const fullConfig = {
+            menuData,
+            newsData,
+            logo,
+            siteSettings,
+            footerData
+        };
+
+        const blob = new Blob([JSON.stringify(fullConfig, null, 2)], {type: 'application/json'});
+        const href = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = 'cie_config.json';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(href);
     };
 
     /**
@@ -80,6 +99,33 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
         event.target.value = '';
     };
 
+    // --- NEW FULL IMPORT (Updates all states at once) ---
+    const handleImportFullChange = (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const json = JSON.parse(e.target.result);
+                // Validation check for full config keys
+                if (json.menuData || json.newsData || json.footerData) {
+                    if (json.menuData) setMenuData(json.menuData);
+                    if (json.newsData) setNewsData(json.newsData);
+                    if (json.footerData) setFooterData(json.footerData);
+                    if (json.logo !== undefined) setLogo(json.logo);
+                    if (json.siteSettings && setSiteSettings) setSiteSettings(json.siteSettings);
+                    alert(isHe ? "הגדרות המערכת עודכנו בהצלחה" : "System configuration updated successfully");
+                } else {
+                    alert("Invalid config format");
+                }
+            } catch (err) {
+                alert("Error parsing Full Config");
+            }
+        };
+        reader.readAsText(file);
+        event.target.value = '';
+    };
+
     return (
         <div className="space-y-8 max-w-4xl mx-auto pb-20 px-4" dir={isHe ? "rtl" : "ltr"}>
 
@@ -91,6 +137,14 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
                 accept=".json"
                 className="hidden"
                 onChange={handleImportChange}
+            />
+
+            <input
+                type="file"
+                id="admin-import-full-input"
+                accept=".json"
+                className="hidden"
+                onChange={handleImportFullChange}
             />
 
             {/* Navigation & Publish Control */}
@@ -111,8 +165,9 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
                         logic={logic}
                         isHe={isHe}
                         exportData={exportData}
-                        /* Passing trigger function to open file dialog */
+                        exportFullData={exportFullData}
                         importData={() => document.getElementById('admin-import-input').click()}
+                        importFullData={() => document.getElementById('admin-import-full-input').click()}
                         logo={logo}
                         setLogo={setLogo}
                         updateLogo={updateLogo}
