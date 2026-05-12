@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {
-    Trash2, FileText, Eye, Code, Maximize2, X, CheckCircle2, Link,Crop,
-    GripVertical, Copy, Check, Video, ExternalLink, Sparkles, RotateCcw, Upload, Bot
+    Trash2, FileText, Eye, Code, Maximize2, X, CheckCircle2, Link, Crop,
+    GripVertical, Copy, Check, Video, ExternalLink, Sparkles, RotateCcw, Upload, Bot, Globe
 } from 'lucide-react';
 
 import {useSubMenuEditor} from '@/components/admin/SubMenuEditor_Logic';
@@ -355,6 +355,49 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     success={actions.statusMsg === 'success' && lastClicked === 'pdf'}
                                     icon={FileText}
                                     label={isHe ? 'PDF לכפתור' : 'PDF to Button'}
+                                />
+
+                                {/* Facebook Link to HTML Button */}
+                                <ActionButton
+                                    onClick={() => {
+                                        const url = prompt(isHe ? "הכנס כתובת פייסבוק:" : "Enter Facebook URL:", "https://www.facebook.com/reel/778211718240090");
+
+                                        if (url) {
+                                            const btnText = prompt(isHe ? "טקסט לכפתור:" : "Button text:", isHe ? "צפה בפייסבוק" : "Watch on Facebook");
+
+                                            if (btnText) {
+                                                // The container <div> handles the centering and the top/bottom margin
+                                                const generatedHtml = `
+                                                <div style="display: flex; justify-content: center; width: 100%; margin: 16px 0;">
+                                                    <a href="${url}" 
+                                                       target="_blank" 
+                                                       rel="noopener noreferrer" 
+                                                       style="display: inline-flex; align-items: center; gap: 8px; background-color: #0866FF; color: white; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-weight: 500; font-family: system-ui, -apple-system, sans-serif; transition: transform 0.2s, opacity 0.2s;" 
+                                                       onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.02)';" 
+                                                       onmouseout="this.style.opacity='1'; this.style.transform='scale(1)';"
+                                                    >
+                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                                        </svg>
+                                                        <span>${btnText}</span>
+                                                    </a>
+                                                </div>`.trim();
+
+                                                navigator.clipboard.writeText(generatedHtml)
+                                                    .then(() => {
+                                                        setLastClicked('fb');
+                                                        setTimeout(() => setLastClicked(null), 2000);
+                                                    })
+                                                    .catch(err => console.error("Clipboard Error:", err));
+                                            }
+                                        }
+                                    }}
+                                    loading={actions.isProcessingFile && lastClicked === 'fb'}
+                                    success={(actions.statusMsg === 'success' && lastClicked === 'fb') || lastClicked === 'fb'}
+                                    icon={Globe}
+                                    label={isHe ? 'קישור פייסבוק' : 'FB Link to Button'}
                                 />
 
                                 {/* JSON Viewer Button */}
