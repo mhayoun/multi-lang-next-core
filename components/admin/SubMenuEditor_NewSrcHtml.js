@@ -47,7 +47,7 @@ export const subMenuEditor_NewSrcHtml = async (formData, altText = 'image') => {
 
         // 3. Generate the Template
         const htmlTemplate = `
-<div style="text-align: center; margin-bottom: 25px;">
+<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
     <img src="${latestUrl}" alt="${altText}" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
 </div>`.trim();
 
