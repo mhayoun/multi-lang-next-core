@@ -77,6 +77,7 @@ export const DEFAULT_MENU = [
             "he": "צור קשר",
             "en": "Contact"
         },
+        "type": "contact",
         "bgImage": "",
         "subItems": []
     }
