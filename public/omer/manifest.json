@@ -1,7 +1,7 @@
 {
-  "name": "omerי",
-  "short_name": "omer",
-  "description": "omer",
+  "name": "מועדון כפרי עומר",
+  "short_name": "מועדון כפרי עומר",
+  "description": "מועדון כפרי עומר",
   "id": "/?tenant=omer",
   "start_url": "/",
   "scope": "/",
