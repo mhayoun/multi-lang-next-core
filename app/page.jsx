@@ -1,53 +1,41 @@
-'use client';
+import HomeClient from './HomeClient';
 
-import React from 'react';
-import { LANGUAGES } from '@/lib/data';
-import { useMenuManager } from '@/lib/useMenuManager';
-import Navbar from '@/components/Navbar';
-import AdminInterface from '@/components/AdminInterface';
-import UserInterface from '@/components/UserInterface';
-import Footer from '@/components/Footer';
+/**
+ * SERVER SIDE: This runs only on the server.
+ * It can fetch data from your API or Redis directly.
+ */
+export async function generateMetadata() {
+    console.log(`[Metadata Debug] : generateMetadata is calling now...`);
 
-export default function Home() {
-  const logic = useMenuManager();
+    const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
-  if (!logic.mounted) {
-    return <div className="min-h-screen bg-slate-50" />;
-  }
+    let footerData = null;
 
-  const uiText = LANGUAGES[logic.lang];
-  const isHe = logic.lang === 'he';
+    try {
+        // Since we are on the server, we can fetch from our own API
+        const response = await fetch(`${baseUrl}/api/settings`, { cache: 'no-store' });
+        if (response.ok) {
+            const cloudData = await response.json();
+            footerData = cloudData?.footerData;
+        }
+    } catch (err) {
+        console.error("Metadata fetch failed:", err.message);
+    }
 
-  return (
-    <div
-      className="flex flex-col min-h-screen bg-slate-50 text-slate-900 transition-all duration-300"
-      dir={uiText.dir}
-    >
-      {/* Navbar stays at the top */}
-      <Navbar logic={logic} uiText={uiText} />
+    const contact = footerData?.contact;
 
-      {/* Main area expands to fill empty space */}
-      <main className="flex-grow max-w-7xl mx-auto p-6 w-full">
-        {logic.view === 'admin' ? (
-          <AdminInterface logic={logic} currentLang={logic.lang} />
-        ) : (
-          <UserInterface logic={logic} uiText={uiText} />
-        )}
-      </main>
+    return {
+        title: contact?.cie_name?.he || 'YeloTag',
+        description: contact?.cie_desc?.he || 'Digital Transformation',
+        icons: {
+            icon: `/${clientId}/favicon.ico`,
+            apple: `/${clientId}/apple-touch-icon.png`,
+        },
+        manifest: `/${clientId}/manifest.json`,
+    };
+}
 
-      {/*
-         FIX: Removed hardcoded DEFAULT_FOOTER.
-         logic.footerData now automatically pulls from the correct
-         client folder via useMenuManager.
-      */}
-      {logic.view !== 'admin' && logic.footerData && (
-        <Footer
-          data={logic.footerData}
-          isHe={isHe}
-          menuData={logic.menuData}
-          setActiveSubItem={logic.setActiveSubItem}
-        />
-      )}
-    </div>
-  );
+export default function Page() {
+    return <HomeClient />;
 }
