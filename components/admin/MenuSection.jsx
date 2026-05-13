@@ -43,6 +43,7 @@ const MenuSection = ({
                 <EditorAccordionItem
                     key={menu.id}
                     id={menu.id}
+                    isHe={isHe}
                     index={index}
                     totalItems={menuData.length}
                     isOpen={openItems[menu.id]}

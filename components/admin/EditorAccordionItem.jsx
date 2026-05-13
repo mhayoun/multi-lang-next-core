@@ -1,9 +1,10 @@
 import React from 'react';
-import {ArrowUp, ArrowDown, Trash2, ChevronUp, ChevronDown} from 'lucide-react';
+import {ArrowUp, ArrowDown, Trash2, ChevronUp, ChevronDown, Check, X} from 'lucide-react';
 
 const EditorAccordionItem = ({
                                  children,
                                  id,
+                                 isHe,
                                  index,
                                  totalItems,
                                  isOpen,
@@ -43,7 +44,10 @@ const EditorAccordionItem = ({
 
                 <button
                     onClick={() => {
-                        if (window.confirm("האם אתה בטוח שברצונך למחוק פריט זה?")) {
+                        const confirmMsg = isHe
+                            ? "האם אתה בטוח שברצונך למחוק פריט זה?"
+                            : "Are you sure you want to delete this item?";
+                        if (window.confirm(confirmMsg)) {
                             onRemove(id);
                         }
                     }}
