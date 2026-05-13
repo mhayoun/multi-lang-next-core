@@ -22,6 +22,9 @@ export const viewport = {
 };
 
 export async function generateMetadata() {
+
+    console.log(`[Metadata Debug] : generateMetadata....`);
+
     const isDebug = process.env.DEBUG_METADATA === 'true' || process.env.NODE_ENV === 'development';
     console.log(`[Metadata Debug] isDebug: ${isDebug}`);
 
