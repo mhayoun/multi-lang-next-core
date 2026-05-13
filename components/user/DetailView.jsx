@@ -134,7 +134,8 @@ const DetailView = ({activeSubItem, setActiveSubItem, menuData, t, isHe, uiText}
     return (
         <div className="max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-4 px-4" dir={isHe ? 'rtl' : 'ltr'}>
 
-            <style dangerouslySetInnerHTML={{ __html: `
+            <style dangerouslySetInnerHTML={{
+                __html: `
                 .dynamic-content table {
                     width: 100% !important;
                     border-collapse: collapse;
@@ -153,7 +154,8 @@ const DetailView = ({activeSubItem, setActiveSubItem, menuData, t, isHe, uiText}
                 @media (max-width: 768px) {
                     .dynamic-content-wrapper { overflow-x: auto; }
                 }
-            `}} />
+            `
+            }}/>
 
             {/* Back Button - Now absolute/sticky on desktop so it doesn't break centering */}
             <div className="relative">
@@ -174,9 +176,11 @@ const DetailView = ({activeSubItem, setActiveSubItem, menuData, t, isHe, uiText}
                 <div className="max-w-3xl mx-auto w-full min-w-0">
 
                     {/* Breadcrumbs */}
-                    <div className={`flex items-center gap-2 text-sm text-slate-400 mb-6 font-medium opacity-80 ${isHe ? 'justify-start' : 'justify-start'}`}>
+                    <div
+                        className={`hidden md:flex items-center gap-2 text-sm text-slate-400 mb-6 font-medium opacity-80 ${isHe ? 'justify-start' : 'justify-start'}`}>
                         <span className="truncate">{parentCategory ? t(parentCategory.title) : ''}</span>
-                        {isHe ? <ChevronLeft size={14} className="shrink-0"/> : <ChevronRight size={14} className="shrink-0"/>}
+                        {isHe ? <ChevronLeft size={14} className="shrink-0"/> :
+                            <ChevronRight size={14} className="shrink-0"/>}
                         <span className="text-blue-600 font-bold truncate">{t(activeSubItem.title)}</span>
                     </div>
 
@@ -233,7 +237,8 @@ const DetailView = ({activeSubItem, setActiveSubItem, menuData, t, isHe, uiText}
                                 <img src={item.image || (item.images && item.images[0])}
                                      className="absolute inset-0 w-full h-full object-cover" alt=""/>
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"/>
-                                <div className={`absolute inset-0 p-6 flex flex-col justify-end text-white ${isHe ? 'text-right' : 'text-left'}`}>
+                                <div
+                                    className={`absolute inset-0 p-6 flex flex-col justify-end text-white ${isHe ? 'text-right' : 'text-left'}`}>
                                     <h4 className="font-black text-lg">{t(item.title)}</h4>
                                     <div className="mt-2 flex items-center gap-1 text-xs font-bold">
                                         {isHe ? 'צפה עכשיו' : 'View Now'}
