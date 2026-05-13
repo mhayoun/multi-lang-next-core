@@ -23,6 +23,7 @@ export const viewport = {
 
 export async function generateMetadata() {
     const isDebug = process.env.DEBUG_METADATA === 'true' || process.env.NODE_ENV === 'development';
+    console.log(`[Metadata Debug] isDebug: ${isDebug}`);
 
     const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
