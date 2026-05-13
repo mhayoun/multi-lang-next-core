@@ -1,8 +1,8 @@
 {
-  "name": "default",
-  "short_name": "default",
-  "description": "default",
-  "id": "/?tenant=default",
+  "name": "מועדון ספורט המושבה",
+  "short_name": "מועדון ספורט המושבה",
+  "description": "מועדון ספורט המושבה",
+  "id": "/?tenant=hamoshava",
   "start_url": "/",
   "scope": "/",
   "_comment": "replace browser by standalone to activate desktop",
@@ -11,19 +11,19 @@
   "theme_color": "#1d4ed8",
   "icons": [
     {
-      "src": "/default/icon-192x192.png",
+      "src": "/hamoshava/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/default/icon-512x512.png",
+      "src": "/hamoshava/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
-      "src": "/default/screenshots/desktop.png",
+      "src": "/hamoshava/screenshots/desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",

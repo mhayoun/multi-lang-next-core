@@ -22,32 +22,56 @@ export const viewport = {
 };
 
 export async function generateMetadata() {
+    const isDebug = process.env.DEBUG_METADATA === 'true' || process.env.NODE_ENV === 'development';
+
     const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
     let footerData = null;
+    let dataSource = 'none';
 
+    if (isDebug) console.log(`[Metadata Debug] Starting for Client: ${clientId} at ${baseUrl}`);
+
+    // 1. Attempt Cloud Fetch
     try {
         const apiUrl = `${baseUrl}/api/settings`;
         const response = await fetch(apiUrl, { cache: 'no-store' });
+
+        if (isDebug) console.log(`[Metadata Debug] API Status: ${response.status}`);
+
         if (response.ok) {
             const cloudData = await response.json();
+            if (isDebug) console.log(`[Metadata Debug] Cloud Data Received:`, JSON.stringify(cloudData).substring(0, 100) + "...");
+
             footerData = cloudData?.footerData;
+            if (footerData) dataSource = 'cloud';
         }
     } catch (err) {
         console.error("Metadata: Cloud fetch failed ->", err.message);
     }
 
+    // 2. Fallback to Local Files
     if (!footerData) {
         try {
+            const path = `../src/data/${clientId}/footerData.js`;
+            if (isDebug) console.log(`[Metadata Debug] Falling back to local path: ${path}`);
+
             const module = await import(`../src/data/${clientId}/footerData.js`);
             footerData = module.DEFAULT_FOOTER;
+            if (footerData) dataSource = 'local';
         } catch (e) {
+            if (isDebug) console.error(`[Metadata Debug] Local import failed:`, e.message);
             footerData = {};
         }
     }
 
     const contact = footerData?.contact;
+
+    if (isDebug) {
+        console.log(`[Metadata Debug] Data Source: ${dataSource}`);
+        console.log(`[Metadata Debug] Resolving Title Path: footerData -> contact -> cie_name -> he`);
+        console.log(`[Metadata Debug] Resolved Value:`, contact?.cie_name?.he);
+    }
 
     return {
         title: contact?.cie_name?.he || 'YeloTag',
@@ -56,9 +80,7 @@ export async function generateMetadata() {
             icon: `/${clientId}/favicon.ico`,
             apple: `/${clientId}/apple-touch-icon.png`,
         },
-        // FIX: Provide the full path and ensure it includes a cache-buster during debugging
         manifest: `/${clientId}/manifest.json`,
-        // FIX: Essential for PWA installability on many browsers
         appleWebApp: {
             capable: true,
             statusBarStyle: "default",
