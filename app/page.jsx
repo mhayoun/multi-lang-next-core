@@ -1,26 +1,39 @@
 import HomeClient from './HomeClient';
 
-/**
- * SERVER SIDE: This runs only on the server.
- * It can fetch data from your API or Redis directly.
- */
 export async function generateMetadata() {
-    console.log(`[Metadata Debug] : generateMetadata is calling now...`);
-
     const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
+    // 1. AUTOMATIC BASE URL: No manual Env Var needed on Vercel
+    const rawHost = process.env.VERCEL_URL || 'localhost:3000';
+    const baseUrl = rawHost.startsWith('http') ? rawHost : `https://${rawHost}`;
+
+    console.log(`[Metadata Debug] Fetching for ${clientId} from ${baseUrl}`);
 
     let footerData = null;
 
     try {
-        // Since we are on the server, we can fetch from our own API
-        const response = await fetch(`${baseUrl}/api/settings`, { cache: 'no-store' });
+        const response = await fetch(`${baseUrl}/api/settings`, {
+            cache: 'no-store',
+            headers: { 'x-client-id': clientId }
+        });
+
         if (response.ok) {
             const cloudData = await response.json();
             footerData = cloudData?.footerData;
         }
     } catch (err) {
-        console.error("Metadata fetch failed:", err.message);
+        console.error(`[Metadata Debug] Cloud fetch failed: ${err.message}`);
+    }
+
+    // 2. Fallback to Local Files if the Cloud/Redis is unreachable
+    if (!footerData) {
+        try {
+            const module = await import(`../src/data/${clientId}/footerData.js`);
+            footerData = module.DEFAULT_FOOTER;
+            console.log(`[Metadata Debug] Using local fallback for ${clientId}`);
+        } catch (e) {
+            footerData = {};
+        }
     }
 
     const contact = footerData?.contact;
