@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import ClientProviders from "@/components/ClientProviders";
 
@@ -22,63 +22,62 @@ export const viewport = {
 };
 
 export async function generateMetadata() {
-
-    console.log(`[Metadata Debug] : generateMetadata....`);
-
-    const isDebug = process.env.DEBUG_METADATA === 'true' || process.env.NODE_ENV === 'development';
-    console.log(`[Metadata Debug] isDebug: ${isDebug}`);
-
     const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
+    console.log(`[Metadata Debug] Starting for Client: ${clientId}`);
 
     let footerData = null;
     let dataSource = 'none';
 
-    if (isDebug) console.log(`[Metadata Debug] Starting for Client: ${clientId} at ${baseUrl}`);
-
     // 1. Attempt Cloud Fetch
     try {
         const apiUrl = `${baseUrl}/api/settings`;
-        const response = await fetch(apiUrl, { cache: 'no-store' });
-
-        if (isDebug) console.log(`[Metadata Debug] API Status: ${response.status}`);
+        // Ensure the fetch is fully awaited and cache is bypassed
+        const response = await fetch(apiUrl, {
+            cache: 'no-store',
+            next: {revalidate: 0}
+        });
 
         if (response.ok) {
             const cloudData = await response.json();
-            if (isDebug) console.log(`[Metadata Debug] Cloud Data Received:`, JSON.stringify(cloudData).substring(0, 100) + "...");
-
+            // IMPORTANT: Match the actual structure of your API response
+            // Based on your logs, we need cloudData.footerData
             footerData = cloudData?.footerData;
-            if (footerData) dataSource = 'cloud';
+
+            if (footerData && footerData.contact) {
+                dataSource = 'cloud';
+                console.log(`[Metadata Debug] Cloud Data verified for: ${footerData.contact.cie_name?.he}`);
+            }
         }
     } catch (err) {
-        console.error("Metadata: Cloud fetch failed ->", err.message);
+        console.error("[Metadata Debug] Cloud fetch failed:", err.message);
     }
 
-    // 2. Fallback to Local Files
-    if (!footerData) {
+    // 2. Fallback to Local Files (Only if Cloud failed)
+    if (dataSource === 'none') {
         try {
-            const path = `../src/data/${clientId}/footerData.js`;
-            if (isDebug) console.log(`[Metadata Debug] Falling back to local path: ${path}`);
-
             const module = await import(`../src/data/${clientId}/footerData.js`);
-            footerData = module.DEFAULT_FOOTER;
-            if (footerData) dataSource = 'local';
+            // Check both possible export patterns
+            footerData = module.DEFAULT_FOOTER || module.default || module;
+            dataSource = 'local';
+            console.log(`[Metadata Debug] Using local fallback for ${clientId}`);
         } catch (e) {
-            if (isDebug) console.error(`[Metadata Debug] Local import failed:`, e.message);
-            footerData = {};
+            console.error(`[Metadata Debug] Local fallback failed:`, e.message);
         }
     }
 
     const contact = footerData?.contact;
+    const resolvedTitle = contact?.cie_name?.he || 'YeloTag';
 
-    if (isDebug) {
-        console.log(`[Metadata Debug] Data Source: ${dataSource}`);
-        console.log(`[Metadata Debug] Resolving Title Path: footerData -> contact -> cie_name -> he`);
-        console.log(`[Metadata Debug] Resolved Value:`, contact?.cie_name?.he);
-    }
+    console.log(`[Metadata Debug] Final Source: ${dataSource}`);
+    console.log(`[Metadata Debug] Resolved Title: ${resolvedTitle}`);
 
     return {
-        title: contact?.cie_name?.he || 'YeloTag',
+        // Use 'absolute' to prevent parent layouts from overriding with a template
+        title: {
+            absolute: resolvedTitle,
+        },
         description: contact?.cie_desc?.he || 'Digital Transformation',
         icons: {
             icon: `/${clientId}/favicon.ico`,
@@ -88,25 +87,18 @@ export async function generateMetadata() {
         appleWebApp: {
             capable: true,
             statusBarStyle: "default",
-            title: contact?.cie_name?.he || 'YeloTag',
+            title: resolvedTitle,
         },
     };
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({children}) {
     return (
         <html
             lang="he"
-            dir="rtl" // Added for Hebrew support
+            dir="rtl"
             className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
         >
-            <head>
-                {/*
-                  FIX: If the metadata API manifest isn't showing in Network tab,
-                  Next.js sometimes needs a hint for cross-origin manifest requests.
-                */}
-                <link rel="manifest" href={`/${process.env.NEXT_PUBLIC_CLIENT_ID || 'default'}/manifest.json`} crossOrigin="use-credentials" />
-            </head>
             <body className="min-h-full flex flex-col" suppressHydrationWarning={true}>
                 <ClientProviders>
                     {children}
