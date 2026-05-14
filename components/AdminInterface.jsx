@@ -56,7 +56,7 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
         const href = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = href;
-        link.download = 'cie_config.json';
+        link.download = `${process.env.NEXT_PUBLIC_CLIENT_ID || 'unknown'}_config.json`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

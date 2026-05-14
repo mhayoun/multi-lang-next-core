@@ -2,7 +2,17 @@ import React from 'react';
 import LogoSection from '@/components/admin/LogoSection';
 import {Download, Upload, Database} from 'lucide-react'; // Added Upload icon
 
-const SettingSection = ({logic, isHe, exportData, exportFullData, importData, importFullData, logo, setLogo, updateLogo}) => {
+const SettingSection = ({
+                            logic,
+                            isHe,
+                            exportData,
+                            exportFullData,
+                            importData,
+                            importFullData,
+                            logo,
+                            setLogo,
+                            updateLogo
+                        }) => {
     const settings = logic?.siteSettings || {
         contact: {email: '', address: {he: '', en: ''}}
     };
@@ -18,7 +28,7 @@ const SettingSection = ({logic, isHe, exportData, exportFullData, importData, im
             <div className="flex flex-col bg-blue-50 p-6 rounded-3xl border border-blue-100 gap-6">
                 <div>
                     <h2 className="text-blue-800 font-black text-xl">
-                        {isHe ? 'גיבוי, ייצוא וייבוא' : 'Backup, Export & Import'}
+                        {isHe ? 'ייצוא וייבוא' : 'Export & Import'}
                     </h2>
                     <p className="text-blue-600/80 text-sm font-medium mt-1">
                         {isHe
@@ -53,7 +63,7 @@ const SettingSection = ({logic, isHe, exportData, exportFullData, importData, im
                 <div>
                     <h2 className="text-indigo-800 font-black text-xl flex items-center gap-2">
                         <Database size={24}/>
-                        {isHe ? 'ניהול הגדרות מערכת מלא (cie_config)' : 'Full System Config (cie_config)'}
+                        {isHe ? `ייצוא וייבוא מערכת מלא` : `Full System Config Export & Import`}
                     </h2>
                     <p className="text-indigo-600/80 text-sm font-medium mt-1">
                         {isHe
@@ -68,7 +78,7 @@ const SettingSection = ({logic, isHe, exportData, exportFullData, importData, im
                         className="bg-indigo-600 text-white hover:bg-indigo-700 px-6 py-3 rounded-full font-bold transition-all flex items-center gap-2 text-sm shadow-sm active:scale-95"
                     >
                         <Upload size={18}/>
-                        <span>{isHe ? 'ייצוא cie_config מלא' : 'Export Full cie_config'}</span>
+                        <span>{isHe ? `ייצוא נתונים מלא` : `Export Full Data`}</span>
                     </button>
 
                     <button
@@ -76,7 +86,7 @@ const SettingSection = ({logic, isHe, exportData, exportFullData, importData, im
                         className="bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-50 px-6 py-3 rounded-full font-bold transition-all flex items-center gap-2 text-sm shadow-sm active:scale-95"
                     >
                         <Download size={18}/>
-                        <span>{isHe ? 'ייבוא cie_config מלא' : 'Import Full cie_config'}</span>
+                        <span>{isHe ? `ייבוא נתונים מלא` : `Import Full Data`}</span>
                     </button>
                 </div>
             </div>
