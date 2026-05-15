@@ -1,6 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getClientSettings } from "@/lib/settings";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 // Define the structure for type safety
 interface FooterData {
   contact?: {
