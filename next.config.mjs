@@ -46,13 +46,6 @@ const nextConfig = {
     async rewrites() {
         console.log('[NextConfig] Initializing Multi-Tenant Rewrites...');
         return [
-            // CRITICAL: This maps the request from your layout (manifest.json)
-            // to the dynamic function in app/manifest.ts (manifest.webmanifest)
-            {
-                source: '/manifest.json',
-                destination: '/manifest.webmanifest',
-            },
-            // Standard Tenant Rewrites
             {
                 source: '/topclubcarmiel/:path*',
                 destination: '/topclubcarmiel/:path*',
