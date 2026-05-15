@@ -13,6 +13,9 @@ interface FooterData {
 }
 
 export default async function manifest(): Promise<MetadataRoute.Manifest> {
+
+  console.log(`[PWA Manifest Debug] HIT AT: ${new Date().toISOString()}`);
+
   const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || "default";
 
   // DEBUG: Start of the process

@@ -8,7 +8,9 @@ console.log('---------------------------');
 
 const withPWA = withPWAInit({
     dest: 'public',
-    disable: true, //process.env.NODE_ENV === 'development',
+    // FIX: Set to false for production to allow the PWA logic to run.
+    // If you want to test in dev, set this to false temporarily.
+    disable: process.env.NODE_ENV === 'development',
     register: true,
     skipWaiting: true,
 });
@@ -20,14 +22,15 @@ const nextConfig = {
             bodySizeLimit: '5mb',
         },
     },
+    // Ensure this matches your Next.js version capabilities
     reactCompiler: true,
 
     async headers() {
-        // Debug log when headers are initialized
         console.log('[NextConfig] Applying PWA MIME type headers...');
         return [
             {
-                source: '/:tenant/manifest.json',
+                // Apply correct MIME type to both possible manifest paths
+                source: '/manifest.(json|webmanifest)',
                 headers: [
                     {
                         key: 'Content-Type',
@@ -39,13 +42,15 @@ const nextConfig = {
     },
 
     async rewrites() {
-        // Debug log when rewrites are initialized
         console.log('[NextConfig] Initializing Multi-Tenant Rewrites...');
         return [
+            // CRITICAL: This maps the request from your layout (manifest.json)
+            // to the dynamic function in app/manifest.ts (manifest.webmanifest)
             {
                 source: '/manifest.json',
                 destination: '/manifest.webmanifest',
             },
+            // Standard Tenant Rewrites
             {
                 source: '/topclubcarmiel/:path*',
                 destination: '/topclubcarmiel/:path*',
