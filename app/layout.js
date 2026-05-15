@@ -1,8 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import ClientProviders from "@/components/ClientProviders";
 // Import the shared library logic directly
-import { getClientSettings } from "@/lib/settings";
+import {getClientSettings} from "@/lib/settings";
 
 export const dynamic = "force-dynamic";
 
@@ -63,7 +63,6 @@ export async function generateMetadata() {
     console.log(`[Metadata Debug] Resolved Title: ${resolvedTitle}`);
 
     return {
-        // Use 'absolute' to ensure this exact string is used without templates
         title: {
             absolute: resolvedTitle,
         },
@@ -72,7 +71,8 @@ export async function generateMetadata() {
             icon: `/${clientId}/favicon.ico`,
             apple: `/${clientId}/apple-touch-icon.png`,
         },
-        manifest: `/${clientId}/manifest.json`,
+        // FIX: Always point to the root so the browser accepts the "/" scope
+        manifest: '/manifest.json',
         appleWebApp: {
             capable: true,
             statusBarStyle: "default",
@@ -86,18 +86,18 @@ export async function generateMetadata() {
     };
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({children}) {
     return (
         <html
             lang="he"
             dir="rtl"
             className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
         >
-            <body className="min-h-full flex flex-col" suppressHydrationWarning={true}>
-                <ClientProviders>
-                    {children}
-                </ClientProviders>
-            </body>
+        <body className="min-h-full flex flex-col" suppressHydrationWarning={true}>
+        <ClientProviders>
+            {children}
+        </ClientProviders>
+        </body>
         </html>
     );
 }
