@@ -13,10 +13,12 @@ const withPWA = withPWAInit({
     disable: process.env.NODE_ENV === 'development',
     register: true,
     skipWaiting: true,
+    importScripts: [],
 });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    generateBuildId: async () => 'build-' + Date.now(),
     experimental: {
         serverActions: {
             bodySizeLimit: '5mb',
