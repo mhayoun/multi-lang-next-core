@@ -32,7 +32,7 @@ const nextConfig = {
         return [
             {
                 // Apply correct MIME type to both possible manifest paths
-                source: '/manifest.(json|webmanifest)',
+                source: '/manifest.webmanifest',
                 headers: [
                     {
                         key: 'Content-Type',
