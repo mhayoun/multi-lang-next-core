@@ -72,7 +72,7 @@ export async function generateMetadata() {
             apple: `/${clientId}/apple-touch-icon.png`,
         },
         // FIX: Always point to the root so the browser accepts the "/" scope
-        manifest: '/manifest.webmanifest',
+        manifest: '/manifest.json',
         appleWebApp: {
             capable: true,
             statusBarStyle: "default",
