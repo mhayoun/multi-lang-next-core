@@ -3,6 +3,7 @@ import "./globals.css";
 import ClientProviders from "@/components/ClientProviders";
 // Import the shared library logic directly
 import {getClientSettings} from "@/lib/settings";
+import { headers } from 'next/headers'; // CRITICAL: Import headers
 
 export const dynamic = "force-dynamic";
 
@@ -72,7 +73,7 @@ export async function generateMetadata() {
             apple: `/${clientId}/apple-touch-icon.png`,
         },
         // FIX: Always point to the root so the browser accepts the "/" scope
-        manifest: '/manifest.json',
+        manifest: '/manifest.webmanifest',
         appleWebApp: {
             capable: true,
             statusBarStyle: "default",
