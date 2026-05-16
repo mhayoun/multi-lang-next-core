@@ -38,6 +38,11 @@ const nextConfig = {
                         key: 'Content-Type',
                         value: 'application/manifest+json',
                     },
+                    {
+                        // FORCE Vercel and the browser to read fresh data for every single tenant load
+                        key: 'Cache-Control',
+                        value: 'no-cache, no-store, must-revalidate',
+                    },
                 ],
             },
         ];
