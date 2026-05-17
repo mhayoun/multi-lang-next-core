@@ -5,54 +5,75 @@ export default function usePWAInstall() {
   const [installPrompt, setInstallPrompt] = useState(null);
 
   useEffect(() => {
-    // 1. Initial Check
     console.log("PWA Debug: Hook mounted. Checking environment...");
 
     if (typeof window === 'undefined') return;
 
-    // 2. Event Listener
-    const handler = (e) => {
-      console.log("PWA Debug: 'beforeinstallprompt' event caught! Site is now installable.");
+    // 1. Immediate Synchronous Check: Did the global window interceptor catch it early?
+    if (window.deferredPWAInstallPrompt) {
+      console.log("PWA Debug: Found globally captured install prompt instantly on mount!");
+      setInstallPrompt(window.deferredPWAInstallPrompt);
+    }
+
+    // 2. Local Listener: For slower connections where the prompt fires *after* the hook mounts
+    const handleNativePrompt = (e) => {
+      console.log("PWA Debug: Direct native layout engine prompt caught.");
       e.preventDefault();
       setInstallPrompt(e);
     };
 
-    // 3. Check if already installed
-    window.addEventListener('beforeinstallprompt', handler);
+    // 3. Custom Event Listener: Fired by ClientProviders if the global prompt lands concurrently
+    const handleGlobalReady = () => {
+      if (window.deferredPWAInstallPrompt) {
+        console.log("PWA Debug: Hook notified of early global prompt availability.");
+        setInstallPrompt(window.deferredPWAInstallPrompt);
+      }
+    };
 
-    // 4. Debug: Check if already in standalone mode
+    window.addEventListener('beforeinstallprompt', handleNativePrompt);
+    window.addEventListener('pwa-prompt-ready', handleGlobalReady);
+
+    // 4. Debug check for active standalone display mode
     if (window.matchMedia('(display-mode: standalone)').matches) {
       console.log("PWA Debug: App is already running in standalone mode (Installed).");
     }
 
-    return () => window.removeEventListener('beforeinstallprompt', handler);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleNativePrompt);
+      window.removeEventListener('pwa-prompt-ready', handleGlobalReady);
+    };
   }, []);
 
   const handleInstall = async () => {
+    // Fallback lookups: check local React state first, then look at the shared window container
+    const activePrompt = installPrompt || window.deferredPWAInstallPrompt;
+
     console.log("PWA Debug: handleInstall called.");
 
-    if (!installPrompt) {
-      console.warn("PWA Debug: No install prompt saved in state.");
+    if (!activePrompt) {
+      console.warn("PWA Debug: No install prompt saved in state or global window context.");
       return;
     }
 
     try {
-      console.log("PWA Debug: Triggering native prompt...");
-      installPrompt.prompt();
+      console.log("PWA Debug: Triggering native prompt UI dialog...");
+      await activePrompt.prompt();
 
-      const { outcome } = await installPrompt.userChoice;
+      const { outcome } = await activePrompt.userChoice;
       console.log(`PWA Debug: User choice outcome: ${outcome}`);
 
       if (outcome === 'accepted') {
+        // Clean both states on successful install
         setInstallPrompt(null);
+        window.deferredPWAInstallPrompt = null;
       }
     } catch (err) {
-      console.error("PWA Debug: Prompt failed", err);
+      console.error("PWA Debug: Prompt execution failed", err);
     }
   };
 
-  // Boolean helper to make the UI response clear
-  const isInstallable = installPrompt !== null;
+  // True if either the local component state or global execution object exists
+  const isInstallable = installPrompt !== null || (typeof window !== 'undefined' && window.deferredPWAInstallPrompt !== null);
 
   return { isInstallable, handleInstall };
 }
