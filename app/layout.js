@@ -3,7 +3,7 @@ import "./globals.css";
 import ClientProviders from "@/components/ClientProviders";
 // Import the shared library logic directly
 import {getClientSettings} from "@/lib/settings";
-import { headers } from 'next/headers'; // CRITICAL: Import headers
+
 
 export const dynamic = "force-dynamic";
 
