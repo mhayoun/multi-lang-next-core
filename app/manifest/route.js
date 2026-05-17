@@ -91,15 +91,15 @@ export async function GET(request) {
         // FIX 2: Supply the required screenshots array for Richer Desktop/Mobile UI matching
         screenshots: [
             {
-                src: `/${clientId}/screenshot-mobile.png`,
-                sizes: '1080x1920',
+                src: `/${clientId}/screenshots/mobile.png`,
+                sizes: '750*1334',
                 type: 'image/png',
                 form_factor: 'narrow',
                 label: `Home screen of ${title}`,
             },
             {
-                src: `/${clientId}/screenshot-desktop.png`,
-                sizes: '1920x1080',
+                src: `/${clientId}/screenshots/desktop.png`,
+                sizes: '1280*720',
                 type: 'image/png',
                 form_factor: 'wide',
                 label: `Dashboard of ${title}`,
