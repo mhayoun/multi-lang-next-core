@@ -11,6 +11,7 @@ function getClientIdFromHost(host) {
     if (host.includes("omer")) return "omer";
     if (host.includes("beithanoar") || host.includes("bhhj")) return "beithanoar";
     if (host.includes("topclubcarmiel")) return "topclubcarmiel";
+    if (host.includes("ramatefal")) return "ramatefal";
     return process.env.NEXT_PUBLIC_CLIENT_ID || "default";
 }
 
