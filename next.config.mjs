@@ -8,12 +8,10 @@ console.log('---------------------------');
 
 const withPWA = withPWAInit({
     dest: 'public',
-    // FIX: Set to false for production to allow the PWA logic to run.
-    // If you want to test in dev, set this to false temporarily.
-    disable: process.env.NODE_ENV === 'development',
+    disable: process.env.NODE_ENV === 'development', //false, // Leave false to allow testing and running PWA features
     register: true,
     skipWaiting: true,
-    buildExcludes: [/manifest\.webmanifest$/, /manifest\.json$/],
+    // FIX 1: REMOVED buildExcludes so Webpack stops hijacking and blacklisting the manifest paths!
 });
 
 /** @type {import('next').NextConfig} */
@@ -24,40 +22,33 @@ const nextConfig = {
             bodySizeLimit: '5mb',
         },
     },
-    // Ensure this matches your Next.js version capabilities
     reactCompiler: true,
+
+    // FIX 2: Add the custom rewrite to pass /manifest.json internally into your multi-tenant route handler folder
+    async rewrites() {
+        return [
+            {
+                source: '/manifest.json',
+                destination: '/manifest',
+            },
+        ];
+    },
 
     async headers() {
         console.log('[NextConfig] Applying PWA MIME type headers...');
         return [
             {
-                // Apply correct MIME type to both possible manifest paths
-                source: '/manifest.webmanifest',
+                source: '/:path(manifest|manifest.json)',
                 headers: [
                     {
                         key: 'Content-Type',
-                        value: 'application/manifest+json',
+                        value: 'application/manifest+json; charset=utf-8',
                     },
                     {
-                        // FORCE Vercel and the browser to read fresh data for every single tenant load
                         key: 'Cache-Control',
                         value: 'no-cache, no-store, must-revalidate',
                     },
                 ],
-            },
-        ];
-    },
-
-    async rewrites() {
-        console.log('[NextConfig] Initializing Multi-Tenant Rewrites...');
-        return [
-            {
-                source: '/topclubcarmiel/:path*',
-                destination: '/topclubcarmiel/:path*',
-            },
-            {
-                source: '/beithanoar/:path*',
-                destination: '/beithanoar/:path*',
             },
         ];
     },

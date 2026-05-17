@@ -1,19 +1,11 @@
-import { MetadataRoute } from 'next'
+import { NextResponse } from 'next/server';
 import { getClientSettings } from "@/lib/settings";
-import { headers } from 'next/headers'; // CRITICAL: Import headers
 
+// CRITICAL: Forces Next.js to run this live on every incoming request
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
-interface FooterData {
-  contact?: {
-    cie_name?: { he?: string };
-    cie_desc?: { he?: string };
-  };
-}
 
 // Helper mapping function to parse host domains dynamically at execution time
-function getClientIdFromHost(host: string | null): string {
+function getClientIdFromHost(host) {
   if (!host) return "default";
   if (host.includes("hamoshava")) return "hamoshava";
   if (host.includes("omer")) return "omer";
@@ -22,37 +14,34 @@ function getClientIdFromHost(host: string | null): string {
   return process.env.NEXT_PUBLIC_CLIENT_ID || "default";
 }
 
-export default async function manifest(): Promise<MetadataRoute.Manifest> {
-  console.log(`[PWA Manifest Debug] HIT AT: ${new Date().toISOString()}`);
-
-  // 1. DYNAMICALLY PARSE INCOMING TENANT DOMAIN
-  const headersList = await headers();
-  const host = headersList.get('host');
+export async function GET(request) {
+  // 1. DYNAMICALLY PARSE INCOMING TENANT DOMAIN FROM HEADERS
+  const host = request.headers.get('host') || '';
   const clientId = getClientIdFromHost(host);
 
-  console.log(`\x1b[33m[PWA Manifest Debug]\x1b[0m Resolved Route: ${host} -> Generating for Client: ${clientId}`);
+  console.log(`\x1b[33m[PWA Manifest Route Handler Debug]\x1b[0m Resolved Route: ${host} -> Generating for Client: ${clientId}`);
 
-  let footerData: FooterData | null = null;
+  let footerData = null;
   let dataSource = 'none';
 
   // 2. Try Cloud/Redis
   try {
     const cloudData = await getClientSettings(clientId);
     if (cloudData && cloudData.footerData) {
-      footerData = cloudData.footerData as FooterData;
+      footerData = cloudData.footerData;
       dataSource = 'cloud/redis';
     }
-  } catch (err: any) {
+  } catch (err) {
     console.error(`\x1b[31m[PWA Manifest Debug]\x1b[0m Cloud fetch failed: ${err.message}`);
   }
 
   // 3. Try Local Fallback
   if (!footerData || dataSource === 'none') {
     try {
-      const module = await import(`../src/data/${clientId}/footerData.js`);
-      footerData = (module.DEFAULT_FOOTER || module.default || module) as FooterData;
+      const module = await import(`../../src/data/${clientId}/footerData.js`);
+      footerData = module.DEFAULT_FOOTER || module.default || module;
       dataSource = 'local_file';
-    } catch (e: any) {
+    } catch (e) {
       console.error(`\x1b[31m[PWA Manifest Debug]\x1b[0m Local fallback failed for ${clientId}: ${e.message}`);
     }
   }
@@ -62,8 +51,9 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
 
   console.log(`\x1b[32m[PWA Manifest Debug]\x1b[0m Success! Source: ${dataSource} | Title: ${title}`);
 
-  return {
-    id: `pwa-${clientId}`,
+  // 4. Construct the PWA Manifest Object dynamically
+  const manifestData = {
+    id: `pwa-${clientId}`, // Keeps browsers from mixing up your 4 different tenant apps
     name: title,
     short_name: title,
     description: description,
@@ -77,7 +67,7 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
         src: `/${clientId}/icon-192x192.png`,
         sizes: '192x192',
         type: 'image/png',
-        purpose: 'any maskable' as any,
+        purpose: 'any maskable',
       },
       {
         src: `/${clientId}/icon-512x512.png`,
@@ -87,4 +77,13 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
       },
     ],
   };
+
+  // 5. Return with correct PWA Headers
+  return new NextResponse(JSON.stringify(manifestData), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/manifest+json; charset=utf-8',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+    },
+  });
 }

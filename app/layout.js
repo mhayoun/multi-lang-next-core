@@ -72,8 +72,6 @@ export async function generateMetadata() {
             icon: `/${clientId}/favicon.ico`,
             apple: `/${clientId}/apple-touch-icon.png`,
         },
-        // FIX: Always point to the root so the browser accepts the "/" scope
-        manifest: '/manifest.webmanifest',
         appleWebApp: {
             capable: true,
             statusBarStyle: "default",
@@ -94,6 +92,11 @@ export default function RootLayout({children}) {
             dir="rtl"
             className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
         >
+        <head>
+            {/* FORCE the manifest link to land inside the static head container */}
+            {/* crossOrigin="use-credentials" forces the browser to pass the host/cookies header */}
+            <link rel="manifest" href="/manifest" crossOrigin="use-credentials" />
+        </head>
         <body className="min-h-full flex flex-col" suppressHydrationWarning={true}>
         <ClientProviders>
             {children}
