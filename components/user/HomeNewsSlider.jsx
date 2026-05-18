@@ -36,14 +36,10 @@ const HomeNewsSlider = ({
 
     const currentItem = newsData[currentNewsIndex];
 
-    // 3. Logique de sélection de l'image (Fallback vers images[0] si les spécifiques sont vides)
-    // const getBannerImage = () => {
-    //     if (isMobile) {
-    //         return currentItem.bgImage_mob || currentItem.bgImage_web || currentItem.images?.[0] || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c';
-    //     }
-    //     return currentItem.bgImage_web || currentItem.bgImage_mob || currentItem.images?.[0] || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c';
-    // };
+    // Direct lookup for 'bgVideo' regardless of language or responsive context
+    const videoUrl = Array.isArray(currentItem?.bgVideo) ? currentItem.bgVideo[0] : currentItem?.bgVideo;
 
+    // 3. Logique de sélection de l'image (Fallback vers images[0] si les spécifiques sont vides)
     const getBannerImage = () => {
     const fallback = currentItem.images?.[0] || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c';
 
@@ -62,13 +58,26 @@ const HomeNewsSlider = ({
         <div
             className="relative w-full h-[450px] md:h-[475px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl group">
             <div className="relative w-full h-full">
-                <img
-                    key={`${currentItem.id}-${isMobile}`} // La clé change avec isMobile pour forcer la transition
-                    src={getBannerImage()}
-                    className="w-full h-full object-cover animate-in fade-in zoom-in-95 duration-1000"
-                    alt="news"
-                />
-
+                {/* Mount the video if it exists natively in your object array, otherwise fall back to images */}
+                {videoUrl ? (
+                    <video
+                        key={`${currentItem.id}-video`}
+                        src={videoUrl}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover animate-in fade-in zoom-in-95 duration-1000"
+                    />
+                ) : (
+                    <img
+                        key={`${currentItem.id}-${isMobile}`} // La clé change avec isMobile pour forcer la transition
+                        src={getBannerImage()}
+                        className="w-full h-full object-cover animate-in fade-in zoom-in-95 duration-1000"
+                        alt="news"
+                    />
+                )}
+                
                 {/* Ombre très subtile uniquement en bas pour la lisibilité du texte */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"/>
 
