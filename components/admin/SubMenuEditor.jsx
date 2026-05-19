@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {
     Trash2, FileText, Eye, Code, Maximize2, X, CheckCircle2, Link, Crop,
-    GripVertical, Copy, Check, Video, ExternalLink, Sparkles, RotateCcw, Upload, Bot, Globe
+    GripVertical, Copy, Check, Video, ExternalLink, RotateCcw, Upload, Bot, Globe
 } from 'lucide-react';
 
 import {useSubMenuEditor} from '@/components/admin/SubMenuEditor_Logic';
@@ -398,6 +398,48 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     success={(actions.statusMsg === 'success' && lastClicked === 'fb') || lastClicked === 'fb'}
                                     icon={Globe}
                                     label={isHe ? 'קישור פייסבוק' : 'FB Link to Button'}
+                                />
+
+                                {/* Instagram Link to HTML Button */}
+                                <ActionButton
+                                    onClick={() => {
+                                        const url = prompt(isHe ? "הכנס קישור לאינסטגרם:" : "Enter Instagram URL:", "https://www.instagram.com/sup.sportunitespeople/");
+
+                                        if (url) {
+                                            const btnText = prompt(isHe ? "טקסט הכפתור:" : "Button text:", isHe ? "עקבו אחרינו באינסטגרם" : "Follow us on Instagram");
+
+                                            if (btnText) {
+                                                const generatedHtml = `
+                                                    <div style="display: flex; justify-content: center; width: 100%; margin: 16px 0;">
+                                                        <a href="${url}" 
+                                                           target="_blank" 
+                                                           rel="noopener noreferrer" 
+                                                           style="display: inline-flex; align-items: center; gap: 8px; background-color: #E1306C; color: white; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-weight: 500; font-family: system-ui, -apple-system, sans-serif; transition: transform 0.2s, opacity 0.2s;" 
+                                                           onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.02)';" 
+                                                           onmouseout="this.style.opacity='1'; this.style.transform='scale(1)';"
+                                                        >
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                                            </svg>
+                                                            <span>${btnText}</span>
+                                                        </a>
+                                                    </div>`.trim();
+
+                                                navigator.clipboard.writeText(generatedHtml)
+                                                    .then(() => {
+                                                        setLastClicked('ig');
+                                                        setTimeout(() => setLastClicked(null), 2000);
+                                                    })
+                                                    .catch(err => console.error("Clipboard Error:", err));
+                                            }
+                                        }
+                                    }}
+                                    loading={actions.isProcessingFile && lastClicked === 'ig'}
+                                    success={(actions.statusMsg === 'success' && lastClicked === 'ig') || lastClicked === 'ig'}
+                                    icon={Globe}
+                                    label={isHe ? 'קישור לאינסטגרם' : 'IG Link to Button'}
                                 />
 
                                 {/* JSON Viewer Button */}
