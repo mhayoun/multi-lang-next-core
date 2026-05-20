@@ -62,7 +62,7 @@ const Footer = ({data, isHe = true, menuData = [], setActiveSubItem}) => {
     const inputStyle = "w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all";
 
     return (
-        <footer id="footer" className="bg-slate-950 text-white pt-16 pb-6 px-4 mt-20" dir={isHe ? "rtl" : "ltr"}>
+        <footer className="bg-slate-950 text-white pt-16 pb-6 px-4 mt-20" dir={isHe ? "rtl" : "ltr"}>
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
 
                 {/* Section 1: Working Hours */}
@@ -153,7 +153,7 @@ const Footer = ({data, isHe = true, menuData = [], setActiveSubItem}) => {
                             <p className="font-bold">{isHe ? form?.successMessage?.he : form?.successMessage?.en}</p>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit} className="space-y-4">
+                        <form id='footer' onSubmit={handleSubmit} className="space-y-4">
                             <input
                                 required
                                 className={inputStyle}
