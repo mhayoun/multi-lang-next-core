@@ -326,7 +326,7 @@ const Navbar = ({logic, uiText}) => {
             {/* --- RESTORED MOBILE MENU --- */}
             {isMenuOpen && (
                 <div
-                    className="md:hidden border-t border-slate-100 bg-white p-4 space-y-4 animate-in slide-in-from-top duration-200 shadow-inner max-h-[calc(100vh-70px)] overflow-y-auto">
+                    className="md:hidden fixed left-0 right-0 top-16 bg-white border-t border-slate-100 p-5 space-y-5 shadow-xl overflow-y-auto z-50 max-h-[calc(100vh-64px)] pb-12">
 
                     {/* Mobile Search Input */}
                     <div className="relative mb-2">
