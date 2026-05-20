@@ -131,8 +131,8 @@ const Navbar = ({logic, uiText}) => {
     }, [isMenuOpen]);
 
     return (
-        <nav className="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm w-full">
-            <div className="px-6 py-2.5 flex justify-between items-center">
+        <nav className="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-[99999] shadow-sm w-full">
+            <div className="px-6 py-2.5 flex justify-between items-center relative z-10 bg-white">
 
                 {/* --- LEFT SIDE --- */}
                 <div className="flex items-center gap-2 md:gap-8">
@@ -215,9 +215,9 @@ const Navbar = ({logic, uiText}) => {
                     {isInstallable && (
                         <button
                             onClick={debugInstall}
-                            className="w-full flex items-center justify-center gap-2 bg-blue-50 text-blue-600 font-black text-xs uppercase py-3 rounded-xl mb-4 border border-blue-100"
+                            className="flex items-center justify-center gap-1.5 bg-blue-50 text-blue-600 font-black text-[10px] uppercase px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-all active:scale-95"
                         >
-                            <Download size={16}/>
+                            <Download size={12}/>
                             <span>{logic.lang === 'he' ? 'התקן אפליקציה' : 'Install App'}</span>
                         </button>
                     )}
@@ -257,7 +257,7 @@ const Navbar = ({logic, uiText}) => {
                     )}
 
                     {/* Desktop Search Bar */}
-                    <div className="hidden lg:relative lg:block">
+                    <div className="hidden lg:block relative">
                         <input
                             type="text"
                             placeholder="Search..."
@@ -326,7 +326,7 @@ const Navbar = ({logic, uiText}) => {
             {/* --- RESTORED MOBILE MENU --- */}
             {isMenuOpen && (
                 <div
-                    className="md:hidden fixed left-0 right-0 top-16 bg-white border-t border-slate-100 p-5 space-y-5 shadow-xl overflow-y-auto z-50 max-h-[calc(100vh-64px)] pb-12">
+                    className="md:hidden fixed inset-0 bg-white p-5 pt-24 space-y-5 overflow-y-auto z-[-1] min-h-screen pb-16 animate-in slide-in-from-top duration-200">
 
                     {/* Mobile Search Input */}
                     <div className="relative mb-2">
