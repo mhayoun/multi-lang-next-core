@@ -3,6 +3,7 @@ import {Settings, User, LogOut, Menu, X, ChevronDown, Search, Download, Phone} f
 import {LANGUAGES} from '@/lib/data';
 import {signIn, signOut, useSession} from "next-auth/react";
 import usePWAInstall from "@/components/usePWAInstall";
+import {DesktopNavigation} from "@/components/utils/DesktopNavigation";
 
 const Navbar = ({logic, uiText}) => {
     const {data: session} = useSession();
@@ -157,56 +158,11 @@ const Navbar = ({logic, uiText}) => {
                     </button>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex gap-1 h-14 items-center ml-2">
-                        {logic.menuData.map((menu) => {
-                            const hasSubItems = menu.subItems && menu.subItems.length > 0;
-                            const isSingleItem = menu.subItems && menu.subItems.length === 1;
-                            const isContact = menu.type === 'contact';
-
-                            return (
-                                <div key={menu.id} className="relative group h-full flex items-center">
-                                    <button
-                                        onClick={() => {
-                                            if (isContact) {
-                                                document.getElementById('contactus')?.scrollIntoView({behavior: 'smooth'});
-                                            } else if (isSingleItem) {
-                                                handleSubItemClick(menu.subItems[0]);
-                                            }
-                                        }}
-                                        className={`px-3 py-1.5 rounded-md text-[12px] font-bold uppercase tracking-wider transition-all flex items-center gap-1 hover:scale-105 ${
-                                            (isSingleItem || isContact)
-                                                ? 'hover:text-blue-600 hover:font-black hover:bg-slate-50 cursor-pointer'
-                                                : 'text-slate-600 cursor-default group-hover:font-black group-hover:text-slate-900'
-                                        }`}
-                                    >
-                                        {logic.t(menu.title)}
-                                        {hasSubItems && !isSingleItem && !isContact && (
-                                            <ChevronDown size={12}
-                                                         className="text-slate-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180"/>
-                                        )}
-                                    </button>
-
-                                    {hasSubItems && !isSingleItem && !isContact && (
-                                        <div
-                                            className="absolute top-full ltr:left-0 rtl:right-0 mt-0 hidden group-hover:block pt-2 z-[60]">
-                                            <div
-                                                className="bg-white shadow-xl border border-slate-100 rounded-xl p-1.5 min-w-[180px] animate-in fade-in zoom-in-95 duration-150">
-                                                {menu.subItems.map((sub) => (
-                                                    <button
-                                                        key={sub.id}
-                                                        onClick={() => handleSubItemClick(sub)}
-                                                        className="w-full text-start px-3 py-2 hover:bg-blue-50 hover:text-blue-700 hover:font-black rounded-lg text-[12px] font-bold transition-all"
-                                                    >
-                                                        {logic.t(sub.title)}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
+                    <DesktopNavigation
+                        menuData={logic.menuData}
+                        translate={logic.t}
+                        onSubItemClick={handleSubItemClick}
+                    />
                 </div>
 
                 {/* --- RIGHT SIDE --- */}
