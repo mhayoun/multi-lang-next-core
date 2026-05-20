@@ -47,7 +47,7 @@ export const DEFAULT_FOOTER = {
 
   // 3. Contact Form Texts
   form: {
-    title: { he: "צרו קשר", en: "Contact Us" },
+    title: { he: "צור קשר", en: "Contact Us" },
     fields: {
       name: { he: "שם מלא *", en: "Full Name *" },
       phone: { he: "טלפון *", en: "Phone *" },
