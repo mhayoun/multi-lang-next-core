@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {
     Trash2, FileText, Eye, Code, Maximize2, X, CheckCircle2, Link, Crop,
-    GripVertical, Copy, Check, Video, ExternalLink, RotateCcw, Upload, Bot, Globe
+    GripVertical, Copy, Check, Video, ExternalLink, RotateCcw, Upload, Bot, Globe, Mail
 } from 'lucide-react';
 
 import {useSubMenuEditor} from '@/components/admin/SubMenuEditor_Logic';
@@ -316,7 +316,7 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     loading={actions.isProcessingFile && lastClicked === 'image'}
                                     success={actions.statusMsg === 'success' && lastClicked === 'image'}
                                     icon={Upload}
-                                    label={isHe ? 'תמונה ל-HTML' : 'Image to HTML'}
+                                    label={isHe ? 'תמונה ל-HTML' : 'Image for HTML'}
                                 />
 
                                 {/* Crop Image to HTML (900x323) */}
@@ -341,7 +341,7 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     label={isHe ? 'באנר ל-HTML' : 'Banner (900x323)'}
                                 />
 
-                                {/* PDF to HTML */}
+                                {/* link to pdf */}
                                 <input type="file" ref={pdfInputRef} className="hidden" accept=".pdf" onChange={(e) => {
                                     const text = prompt(isHe ? "טקסט לכפתור:" : "Button text:", "Download PDF");
                                     if (text) actions.processFileToHtml(e.target.files[0], subMenuEditor_NewPdfHtml, text);
@@ -354,10 +354,10 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     loading={actions.isProcessingFile && lastClicked === 'pdf'}
                                     success={actions.statusMsg === 'success' && lastClicked === 'pdf'}
                                     icon={FileText}
-                                    label={isHe ? 'PDF לכפתור' : 'PDF to Button'}
+                                    label={isHe ? 'קישור ל-PDF' : 'link to PDF'}
                                 />
 
-                                {/* Facebook Link to HTML Button */}
+                                {/* Link to Facebook */}
                                 <ActionButton
                                     onClick={() => {
                                         const url = prompt(isHe ? "הכנס כתובת פייסבוק:" : "Enter Facebook URL:", "https://www.facebook.com/reel/778211718240090");
@@ -397,7 +397,7 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     loading={actions.isProcessingFile && lastClicked === 'fb'}
                                     success={(actions.statusMsg === 'success' && lastClicked === 'fb') || lastClicked === 'fb'}
                                     icon={Globe}
-                                    label={isHe ? 'קישור פייסבוק' : 'FB Link to Button'}
+                                    label={isHe ? 'קישור ל-פייסבוק' : 'Link to Facebook'}
                                 />
 
                                 {/* Instagram Link to HTML Button */}
@@ -439,7 +439,78 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                     loading={actions.isProcessingFile && lastClicked === 'ig'}
                                     success={(actions.statusMsg === 'success' && lastClicked === 'ig') || lastClicked === 'ig'}
                                     icon={Globe}
-                                    label={isHe ? 'קישור לאינסטגרם' : 'IG Link to Button'}
+                                    label={isHe ? 'קישור ל-אינסטגרם' : 'Link to Instagram'}
+                                />
+
+                                {/* Contact Us HTML Code & Scroll Button */}
+                                <ActionButton
+                                    onClick={() => {
+                                        const inputVal = prompt(
+                                            isHe
+                                                ? "הכנס טקסט לכפתור או קוד HTML שלם:"
+                                                : "Enter button text or paste entire HTML code:",
+                                            isHe ? "צור קשר" : "Contact Us"
+                                        );
+
+                                        if (inputVal) {
+                                            let generatedHtml = "";
+
+                                            // Check if the input contains HTML tags
+                                            const isHtml = /<[a-z][\s\S]*>/i.test(inputVal);
+
+                                            if (isHtml) {
+                                                try {
+                                                    // Parse the HTML string into a DOM document
+                                                    const parser = new DOMParser();
+                                                    const doc = parser.parseFromString(inputVal, 'text/html');
+                                                    // Find the anchor (link) element inside the HTML structure
+                                                    const anchor = doc.querySelector('a');
+
+                                                    if (anchor) {
+                                                        anchor.setAttribute('href', '#footer');
+                                                        // Use outerHTML of the body children to get the cleaned up, updated string
+                                                        generatedHtml = doc.body.innerHTML.trim();
+                                                    } else {
+                                                        // Fallback just in case they passed raw HTML without an <a> tag
+                                                        generatedHtml = inputVal.trim();
+                                                    }
+                                                } catch (e) {
+                                                    console.error("HTML parsing failed, falling back to input structure", e);
+                                                    generatedHtml = inputVal.trim();
+                                                }
+                                            } else {
+                                                // Default structure if it's just plain text string
+                                                generatedHtml = `
+                                                    <div style="display: flex; justify-content: center; width: 100%; margin: 16px 0;">
+                                                        <a href="#footer" 
+                                                           style="display: inline-flex; align-items: center; gap: 8px; background-color: #334155; color: white; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-weight: 500; font-family: system-ui, -apple-system, sans-serif; transition: transform 0.2s, opacity 0.2s;" 
+                                                           onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.02)';" 
+                                                           onmouseout="this.style.opacity='1'; this.style.transform='scale(1)';"
+                                                        >
+                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                                <polyline points="22,6 12,13 2,6"></polyline>
+                                                            </svg>
+                                                            <span>${inputVal}</span>
+                                                        </a>
+                                                    </div>`.trim();
+                                            }
+
+                                            // Copy to clipboard and handle UX transitions
+                                            navigator.clipboard.writeText(generatedHtml)
+                                                .then(() => {
+                                                    setLastClicked('contact');
+                                                    // Smoothly scroll down to the contact area
+                                                    document.getElementById('footer')?.scrollIntoView({behavior: 'smooth'});
+                                                    setTimeout(() => setLastClicked(null), 2000);
+                                                })
+                                                .catch(err => console.error("Clipboard Error:", err));
+                                        }
+                                    }}
+                                    loading={actions.isProcessingFile && lastClicked === 'contact'}
+                                    success={lastClicked === 'contact'}
+                                    icon={Mail}
+                                    label={isHe ? 'כפתור צור קשר' : 'Contact Us'}
                                 />
 
                                 {/* JSON Viewer Button */}
