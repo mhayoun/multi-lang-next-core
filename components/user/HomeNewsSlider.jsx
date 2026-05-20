@@ -1,16 +1,18 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {ChevronRight, ChevronLeft, Volume2, VolumeX} from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronRight, ChevronLeft, Volume2, VolumeX } from 'lucide-react';
 
-const HomeNewsSlider = ({newsData, menuData, handleSubItemClick, setActiveSubItem, t, isHe}) => {
+const HomeNewsSlider = ({ newsData, menuData, handleSubItemClick, setActiveSubItem, t, isHe }) => {
     const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
+    const [isMounted, setIsMounted] = useState(false); // Eliminates Next.js SSR mismatch warnings
     const [progress, setProgress] = useState(100);
     const [duration, setDuration] = useState(10000);
     const videoRef = useRef(null);
     const [isMuted, setIsMuted] = useState(true);
 
-    // 1. Screen Resize Logic
+    // 1. Screen Resize Logic & Mount Check
     useEffect(() => {
+        setIsMounted(true);
         const checkSize = () => setIsMobile(window.innerWidth < 768);
         checkSize();
         window.addEventListener('resize', checkSize);
@@ -37,7 +39,7 @@ const HomeNewsSlider = ({newsData, menuData, handleSubItemClick, setActiveSubIte
         }, 100);
 
         return () => clearInterval(timer);
-    }, [currentNewsIndex, newsData.length, duration]); // Duration here is now safe because we control its updates
+    }, [currentNewsIndex, newsData.length, duration]);
 
     if (!newsData || newsData.length === 0) return null;
 
@@ -46,30 +48,30 @@ const HomeNewsSlider = ({newsData, menuData, handleSubItemClick, setActiveSubIte
 
     const getBannerImage = () => {
         const fallback = currentItem.images?.[0] || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c';
+        // Fallback safely to non-mobile images if component isn't mounted on client yet
+        const mobileFrame = isMounted ? isMobile : false;
+
         if (isHe) {
-            return isMobile ? (currentItem.bgImage_mob?.[0] || fallback) : (currentItem.bgImage_web?.[0] || fallback);
+            return mobileFrame ? (currentItem.bgImage_mob?.[0] || fallback) : (currentItem.bgImage_web?.[0] || fallback);
         } else {
-            return isMobile ? (currentItem.bgImage_mob_en?.[0] || currentItem.bgImage_mob?.[0] || fallback) : (currentItem.bgImage_web_en?.[0] || currentItem.bgImage_web?.[0] || fallback);
+            return mobileFrame ? (currentItem.bgImage_mob_en?.[0] || currentItem.bgImage_mob?.[0] || fallback) : (currentItem.bgImage_web_en?.[0] || currentItem.bgImage_web?.[0] || fallback);
         }
     };
 
     return (
-        <div
-            className="relative w-full h-[450px] md:h-[475px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl group">
-
+        <div className="relative w-full h-[450px] md:h-[475px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl group">
             <div className="relative w-full h-full">
                 {videoUrl ? (
                     <>
                         <video
                             ref={videoRef}
-                            key={`${currentItem.id}-video`}
+                            key={`${currentItem.id}-video-${isMounted ? 'client' : 'ssr'}`}
                             src={videoUrl}
                             autoPlay
                             muted={isMuted}
                             playsInline
                             onLoadedMetadata={(e) => {
                                 const videoLength = e.target.duration * 1000;
-                                // Only update if duration is significantly different to avoid loops
                                 if (Math.abs(duration - videoLength) > 100) {
                                     setDuration(videoLength);
                                 }
@@ -79,25 +81,29 @@ const HomeNewsSlider = ({newsData, menuData, handleSubItemClick, setActiveSubIte
 
                         {/* Mute/Unmute button - Only renders when videoUrl is true */}
                         <button
-                            onClick={() => setIsMuted(!isMuted)}
+                            onClick={(e) => {
+                                e.stopPropagation(); // Prevents clicks bubbling down into layout cards
+                                setIsMuted(!isMuted);
+                            }}
                             className="absolute top-4 right-4 z-50 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full text-white transition-all"
+                            type="button"
                         >
                             {isMuted ? <VolumeX size={20}/> : <Volume2 size={20}/>}
                         </button>
                     </>
                 ) : (
                     <img
-                        key={`${currentItem.id}-${isMobile}`}
+                        key={`${currentItem.id}-${isMounted ? isMobile : 'ssr'}`}
                         src={getBannerImage()}
-                        onLoad={() => setDuration(10000)} // Reset to default for images
+                        onLoad={() => setDuration(10000)}
                         className="w-full h-full object-cover animate-in fade-in zoom-in-95 duration-1000"
                         alt="news"
                     />
                 )}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"/>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"/>
 
-                <div className="absolute bottom-0 p-6 md:p-10 text-white w-full">
+                <div className="absolute bottom-0 p-6 md:p-10 text-white w-full z-10">
                     <h2 className="text-2xl md:text-4xl font-black mb-4 drop-shadow-lg max-w-2xl">
                         {t(currentItem.title)}
                     </h2>
@@ -111,6 +117,7 @@ const HomeNewsSlider = ({newsData, menuData, handleSubItemClick, setActiveSubIte
                             setActiveSubItem(currentItem);
                         }}
                         className="bg-white text-blue-900 px-6 md:px-8 py-2 md:py-3 rounded-2xl font-bold flex items-center gap-2 hover:scale-105 transition-transform"
+                        type="button"
                     >
                         {isHe ? 'קרא עוד' : 'Read More'}
                         <ChevronRight size={18} className={isHe ? 'rotate-180' : ''}/>
@@ -118,21 +125,32 @@ const HomeNewsSlider = ({newsData, menuData, handleSubItemClick, setActiveSubIte
                 </div>
             </div>
 
-            {/* Navigation & Progress */}
+            {/* Navigation & Progress indicators */}
             {newsData.length > 1 && (
                 <>
                     <button
                         onClick={() => setCurrentNewsIndex((prev) => (prev - 1 + newsData.length) % newsData.length)}
-                        className="absolute top-1/2 -translate-y-1/2 left-4 p-3 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                        <ChevronLeft size={24}/></button>
-                    <button onClick={() => setCurrentNewsIndex((prev) => (prev + 1) % newsData.length)}
-                            className="absolute top-1/2 -translate-y-1/2 right-4 p-3 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                        <ChevronRight size={24}/></button>
+                        className="absolute top-1/2 -translate-y-1/2 left-4 p-3 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity z-20"
+                        type="button"
+                    >
+                        <ChevronLeft size={24}/>
+                    </button>
+                    <button
+                        onClick={() => setCurrentNewsIndex((prev) => (prev + 1) % newsData.length)}
+                        className="absolute top-1/2 -translate-y-1/2 right-4 p-3 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity z-20"
+                        type="button"
+                    >
+                        <ChevronRight size={24}/>
+                    </button>
 
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
                         {newsData.map((_, i) => (
-                            <button key={i} onClick={() => setCurrentNewsIndex(i)}
-                                    className={`h-1.5 rounded-full transition-all duration-300 ${currentNewsIndex === i ? 'w-8 bg-blue-500' : 'w-2 bg-white/50'}`}/>
+                            <button
+                                key={i}
+                                onClick={() => setCurrentNewsIndex(i)}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${currentNewsIndex === i ? 'w-8 bg-blue-500' : 'w-2 bg-white/50'}`}
+                                type="button"
+                            />
                         ))}
                     </div>
 

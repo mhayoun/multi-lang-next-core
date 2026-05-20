@@ -69,6 +69,11 @@ const Navbar = ({logic, uiText}) => {
         logic.setActiveSubItem(null);
         logic.setView('user');
         setIsMenuOpen(false);
+        // Smoothly scroll back to the coordinates (0, 0)
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     };
 
     const handleSubItemClick = (sub) => {
@@ -143,7 +148,7 @@ const Navbar = ({logic, uiText}) => {
                                     <button
                                         onClick={() => {
                                             if (isContact) {
-                                                document.getElementById('footer')?.scrollIntoView({behavior: 'smooth'});
+                                                document.getElementById('contactus')?.scrollIntoView({behavior: 'smooth'});
                                             } else if (isSingleItem) {
                                                 handleSubItemClick(menu.subItems[0]);
                                             }
