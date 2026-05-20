@@ -217,7 +217,7 @@ const Navbar = ({logic, uiText}) => {
                             onClick={debugInstall}
                             className="flex items-center justify-center gap-1.5 bg-blue-50 text-blue-600 font-black text-[10px] uppercase px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-all active:scale-95"
                         >
-                            <Download size={12}/>
+                            <Download size={10}/>
                             <span>{logic.lang === 'he' ? 'התקן אפליקציה' : 'Install App'}</span>
                         </button>
                     )}
