@@ -4,13 +4,17 @@ import {
     GripVertical, Copy, Check, Video, ExternalLink, RotateCcw, Upload, Bot, Globe, Mail
 } from 'lucide-react';
 
+import {useSubMenuActions} from './SubMenuEditor_Actions';
+import {SectionLabel, ActionButton} from './SubMenuEditor_Components';
+
 import {useSubMenuEditor} from '@/components/admin/SubMenuEditor_Logic';
 import {subMenuEditor_NewSrcHtml} from '@/components/admin/SubMenuEditor_NewSrcHtml';
 import {subMenuEditor_NewPdfHtml} from '@/components/admin/SubMenuEditor_NewPdfHtml';
 
-// New Refactored imports
-import {useSubMenuActions} from './SubMenuEditor_Actions';
-import {SectionLabel, ActionButton} from './SubMenuEditor_Components';
+import {ContactButtonGenerator} from "@/components/admin/utils/ContactButtonGenerator";
+import {SocialButtonGenerator} from "@/components/admin/utils/SocialButtonGenerator";
+import {ExternalLinkButton} from "@/components/admin/utils/ExternalLinkButton";
+import {ImageToHtmlUploader} from "@/components/admin/utils/ImageToHtmlUploader";
 
 const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenuData, menuData}) => {
     const logic = useSubMenuEditor(sub, menuId, setMenuData, menuData);
@@ -31,35 +35,6 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
     useEffect(() => {
         setCustomRequest(getAutoInstruction(logic.modalLang));
     }, [logic.modalLang]);
-
-    const createBannerCrop = (file) => {
-        return new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = (e) => {
-                const img = new Image();
-                img.src = e.target.result;
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = 900;
-                    canvas.height = 323;
-                    const ctx = canvas.getContext('2d');
-
-                    // Center crop logic (Cover)
-                    const ratio = Math.max(900 / img.width, 323 / img.height);
-                    const w = img.width * ratio;
-                    const h = img.height * ratio;
-                    const x = (900 - w) / 2;
-                    const y = (323 - h) / 2;
-
-                    ctx.drawImage(img, x, y, w, h);
-                    canvas.toBlob((blob) => {
-                        resolve(new File([blob], file.name, {type: 'image/jpeg'}));
-                    }, 'image/jpeg', 0.9);
-                };
-            };
-        });
-    };
 
     return (
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4 shadow-sm relative">
@@ -305,40 +280,19 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                         {/* MODAL FOOTER ACTIONS */}
                         <div className="p-4 border-t bg-slate-50 flex justify-between items-center">
                             <div className="flex items-center gap-2">
+                                {/* 2 buttons in ONE !!!!! */}
                                 {/* All Image to HTML */}
-                                <input type="file" ref={fileInputRef} className="hidden" accept="image/*"
-                                       onChange={(e) => actions.processFileToHtml(e.target.files[0], subMenuEditor_NewSrcHtml, sub.title?.[logic.modalLang] || 'image')}/>
-                                <ActionButton
-                                    onClick={() => {
-                                        setLastClicked('image');
-                                        fileInputRef.current?.click()
-                                    }}
-                                    loading={actions.isProcessingFile && lastClicked === 'image'}
-                                    success={actions.statusMsg === 'success' && lastClicked === 'image'}
-                                    icon={Upload}
-                                    label={isHe ? 'תמונה ל-HTML' : 'Image for HTML'}
-                                />
-
                                 {/* Crop Image to HTML (900x323) */}
-                                <input
-                                    type="file"
-                                    ref={bannerInputRef}
-                                    className="hidden"
-                                    accept="image/*"
-                                    onChange={async (e) => {
-                                        const cropped = await createBannerCrop(e.target.files[0]);
-                                        actions.processFileToHtml(cropped, subMenuEditor_NewSrcHtml, 'banner');
-                                    }}
-                                />
-                                <ActionButton
-                                    onClick={() => {
-                                        setLastClicked('banner');
-                                        bannerInputRef.current?.click();
-                                    }}
-                                    loading={actions.isProcessingFile && lastClicked === 'banner'}
-                                    success={actions.statusMsg === 'success' && lastClicked === 'banner'}
-                                    icon={Crop} // or Layout
-                                    label={isHe ? 'באנר ל-HTML' : 'Banner (900x323)'}
+                                <ImageToHtmlUploader
+                                    isHe={isHe}
+                                    logic={logic}
+                                    actions={actions}
+                                    sub={sub}
+                                    subMenuEditor_NewSrcHtml={subMenuEditor_NewSrcHtml}
+                                    lastClicked={lastClicked}
+                                    setLastClicked={setLastClicked}
+                                    ActionButton={ActionButton}
+                                    icons={{Upload, Crop}}
                                 />
 
                                 {/* link to pdf */}
@@ -358,200 +312,70 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
                                 />
 
                                 {/* Link to Facebook */}
-                                <ActionButton
-                                    onClick={() => {
-                                        const url = prompt(isHe ? "הכנס כתובת פייסבוק:" : "Enter Facebook URL:", "https://www.facebook.com/reel/778211718240090");
-
-                                        if (url) {
-                                            const btnText = prompt(isHe ? "טקסט לכפתור:" : "Button text:", isHe ? "צפה בפייסבוק" : "Watch on Facebook");
-
-                                            if (btnText) {
-                                                // The container <div> handles the centering and the top/bottom margin
-                                                const generatedHtml = `
-                                                <div style="display: flex; justify-content: center; width: 100%; margin: 16px 0;">
-                                                    <a href="${url}" 
-                                                       target="_blank" 
-                                                       rel="noopener noreferrer" 
-                                                       style="display: inline-flex; align-items: center; gap: 8px; background-color: #0866FF; color: white; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-weight: 500; font-family: system-ui, -apple-system, sans-serif; transition: transform 0.2s, opacity 0.2s;" 
-                                                       onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.02)';" 
-                                                       onmouseout="this.style.opacity='1'; this.style.transform='scale(1)';"
-                                                    >
-                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                                            <polyline points="15 3 21 3 21 9"></polyline>
-                                                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                                                        </svg>
-                                                        <span>${btnText}</span>
-                                                    </a>
-                                                </div>`.trim();
-
-                                                navigator.clipboard.writeText(generatedHtml)
-                                                    .then(() => {
-                                                        setLastClicked('fb');
-                                                        setTimeout(() => setLastClicked(null), 2000);
-                                                    })
-                                                    .catch(err => console.error("Clipboard Error:", err));
-                                            }
-                                        }
-                                    }}
-                                    loading={actions.isProcessingFile && lastClicked === 'fb'}
-                                    success={(actions.statusMsg === 'success' && lastClicked === 'fb') || lastClicked === 'fb'}
+                                <SocialButtonGenerator
+                                    type="fb"
+                                    isHe={isHe}
+                                    lastClicked={lastClicked}
+                                    setLastClicked={setLastClicked}
+                                    isProcessing={actions.isProcessingFile}
+                                    successStatus={actions.statusMsg}
+                                    ActionButton={ActionButton}
                                     icon={Globe}
-                                    label={isHe ? 'קישור ל-פייסבוק' : 'Link to Facebook'}
                                 />
 
-                                {/* Instagram Link to HTML Button */}
-                                <ActionButton
-                                    onClick={() => {
-                                        const url = prompt(isHe ? "הכנס קישור לאינסטגרם:" : "Enter Instagram URL:", "https://www.instagram.com/sup.sportunitespeople/");
-
-                                        if (url) {
-                                            const btnText = prompt(isHe ? "טקסט הכפתור:" : "Button text:", isHe ? "עקבו אחרינו באינסטגרם" : "Follow us on Instagram");
-
-                                            if (btnText) {
-                                                const generatedHtml = `
-                                                    <div style="display: flex; justify-content: center; width: 100%; margin: 16px 0;">
-                                                        <a href="${url}" 
-                                                           target="_blank" 
-                                                           rel="noopener noreferrer" 
-                                                           style="display: inline-flex; align-items: center; gap: 8px; background-color: #E1306C; color: white; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-weight: 500; font-family: system-ui, -apple-system, sans-serif; transition: transform 0.2s, opacity 0.2s;" 
-                                                           onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.02)';" 
-                                                           onmouseout="this.style.opacity='1'; this.style.transform='scale(1)';"
-                                                        >
-                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                                            </svg>
-                                                            <span>${btnText}</span>
-                                                        </a>
-                                                    </div>`.trim();
-
-                                                navigator.clipboard.writeText(generatedHtml)
-                                                    .then(() => {
-                                                        setLastClicked('ig');
-                                                        setTimeout(() => setLastClicked(null), 2000);
-                                                    })
-                                                    .catch(err => console.error("Clipboard Error:", err));
-                                            }
-                                        }
-                                    }}
-                                    loading={actions.isProcessingFile && lastClicked === 'ig'}
-                                    success={(actions.statusMsg === 'success' && lastClicked === 'ig') || lastClicked === 'ig'}
+                                {/* Link to Instagram */}
+                                <SocialButtonGenerator
+                                    type="ig"
+                                    isHe={isHe}
+                                    lastClicked={lastClicked}
+                                    setLastClicked={setLastClicked}
+                                    isProcessing={actions.isProcessingFile}
+                                    successStatus={actions.statusMsg}
+                                    ActionButton={ActionButton}
                                     icon={Globe}
-                                    label={isHe ? 'קישור ל-אינסטגרם' : 'Link to Instagram'}
                                 />
-
                                 {/* Contact Us HTML Code & Scroll Button */}
-                                <ActionButton
-                                    onClick={() => {
-                                        const inputVal = prompt(
-                                            isHe
-                                                ? "הכנס טקסט לכפתור או קוד HTML שלם:"
-                                                : "Enter button text or paste entire HTML code:",
-                                            isHe ? "צור קשר" : "Contact Us"
-                                        );
-
-                                        if (inputVal) {
-                                            let generatedHtml = "";
-
-                                            // Check if the input contains HTML tags
-                                            const isHtml = /<[a-z][\s\S]*>/i.test(inputVal);
-
-                                            if (isHtml) {
-                                                try {
-                                                    // Parse the HTML string into a DOM document
-                                                    const parser = new DOMParser();
-                                                    const doc = parser.parseFromString(inputVal, 'text/html');
-                                                    // Find the anchor (link) element inside the HTML structure
-                                                    const anchor = doc.querySelector('a');
-
-                                                    if (anchor) {
-                                                        anchor.setAttribute('href', '#footer');
-                                                        // Use outerHTML of the body children to get the cleaned up, updated string
-                                                        generatedHtml = doc.body.innerHTML.trim();
-                                                    } else {
-                                                        // Fallback just in case they passed raw HTML without an <a> tag
-                                                        generatedHtml = inputVal.trim();
-                                                    }
-                                                } catch (e) {
-                                                    console.error("HTML parsing failed, falling back to input structure", e);
-                                                    generatedHtml = inputVal.trim();
-                                                }
-                                            } else {
-                                                // Default structure if it's just plain text string
-                                                generatedHtml = `
-                                                    <div style="display: flex; justify-content: center; width: 100%; margin: 16px 0;">
-                                                        <a href="#footer" 
-                                                           style="display: inline-flex; align-items: center; gap: 8px; background-color: #334155; color: white; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-weight: 500; font-family: system-ui, -apple-system, sans-serif; transition: transform 0.2s, opacity 0.2s;" 
-                                                           onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.02)';" 
-                                                           onmouseout="this.style.opacity='1'; this.style.transform='scale(1)';"
-                                                        >
-                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                                                <polyline points="22,6 12,13 2,6"></polyline>
-                                                            </svg>
-                                                            <span>${inputVal}</span>
-                                                        </a>
-                                                    </div>`.trim();
-                                            }
-
-                                            // Copy to clipboard and handle UX transitions
-                                            navigator.clipboard.writeText(generatedHtml)
-                                                .then(() => {
-                                                    setLastClicked('contact');
-                                                    // Smoothly scroll down to the contact area
-                                                    document.getElementById('footer')?.scrollIntoView({behavior: 'smooth'});
-                                                    setTimeout(() => setLastClicked(null), 2000);
-                                                })
-                                                .catch(err => console.error("Clipboard Error:", err));
-                                        }
-                                    }}
-                                    loading={actions.isProcessingFile && lastClicked === 'contact'}
-                                    success={lastClicked === 'contact'}
-                                    icon={Mail}
-                                    label={isHe ? 'כפתור צור קשר' : 'Contact Us'}
+                                <ContactButtonGenerator
+                                    isHe={isHe}
+                                    lastClicked={lastClicked}
+                                    setLastClicked={setLastClicked}
+                                    isProcessing={actions.isProcessingFile}
+                                    ActionButton={ActionButton} // Pass the button component down directly
                                 />
 
-                                {/* JSON Viewer Button */}
-                                <a href="https://json.onlineviewer.net/" target="_blank" rel="noopener noreferrer"
-                                   className="shrink-0 flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-md font-bold transition border bg-amber-50 border-amber-200 text-amber-600 hover:bg-amber-100">
-                                    <ExternalLink size={12}/> {isHe ? 'צופה JSON' : 'JSON Viewer'}
-                                </a>
+                                {/* JSON Viewer */}
+                                <ExternalLinkButton type="json" isHe={isHe} icon={ExternalLink}/>
 
-                                <ActionButton onClick={logic.handleCopy} icon={logic.copied ? Check : Copy}
-                                              label={isHe ? (logic.copied ? 'הועתק!' : 'העתק תוכן') : (logic.copied ? 'Copied!' : 'Copy Content')}/>
-
-                                <a href="https://bestonlinehtmleditor.com/" target="_blank" rel="noopener noreferrer"
-                                   className="shrink-0 flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-md font-bold transition border bg-blue-50 border-blue-200 text-blue-600 hover:bg-blue-100">
-                                    <ExternalLink size={12}/> {isHe ? 'עורך HTML' : 'HTML Editor'}
-                                </a>
-
+                                {/* Copy Content Action */}
                                 <ActionButton
-                                    onClick={() => {
-                                        // 1. Generate the final string
-                                        const {finalRequest} = actions.buildFinalPrompt(customRequest);
-
-                                        console.log('finalRequest:', finalRequest)
-
-                                        // 2. Pass it to your copy logic
-                                        if (finalRequest) {
-                                            logic.handleCopyFinalRequest(finalRequest);
-                                        }
-                                    }}
-                                    icon={logic.copied ? Check : Copy}
-                                    success={logic.copied}
+                                    onClick={logic.handleCopy}
+                                    icon={logic.copiedType === 'content' ? Check : Copy}
+                                    success={logic.copiedType === 'content'}
                                     label={isHe
-                                        ? (logic.copied ? 'הועתק!' : 'העתק בקשה סופית')
-                                        : (logic.copied ? 'Copied!' : 'Copy Final Request')
+                                        ? (logic.copiedType === 'content' ? 'הועתק!' : 'העתק תוכן')
+                                        : (logic.copiedType === 'content' ? 'Copied!' : 'Copy Content')
                                     }
                                 />
 
-                                {/* Gemini Button */}
-                                <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"
-                                   className="shrink-0 flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-md font-bold transition border bg-purple-50 border-purple-200 text-purple-600 hover:bg-purple-100">
-                                    <ExternalLink size={12}/> {isHe ? 'ג׳ימיני' : 'Gemini'}
-                                </a>
+                                {/* HTML Editor */}
+                                <ExternalLinkButton type="html" isHe={isHe} icon={ExternalLink}/>
+
+                                {/* Copy Final Request Action */}
+                                <ActionButton
+                                    onClick={() => {
+                                        const {finalRequest} = actions.buildFinalPrompt(customRequest);
+                                        if (finalRequest) logic.handleCopyFinalRequest(finalRequest);
+                                    }}
+                                    icon={logic.copiedType === 'final' ? Check : Copy}
+                                    success={logic.copiedType === 'final'}
+                                    label={isHe
+                                        ? (logic.copiedType === 'final' ? 'הועתק!' : 'העתק בקשה סופית')
+                                        : (logic.copiedType === 'final' ? 'Copied!' : 'Copy Final Request')
+                                    }
+                                />
+
+                                {/* Gemini */}
+                                <ExternalLinkButton type="gemini" isHe={isHe} icon={ExternalLink}/>
 
                             </div>
 

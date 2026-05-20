@@ -5,7 +5,7 @@ export const useSubMenuEditor = (sub, menuId, setMenuData, menuData) => {
     const [viewMode, setViewMode] = useState('edit'); // 'edit' | 'preview'
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalLang, setModalLang] = useState('he');
-    const [copied, setCopied] = useState(false);
+
     const [leftWidth, setLeftWidth] = useState(50);
 
     const isResizing = useRef(false);
@@ -15,11 +15,12 @@ export const useSubMenuEditor = (sub, menuId, setMenuData, menuData) => {
         setMenuData(newData);
     };
 
+    const [copiedType, setCopiedType] = useState(null); // 'content', 'final', or null
     const handleCopy = async () => {
         const success = await copyToClipboard(sub.content?.[modalLang] || '');
         if (success) {
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+            setCopiedType('content'); // Mark specifically that 'content' was copied
+            setTimeout(() => setCopiedType(null), 2000); // Clear it after 2 seconds
         }
     };
 
@@ -31,8 +32,8 @@ export const useSubMenuEditor = (sub, menuId, setMenuData, menuData) => {
         if (finalRequest) {
             const success = await copyToClipboard(finalRequest);
             if (success) {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
+                setCopiedType('final'); // Mark specifically that 'final' was copied
+                setTimeout(() => setCopiedType(null), 2000); // Reset after 2 seconds
             }
         }
     };
@@ -98,7 +99,8 @@ export const useSubMenuEditor = (sub, menuId, setMenuData, menuData) => {
         viewMode, setViewMode,
         isModalOpen, setIsModalOpen,
         modalLang, setModalLang,
-        copied, leftWidth,
+        copiedType,
+        leftWidth,
         handleUpdateField,
         handleCopy,
         handleCopyFinalRequest,
