@@ -1,5 +1,5 @@
 import React from 'react';
-import {Plus, Trash2, FileText, Link2} from 'lucide-react';
+import {Plus, Trash2, FileText, Link2, Phone} from 'lucide-react';
 import SubMenuEditor from '@/components/admin/SubMenuEditor';
 import SliderLinker from '@/components/admin/SliderLinker';
 import SliderLinkerOnce from '@/components/admin/SliderLinkerOnce';
@@ -113,19 +113,31 @@ const MenuSection = ({
                                     }
                                 >
                                     <div className="space-y-6">
-                                        {/* --- NEW FEATURE: CONTENT MODE TOGGLE --- */}
-                                        <div className="flex bg-slate-100 p-1 rounded-xl w-fit">
+                                        {/* --- FEATURE: CONTENT MODE TOGGLE --- */}
+                                        <div className="flex bg-slate-100 p-1 rounded-xl w-fit gap-1">
                                             <button
                                                 onClick={() => updateSubMenuField(menu.id, sub.id, 'contentMode', 'editor')}
                                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition ${(!sub.contentMode || sub.contentMode === 'editor') ? 'bg-white text-blue-600 shadow' : 'text-slate-500 hover:text-slate-700'}`}
+                                                type="button"
                                             >
                                                 <FileText size={14}/> {isHe ? 'עורך תוכן' : 'Content Editor'}
                                             </button>
+
                                             <button
                                                 onClick={() => updateSubMenuField(menu.id, sub.id, 'contentMode', 'linker')}
                                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition ${sub.contentMode === 'linker' ? 'bg-white text-blue-600 shadow' : 'text-slate-500 hover:text-slate-700'}`}
+                                                type="button"
                                             >
                                                 <Link2 size={14}/> {isHe ? 'קישור לפריט קיים' : 'Link Existing Item'}
+                                            </button>
+
+                                            {/* NEW CONTACT US MODE TOGGLE OPTION */}
+                                            <button
+                                                onClick={() => updateSubMenuField(menu.id, sub.id, 'contentMode', 'contactus')}
+                                                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition ${sub.contentMode === 'contactus' ? 'bg-white text-blue-600 shadow' : 'text-slate-500 hover:text-slate-700'}`}
+                                                type="button"
+                                            >
+                                                <Phone size={14}/> {isHe ? 'צור קשר' : 'Contact Us'}
                                             </button>
                                         </div>
 

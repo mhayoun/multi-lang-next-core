@@ -77,6 +77,26 @@ const Navbar = ({logic, uiText}) => {
     };
 
     const handleSubItemClick = (sub) => {
+        // 1. Check if the mode points directly to the contact form section
+        if (sub.contentMode === 'contactus') {
+            logic.setView('user');
+            setIsMenuOpen(false);
+            setSearchQuery("");
+
+            // Timeout ensures the page flips layout state back to user view before scrolling
+            setTimeout(() => {
+                const targetElement = document.getElementById('contactus');
+                if (targetElement) {
+                    targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+                } else {
+                    // Fallback to top if element is missing on screen
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                }
+            }, 100);
+            return; // Halt execution early
+        }
+
+        // 2. Original routing fallback branch conditions (Linker vs. Editor)
         if (sub.contentMode === 'linker' && sub.linkedItemId) {
             const targetSubItem = logic.menuData
                 ?.flatMap(menu => menu.subItems || [])
