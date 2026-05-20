@@ -56,24 +56,35 @@ const HomeNewsSlider = ({newsData, menuData, handleSubItemClick, setActiveSubIte
     return (
         <div
             className="relative w-full h-[450px] md:h-[475px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl group">
+
             <div className="relative w-full h-full">
                 {videoUrl ? (
-                    <video
-                        ref={videoRef}
-                        key={`${currentItem.id}-video`}
-                        src={videoUrl}
-                        autoPlay
-                        muted={isMuted}
-                        playsInline
-                        onLoadedMetadata={(e) => {
-                            const videoLength = e.target.duration * 1000;
-                            // Only update if duration is significantly different to avoid loops
-                            if (Math.abs(duration - videoLength) > 100) {
-                                setDuration(videoLength);
-                            }
-                        }}
-                        className="w-full h-full object-cover animate-in fade-in zoom-in-95 duration-1000"
-                    />
+                    <>
+                        <video
+                            ref={videoRef}
+                            key={`${currentItem.id}-video`}
+                            src={videoUrl}
+                            autoPlay
+                            muted={isMuted}
+                            playsInline
+                            onLoadedMetadata={(e) => {
+                                const videoLength = e.target.duration * 1000;
+                                // Only update if duration is significantly different to avoid loops
+                                if (Math.abs(duration - videoLength) > 100) {
+                                    setDuration(videoLength);
+                                }
+                            }}
+                            className="w-full h-full object-cover animate-in fade-in zoom-in-95 duration-1000"
+                        />
+
+                        {/* Mute/Unmute button - Only renders when videoUrl is true */}
+                        <button
+                            onClick={() => setIsMuted(!isMuted)}
+                            className="absolute top-4 right-4 z-50 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full text-white transition-all"
+                        >
+                            {isMuted ? <VolumeX size={20}/> : <Volume2 size={20}/>}
+                        </button>
+                    </>
                 ) : (
                     <img
                         key={`${currentItem.id}-${isMobile}`}
