@@ -165,7 +165,7 @@ const MenuSection = ({
                                                     t={t}
                                                 />
                                             </div>
-                                        ) : (
+                                        ) : sub.contentMode === 'linker' ? (
                                             <div className="animate-in fade-in slide-in-from-top-2 duration-300">
                                                 <SliderLinkerOnce
                                                     isHe={isHe}
@@ -174,7 +174,15 @@ const MenuSection = ({
                                                     onSelect={(val) => updateSubMenuField(menu.id, sub.id, 'linkedItemId', val)}
                                                 />
                                             </div>
-                                        )}
+                                        ) : (
+                                            /* Fallback for other modes like 'contactus' or custom extensions */
+                                            <div
+                                                className="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-center text-xs font-bold text-slate-400">
+                                                {isHe ? 'דלג בצורה חלקה ל״צור קשר״' : 'Skip smoothly to “Contact Us”'}
+                                            </div>
+                                        )
+
+                                        }
                                     </div>
                                 </EditorAccordionItem>
                             ))}
