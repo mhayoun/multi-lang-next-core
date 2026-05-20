@@ -107,13 +107,6 @@ const HomeNewsSlider = ({newsData, menuData, handleSubItemClick, setActiveSubIte
                 </div>
             </div>
 
-            <button
-                onClick={() => setIsMuted(!isMuted)}
-                className="absolute top-4 right-4 z-50 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full text-white transition-all"
-            >
-                {isMuted ? <VolumeX size={20}/> : <Volume2 size={20}/>}
-            </button>
-            
             {/* Navigation & Progress */}
             {newsData.length > 1 && (
                 <>
