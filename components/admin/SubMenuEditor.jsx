@@ -167,7 +167,7 @@ const SubMenuEditor = ({sub, menuId, isHe, handleFileUpload, removeFile, setMenu
             {/* 5. FULLSCREEN MODAL */}
             {logic.isModalOpen && (
                 <div
-                    className="fixed inset-0 z-[9999] bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4">
+                    className="fixed inset-0 z-[100000] bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4">
                     <div className="bg-white w-full h-full rounded-2xl shadow-2xl flex flex-col overflow-hidden">
 
                         {/* MODAL HEADER */}
