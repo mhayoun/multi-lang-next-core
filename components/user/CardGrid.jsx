@@ -35,7 +35,10 @@ const CardGrid = ({menuData, setActiveSubItem, t, isHe}) => {
                 .map((menu) => (
                     <div
                         key={menu.id}
-                        className="bg-white rounded-[2.5rem] overflow-hidden shadow-lg border border-slate-100 transition-transform hover:-translate-y-1"
+                        className={`bg-white rounded-[2.5rem] overflow-hidden shadow-lg border-4 transition-transform hover:-translate-y-1 ${
+                            menu.indicatorColor ? '' : 'border-slate-100'
+                        }`}
+                        style={menu.indicatorColor ? { borderColor: menu.indicatorColor } : undefined}
                     >
                         {/* Header Image Section */}
                         <div className="h-40 relative">

@@ -47,8 +47,13 @@ export const DesktopNavigation = ({ menuData, translate, onSubItemClick }) => {
             </button>
 
             {/* Hover Indicator Bar */}
-            <div className="absolute bottom-0 left-3 right-3 h-[3px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200 ease-out pointer-events-none" />
-
+            <div
+              className={`absolute bottom-0 left-3 right-3 h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200 ease-out pointer-events-none ${
+                menu.indicatorColor ? '' : 'bg-blue-600'
+              }`}
+              style={menu.indicatorColor ? { backgroundColor: menu.indicatorColor } : undefined}
+            />
+            
             {/* Dropdown container */}
             {hasSubItems && !isSingleItem && !isContact && (
               <div className="absolute top-full ltr:left-0 rtl:right-0 mt-0 hidden group-hover:block pt-2 z-[60]">

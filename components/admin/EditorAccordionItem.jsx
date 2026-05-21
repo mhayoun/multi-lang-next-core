@@ -1,5 +1,5 @@
 import React from 'react';
-import {ArrowUp, ArrowDown, Trash2, ChevronUp, ChevronDown, Check, X} from 'lucide-react';
+import {ArrowUp, ArrowDown, Trash2, ChevronUp, ChevronDown} from 'lucide-react';
 
 const EditorAccordionItem = ({
                                  children,
@@ -13,6 +13,10 @@ const EditorAccordionItem = ({
                                  onMove,
                                  icon: Icon,
                                  titleInputs,
+
+                                 /* --- ADDED PROPS HERE --- */
+                                 indicatorColor,
+                                 onColorChange,
                              }) => (
     <div className="bg-white border rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition-colors">
         {/* Header */}
@@ -36,12 +40,24 @@ const EditorAccordionItem = ({
 
             {Icon && <Icon className="text-blue-500 shrink-0" size={20}/>}
 
+            {/* --- NEW INLINE COLOR PICKER CONTAINER --- */}
+            {onColorChange && (
+                <div className="flex items-center gap-1 bg-white border px-2 py-1 rounded-xl shadow-sm">
+                    <input
+                        type="color"
+                        value={indicatorColor || '#3b82f6'} // default blue fallback
+                        onChange={(e) => onColorChange(id, e.target.value)}
+                        className="w-5 h-5 rounded-md cursor-pointer border-none bg-transparent"
+                    />
+                </div>
+            )}
+
+
             <div className="flex-1 grid grid-cols-2 gap-2">
                 {titleInputs}
             </div>
 
             <div className="flex items-center gap-2">
-
                 <button
                     onClick={() => {
                         const confirmMsg = isHe

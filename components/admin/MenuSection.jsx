@@ -50,6 +50,10 @@ const MenuSection = ({
                     onToggle={toggleAccordion}
                     onRemove={removeMenu}
                     onMove={moveMenu}
+                    indicatorColor={menu.indicatorColor}
+                    onColorChange={(menuId, newColor) => {
+                        setMenuData(prev => prev.map(m => m.id === menuId ? { ...m, indicatorColor: newColor } : m));
+                    }}
                     titleInputs={
                         <>
                             {(isHe ? ['he', 'en'] : ['en', 'he']).map((lang) => (

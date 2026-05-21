@@ -15,7 +15,7 @@ export const getClientData = () => {
             footer: require(`@/src/data/${clientId}/footerData`).DEFAULT_FOOTER,
         };
     } catch (error) {
-        console.error(`Data for client ${clientId} not found, falling back to default.`);
+        console.warning(`Data for client ${clientId} not found, falling back to default.`);
         // Fallback to a default client folder if needed
         return {
             menu: require(`@/src/data/default/menuData`).DEFAULT_MENU,
