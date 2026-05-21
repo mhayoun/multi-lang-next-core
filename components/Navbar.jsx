@@ -132,8 +132,8 @@ const Navbar = ({logic, uiText}) => {
     }, [isMenuOpen]);
 
     return (
-        <nav className="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-[99999] shadow-sm w-full">
-            <div className="px-6 py-2.5 flex justify-between items-center relative z-10 bg-white">
+        <nav className="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm w-full">
+            <div className="px-6 py-2.5 flex justify-between items-center">
 
                 {/* --- LEFT SIDE --- */}
                 <div className="flex items-center gap-2 md:gap-8">
