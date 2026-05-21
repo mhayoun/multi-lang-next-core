@@ -8,6 +8,8 @@ import ContactForm from '@/components/ContactForm'; // 1. Import the form
 const UserInterface = ({logic, uiText}) => {
     const {activeSubItem, setActiveSubItem, menuData, newsData, t, lang} = logic;
     const isHe = lang === 'he';
+    // This filters out any news items marked as 'hidden'
+    const visibleNews = newsData?.filter(item => item.contentMode !== 'hidden') || [];
 
     if (activeSubItem) {
         // 2. Intercept the "contact" type here
@@ -60,7 +62,7 @@ const UserInterface = ({logic, uiText}) => {
     return (
         <div className="space-y-12" dir={isHe ? 'rtl' : 'ltr'}>
             <HomeNewsSlider
-                newsData={newsData}
+                newsData={visibleNews}
                 menuData={menuData}
                 handleSubItemClick={handleSubItemClick}
                 setActiveSubItem={setActiveSubItem}
