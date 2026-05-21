@@ -27,7 +27,7 @@ export const DesktopNavigation = ({ menuData, translate, onSubItemClick }) => {
         };
 
         return (
-          <div key={menu.id} className="relative group h-full flex items-center">
+          <div key={menu.id} className="relative group h-full flex items-center px-1">
             <button
               onClick={handleMainMenuClick}
               className={`px-3 py-1.5 rounded-md text-[12px] font-bold uppercase tracking-wider transition-all flex items-center gap-1 hover:scale-105 ${
@@ -45,6 +45,9 @@ export const DesktopNavigation = ({ menuData, translate, onSubItemClick }) => {
                 />
               )}
             </button>
+
+            {/* Hover Indicator Bar */}
+            <div className="absolute bottom-0 left-3 right-3 h-[3px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200 ease-out pointer-events-none" />
 
             {/* Dropdown container */}
             {hasSubItems && !isSingleItem && !isContact && (
