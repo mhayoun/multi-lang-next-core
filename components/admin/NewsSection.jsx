@@ -4,6 +4,7 @@ import SubMenuEditor from '@/components/admin/SubMenuEditor';
 import SliderLinker from '@/components/admin/SliderLinker';
 import SliderLinkerOnce from '@/components/admin/SliderLinkerOnce';
 import EditorAccordionItem from '@/components/admin/EditorAccordionItem';
+import NewsBackgroundEditor from "@/components/admin/utils/NewsBackgroundEditor";
 
 const NewsSection = ({
                          newsData, menuData, isHe, t, openItems, toggleAccordion,
@@ -71,112 +72,13 @@ const NewsSection = ({
                                 </button>
                             </div>
 
-                            {/* SECTION IMAGES DE FOND */}
-
-                            <div
-                                className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                {/* --- MOBILE BACKGROUND --- */}
-                                <div className="space-y-2">
-                                    <label className="font-bold text-slate-400 block text-[10px] uppercase">
-                                        {isHe ? 'תמונת רקע מובייל' : 'Mobile Background Image'}
-                                    </label>
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={(e) => handleFileUpload(e, news.id, null, isHe ? 'bgImage_mob' : 'bgImage_mob_en', true)}
-                                        className="text-[10px] w-full file:mr-4 file:py-1 file:px-2 file:rounded-full file:border-0 file:text-[10px] file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
-                                    />
-                                    {(() => {
-                                        const mobileData = isHe ? news.bgImage_mob : (news.bgImage_mob_en || news.bgImage_mob);
-                                        const mobileUrl = Array.isArray(mobileData) ? mobileData[0] : mobileData;
-
-                                        return mobileUrl ? (
-                                            <div className="relative w-12 h-20 mt-2 group">
-                                                <img
-                                                    src={mobileUrl}
-                                                    className="w-full h-full object-cover rounded border shadow-sm"
-                                                    alt="mobile preview"
-                                                />
-                                                <button
-                                                    onClick={() => updateNewsField(news.id, isHe ? 'bgImage_mob' : 'bgImage_mob_en', '')}
-                                                    className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition shadow-sm z-10"
-                                                >
-                                                    <Trash2 size={10}/>
-                                                </button>
-                                            </div>
-                                        ) : null;
-                                    })()}
-                                </div>
-
-                                {/* --- WEB BACKGROUND (SLIDER) --- */}
-                                <div className="space-y-2">
-                                    <label className="font-bold text-slate-400 block text-[10px] uppercase">
-                                        {isHe ? 'תמונת רקע דסקטופ' : 'Web Background Image (Slider)'}
-                                    </label>
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={(e) => handleFileUpload(e, news.id, null, isHe ? 'bgImage_web' : 'bgImage_web_en', true)}
-                                        className="text-[10px] w-full file:mr-4 file:py-1 file:px-2 file:rounded-full file:border-0 file:text-[10px] file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
-                                    />
-                                    {(() => {
-                                        const webData = isHe ? news.bgImage_web : (news.bgImage_web_en || news.bgImage_web);
-                                        const webUrl = Array.isArray(webData) ? webData[0] : webData;
-
-                                        return webUrl ? (
-                                            <div className="relative w-24 h-10 mt-2 group">
-                                                <img
-                                                    src={webUrl}
-                                                    className="w-full h-full object-cover rounded border shadow-sm"
-                                                    alt="web preview"
-                                                />
-                                                <button
-                                                    onClick={() => updateNewsField(news.id, isHe ? 'bgImage_web' : 'bgImage_web_en', '')}
-                                                    className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition shadow-sm z-10"
-                                                >
-                                                    <Trash2 size={10}/>
-                                                </button>
-                                            </div>
-                                        ) : null;
-                                    })()}
-                                </div>
-
-                                {/* --- NEW: VIDEO BACKGROUND COLUMN --- */}
-                                <div className="space-y-2">
-                                    <label className="font-bold text-slate-400 block text-[10px] uppercase">
-                                        {isHe ? 'וידאו רקע' : 'Video Background'}
-                                    </label>
-                                    <input
-                                        type="file"
-                                        accept="video/*"
-                                        onChange={(e) => handleFileUpload(e, news.id, null, isHe ? 'bgVideo' : 'bgVideo_en', true)}
-                                        className="text-[10px] w-full file:mr-4 file:py-1 file:px-2 file:rounded-full file:border-0 file:text-[10px] file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
-                                    />
-                                    {(() => {
-                                        const videoData = isHe ? news.bgVideo : (news.bgVideo_en || news.bgVideo);
-                                        const videoUrl = Array.isArray(videoData) ? videoData[0] : videoData;
-
-                                        return videoUrl ? (
-                                            <div className="relative w-24 h-12 mt-2 group">
-                                                <video
-                                                    src={videoUrl}
-                                                    muted
-                                                    loop
-                                                    playsInline
-                                                    autoPlay
-                                                    className="w-full h-full object-cover rounded border shadow-sm"
-                                                />
-                                                <button
-                                                    onClick={() => updateNewsField(news.id, isHe ? 'bgVideo' : 'bgVideo_en', '')}
-                                                    className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition shadow-sm z-10"
-                                                >
-                                                    <Trash2 size={10}/>
-                                                </button>
-                                            </div>
-                                        ) : null;
-                                    })()}
-                                </div>
-                            </div>
+                            {/* SECTION IMAGES/VIDEO DE FOND */}
+                            <NewsBackgroundEditor
+                                news={news}
+                                isHe={isHe}
+                                handleFileUpload={handleFileUpload}
+                                updateNewsField={updateNewsField}
+                            />
 
                             {/* --- CONDITIONAL RENDER --- */}
                             {(!news.contentMode || news.contentMode === 'editor') ? (
