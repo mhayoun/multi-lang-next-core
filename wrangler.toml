@@ -1,8 +1,5 @@
 name = "multi-lang-next-core"
 compatibility_date = "2024-09-23"
+pages_build_output_dir = ".open-next"
 
-# Assurez-vous d'avoir exactement ces lignes :
-[site]
-bucket = ".open-next/assets"
-
-pages_build_output_dir = ".open-next/assets"
+# Supprimez le bloc [site] s'il y était, OpenNext gère le routage lui-même.
