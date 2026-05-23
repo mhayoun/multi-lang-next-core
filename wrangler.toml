@@ -2,8 +2,5 @@ name = "multi-lang-next-core"
 compatibility_date = "2024-09-23"
 compatibility_flags = [ "nodejs_compat" ]
 
-# C'est la configuration standard recommandée par OpenNext pour Pages :
-pages_build_output_dir = ".open-next/assets"
-
-[build]
-command = "npx @opennextjs/cloudflare build"
+# On remet le dossier racine généré pour l'adaptateur Pages
+pages_build_output_dir = ".open-next"
