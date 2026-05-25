@@ -3,6 +3,7 @@ import "./globals.css";
 import ClientProviders from "@/components/ClientProviders";
 // Import the shared library logic directly
 import {getClientSettings} from "@/lib/settings";
+import { Analytics } from '@vercel/analytics/next';
 
 
 export const dynamic = "force-dynamic";
@@ -101,6 +102,7 @@ export default function RootLayout({children}) {
         <ClientProviders>
             {children}
         </ClientProviders>
+        <Analytics />
         </body>
         </html>
     );
