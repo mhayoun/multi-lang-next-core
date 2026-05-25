@@ -70,21 +70,16 @@ const FooterSection = ({logic, isHe}) => {
             <AccordionItem
                 index={0} title={footer.hours.title} icon={Clock} lang={lang}
                 isOpen={openIndex === 0} setOpenIndex={setOpenIndex}
-                actions={
-                    <button onClick={() => handleUpdate(f => f.hours.items.push({
-                        label: {he: '', en: ''},
-                        value: {he: '', en: ''},
-                        isLink: false
-                    }))}
-                            className="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors">
-                        <Plus size={14}/> {isHe ? 'הוסף' : 'Add'}
-                    </button>
-                }
             >
                 <HoursSection
                     footer={footer} lang={lang} isHe={isHe} menuData={menuData} t={t}
                     onTitleChange={(sec, val) => handleUpdate(f => f[sec].title[lang] = val)}
                     onItemChange={handleHoursChange}
+                    onAdd={() => handleUpdate(f => f.hours.items.push({
+                        label: {he: '', en: ''},
+                        value: {he: '', en: ''},
+                        isLink: false
+                    }))}
                     onRemove={(idx) => handleUpdate(f => f.hours.items.splice(idx, 1))}
                     onMove={(idx, dir) => handleUpdate(f => {
                         const newIdx = dir === 'up' ? idx - 1 : idx + 1;
