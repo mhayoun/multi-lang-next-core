@@ -136,7 +136,7 @@ const Navbar = ({logic, uiText}) => {
             <div className="px-6 py-2.5 flex justify-between items-center relative z-10 bg-white">
 
                 {/* --- LEFT SIDE --- */}
-                <div className="flex items-center gap-2 md:gap-8">
+                <div className="flex items-center gap-4 md:gap-8">
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg"
@@ -144,6 +144,7 @@ const Navbar = ({logic, uiText}) => {
                         {isMenuOpen ? <X size={20}/> : <Menu size={20}/>}
                     </button>
 
+                    {/* Logo */}
                     <button
                         onClick={handleHomeClick}
                         className="flex items-center transition-all active:scale-95 outline-none hover:brightness-110"
@@ -157,6 +158,17 @@ const Navbar = ({logic, uiText}) => {
                         )}
                     </button>
 
+                    {/* Desktop PWA Install Button */}
+                    {isInstallable && (
+                        <button
+                            onClick={debugInstall}
+                            className="flex items-center justify-center gap-1.5 bg-blue-50 text-blue-600 font-black text-[10px] uppercase px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-all active:scale-95"
+                        >
+                            <Download size={9}/>
+                            <span>{logic.lang === 'he' ? 'התקן אפליקציה' : 'Install App'}</span>
+                        </button>
+                    )}
+
                     {/* Desktop Navigation */}
                     <DesktopNavigation
                         menuData={logic.menuData}
@@ -167,16 +179,6 @@ const Navbar = ({logic, uiText}) => {
 
                 {/* --- RIGHT SIDE --- */}
                 <div className="flex items-center gap-3">
-                    {/* Desktop PWA Install Button */}
-                    {isInstallable && (
-                        <button
-                            onClick={debugInstall}
-                            className="flex items-center justify-center gap-1.5 bg-blue-50 text-blue-600 font-black text-[10px] uppercase px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-all active:scale-95"
-                        >
-                            <Download size={10}/>
-                            <span>{logic.lang === 'he' ? 'התקן אפליקציה' : 'Install App'}</span>
-                        </button>
-                    )}
 
                     {session && (
                         <div className="hidden sm:flex bg-slate-100 rounded-full p-1 border border-slate-200">
@@ -279,7 +281,7 @@ const Navbar = ({logic, uiText}) => {
                 </div>
             </div>
 
-            {/* --- RESTORED MOBILE MENU --- */}
+            {/* --- MOBILE MENU --- */}
             {isMenuOpen && (
                 <div
                     className="md:hidden fixed inset-0 bg-white p-5 pt-24 space-y-5 overflow-y-auto z-[-1] min-h-screen pb-16 animate-in slide-in-from-top duration-200">
