@@ -171,9 +171,9 @@ const Navbar = ({logic, uiText}) => {
                     {isInstallable && (
                         <button
                             onClick={debugInstall}
-                            className="ms-6 flex items-center justify-center gap-1.5 bg-blue-50 text-blue-600 font-black text-[10px] uppercase px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-all active:scale-95"
+                            className="ms-2 flex items-center justify-center gap-1.5 bg-blue-50 text-blue-600 font-black text-[10px] uppercase px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-all active:scale-95"
                         >
-                            <Download size={9}/>
+                            <Download size={8}/>
                             <span>{logic.lang === 'he' ? 'התקן אפליקציה' : 'Install App'}</span>
                         </button>
                     )}
