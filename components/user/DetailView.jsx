@@ -84,7 +84,7 @@ const DetailView = ({activeSubItem, setActiveSubItem, menuData, t, isHe, uiText}
             const formattedNumber = `972${rawNumber.substring(1)}`;
             const defaultMsg = isHe
                 ? `שלום, אני מעוניין בפרטים אודות "${title}". אשמח שתחזרו אלי.`
-                : `Hi, I am interested in "${title}". Please contact me.`;
+                : `Hi, I am interested to get more details about "${title}". Please contact me.`;
 
             const waUrl = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(defaultMsg)}`;
 
