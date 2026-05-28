@@ -3,13 +3,21 @@ import {useSession} from "next-auth/react";
 import DetailView from '@/components/user/DetailView';
 import HomeNewsSlider from '@/components/user/HomeNewsSlider';
 import CardGrid from '@/components/user/CardGrid';
-import ContactForm from '@/components/ContactForm'; // 1. Import the form
+import ContactForm from '@/components/ContactForm';
+import GalleryBanderole from '@/components/user/GalleryBanderole';
 
 const UserInterface = ({logic, uiText}) => {
-    const {activeSubItem, setActiveSubItem, menuData, newsData, t, lang} = logic;
+    const {activeSubItem, setActiveSubItem, menuData, newsData, homeData, t, lang} = logic;
     const isHe = lang === 'he';
+
     // This filters out any news items marked as 'hidden'
     const visibleNews = newsData?.filter(item => item.contentMode !== 'hidden') || [];
+
+    const homeMedia = [
+        ...(homeData?.images?.map(url => ({url, type: 'image'})) || []),
+        ...(homeData?.videos?.map(url => ({url, type: 'video'})) || []),
+        ...(homeData?.youtubes?.map(url => ({url, type: 'youtube'})) || [])
+    ];
 
     if (activeSubItem) {
         // 2. Intercept the "contact" type here
@@ -75,6 +83,16 @@ const UserInterface = ({logic, uiText}) => {
                 t={t}
                 isHe={isHe}
             />
+
+            {/* Remplacez la section fixe par celle-ci */}
+            {homeData?.settings?.showGallery !== false && ( // Affiche par défaut sauf si showGallery est explicitement false
+                <div className="pt-12">
+                    <h3 className="text-2xl font-bold text-center mb-8">
+                        {t(homeData?.settings?.title)}
+                    </h3>
+                    <GalleryBanderole media={homeMedia} isHe={isHe}/>
+                </div>
+            )}
         </div>
     );
 };

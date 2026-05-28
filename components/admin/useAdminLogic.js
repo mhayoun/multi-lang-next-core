@@ -2,9 +2,13 @@ import {useState} from 'react';
 
 export const useAdminLogic = (logic) => {
     // 1. Ensure 'logo' is extracted from the logic passed in
-    const {menuData, setMenuData, newsData, setNewsData,
-        logo, setLogo, siteSettings, moveMenu, moveNews} = logic;
+    const {
+        menuData, setMenuData, newsData, setNewsData,
+        logo, setLogo, siteSettings, moveMenu, moveNews, homeData, setHomeData
+    } = logic;
+
     const [activeTab, setActiveTab] = useState('menu');
+
     const [openItems, setOpenItems] = useState({});
 
     const toggleAccordion = (id) => {
@@ -140,7 +144,8 @@ export const useAdminLogic = (logic) => {
                     menuData,
                     newsData,
                     logo,
-                    siteSettings
+                    siteSettings,
+                    homeData
                 }),
             });
 
@@ -186,6 +191,27 @@ export const useAdminLogic = (logic) => {
             return {...menu, subItems: newSubItems};
         }));
     };
+
+    // // Gestion de l'upload pour la galerie (Images et Vidéos)
+    // const handleFileUpload = async (e, section, id, field) => {
+    //     const files = Array.from(e.target.files);
+    //     for (const file of files) {
+    //         await handleVercelUpload({target: {files: [file]}}, (url) => {
+    //             setHomeData(prev => ({
+    //                 ...prev,
+    //                 [field]: [...(prev[field] || []), url]
+    //             }));
+    //         });
+    //     }
+    // };
+
+    // Suppression d'un fichier de la galerie
+    const removeFile = (section, id, field, index) => {
+        setHomeData(prev => ({
+            ...prev,
+            [field]: (prev[field] || []).filter((_, i) => i !== index)
+        }));
+    };
     return {
         activeTab, setActiveTab,
         openItems, toggleAccordion,
@@ -198,6 +224,9 @@ export const useAdminLogic = (logic) => {
         removeSubMenu,
         moveSubMenu,
         moveMenu,
-        moveNews
+        moveNews,
+        homeData,
+        setHomeData,
+        removeFile
     };
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutGrid, Newspaper, Mail, Settings, PanelBottom } from 'lucide-react';
+import { LayoutGrid, Newspaper, Mail, Settings, PanelBottom, Home } from 'lucide-react';
 
 const AdminTabs = ({ activeTab, setActiveTab, isHe }) => {
     const tabs = [
@@ -7,6 +7,7 @@ const AdminTabs = ({ activeTab, setActiveTab, isHe }) => {
         { id: 'news', label: isHe ? 'חדשות' : 'News', icon: Newspaper },
         { id: 'messages', label: isHe ? 'הודעות' : 'Messages', icon: Mail },
         { id: 'footer', label: isHe ? 'פוטר' : 'Footer', icon: PanelBottom },
+        { id: 'home', label: isHe ? 'דף הבית' : 'Home Page', icon: Home }, // New Tab
         { id: 'settings', label: isHe ? 'הגדרות' : 'Settings', icon: Settings }
     ];
 

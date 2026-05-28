@@ -1,6 +1,7 @@
 import React from 'react';
 import NewsSection from '@/components/admin/NewsSection';
 import MenuSection from '@/components/admin/MenuSection';
+import HomeSection from '@/components/admin/HomeSection';
 import SettingSection from '@/components/admin/SettingSection';
 import MessagesSection from '@/components/admin/MessagesSection';
 import FooterSection from '@/components/admin/FooterSection';
@@ -12,16 +13,19 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
     const isHe = currentLang === 'he';
 
     const {
-        activeTab, setActiveTab, openItems, toggleAccordion, updateLogo,
-        updateMenuBg, updateMenuTitle, updateNewsTitle, linkItemToNews, unlinkItemFromNews,
-        linkItemToSub, unlinkItemFromSub, publishToCloud, moveSubMenu, removeSubMenu,
-        moveMenu, moveNews
+        activeTab, setActiveTab, openItems, toggleAccordion, publishToCloud,
+        moveMenu, moveNews, updateLogo, updateMenuBg, updateMenuTitle,
+        updateNewsTitle, linkItemToNews, unlinkItemFromNews, linkItemToSub,
+        unlinkItemFromSub, addSubMenu, removeSubMenu, moveSubMenu,
     } = useAdminLogic(logic);
 
     const {
-        menuData, newsData, footerData, handleFileUpload, removeFile, addMenu,
-        addSubMenu, removeMenu, addNews, removeNews, logo, setLogo,
-        setMenuData, setNewsData, setFooterData, siteSettings, setSiteSettings, t
+        menuData, newsData, footerData, homeData,
+        handleFileUpload, removeFile,
+        addMenu, addNews, removeMenu, removeNews,
+        logo, setLogo, setMenuData, setNewsData, setFooterData,
+        setHomeData,
+        siteSettings, setSiteSettings, t
     } = logic;
 
     const exportData = () => {
@@ -126,6 +130,8 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
         event.target.value = '';
     };
 
+    console.log("Type de setHomeData:", typeof setHomeData);
+
     return (
         <div className="space-y-8 max-w-4xl mx-auto pb-20 px-4" dir={isHe ? "rtl" : "ltr"}>
 
@@ -219,6 +225,17 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
                         handleFileUpload={handleFileUpload}
                         removeFile={removeFile}
                         setNewsData={setNewsData}
+                    />
+                )}
+
+                {/* Home Section Rendering */}
+                {activeTab === 'home' && (
+                    <HomeSection
+                        homeData={homeData}
+                        setHomeData={setHomeData}
+                        handleFileUpload={handleFileUpload}
+                        removeFile={removeFile}
+                        isHe={isHe}
                     />
                 )}
             </main>
