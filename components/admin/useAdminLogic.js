@@ -192,26 +192,6 @@ export const useAdminLogic = (logic) => {
         }));
     };
 
-    // // Gestion de l'upload pour la galerie (Images et Vidéos)
-    // const handleFileUpload = async (e, section, id, field) => {
-    //     const files = Array.from(e.target.files);
-    //     for (const file of files) {
-    //         await handleVercelUpload({target: {files: [file]}}, (url) => {
-    //             setHomeData(prev => ({
-    //                 ...prev,
-    //                 [field]: [...(prev[field] || []), url]
-    //             }));
-    //         });
-    //     }
-    // };
-
-    // // Suppression d'un fichier de la galerie
-    // const removeFile = (section, id, field, index) => {
-    //     setHomeData(prev => ({
-    //         ...prev,
-    //         [field]: (prev[field] || []).filter((_, i) => i !== index)
-    //     }));
-    // };
     return {
         activeTab, setActiveTab,
         openItems, toggleAccordion,
@@ -226,7 +206,6 @@ export const useAdminLogic = (logic) => {
         moveMenu,
         moveNews,
         homeData,
-        setHomeData//,
-        //removeFile
+        setHomeData
     };
 };
