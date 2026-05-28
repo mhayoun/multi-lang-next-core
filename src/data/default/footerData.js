@@ -37,7 +37,8 @@ export const DEFAULT_FOOTER = {
     },
     email: "contact@example.com",
     phones: [
-      { label: { he: "משרד", en: "Office" }, number: "00-0000000" }
+      { label: { he: "משרד", en: "Office" }, number: "00-0000000"},
+      { label: { he: "פקס", en: "Fax" }, number: "00-0000000"}
     ],
     transport: {
       title: { he: "דרכי הגעה", en: "Directions" },
