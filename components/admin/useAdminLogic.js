@@ -205,13 +205,13 @@ export const useAdminLogic = (logic) => {
     //     }
     // };
 
-    // Suppression d'un fichier de la galerie
-    const removeFile = (section, id, field, index) => {
-        setHomeData(prev => ({
-            ...prev,
-            [field]: (prev[field] || []).filter((_, i) => i !== index)
-        }));
-    };
+    // // Suppression d'un fichier de la galerie
+    // const removeFile = (section, id, field, index) => {
+    //     setHomeData(prev => ({
+    //         ...prev,
+    //         [field]: (prev[field] || []).filter((_, i) => i !== index)
+    //     }));
+    // };
     return {
         activeTab, setActiveTab,
         openItems, toggleAccordion,
@@ -226,7 +226,7 @@ export const useAdminLogic = (logic) => {
         moveMenu,
         moveNews,
         homeData,
-        setHomeData,
-        removeFile
+        setHomeData//,
+        //removeFile
     };
 };

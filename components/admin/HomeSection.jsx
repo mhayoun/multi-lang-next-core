@@ -98,7 +98,7 @@ const HomeSection = ({ homeData, setHomeData, handleFileUpload, removeFile, isHe
                     {activeData.images?.map((img, i) => (
                         <div key={i} className="relative group aspect-square">
                             <img src={img} className="w-full h-full object-cover rounded-lg border shadow-sm" alt="" />
-                            <button onClick={() => removeFile('home', 'main', 'images', i)}
+                            <button onClick={() => removeFile('home', 'main', 'images', i, false, true)}
                                 className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition shadow-lg">
                                 <Lucide.Trash2 size={12}/>
                             </button>
@@ -120,7 +120,7 @@ const HomeSection = ({ homeData, setHomeData, handleFileUpload, removeFile, isHe
                     {activeData.videos?.map((vid, i) => (
                         <div key={i} className="relative group w-20 h-20 bg-black rounded border">
                             <video src={vid} className="w-full h-full object-cover opacity-60" />
-                            <button onClick={() => removeFile('home', 'main', 'videos', i)}
+                            <button onClick={() => removeFile('home', 'main', 'videos', i, false, true)}
                                 className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition">
                                 <Lucide.Trash2 size={10}/>
                             </button>
