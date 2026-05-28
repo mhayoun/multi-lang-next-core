@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Mail, Phone, Bus } from 'lucide-react';
+import { MapPin, Mail, Phone, Bus, Printer } from 'lucide-react';
 
 const ContactSection = ({ footer, lang, isHe, onChange }) => {
     return (
@@ -32,6 +32,11 @@ const ContactSection = ({ footer, lang, isHe, onChange }) => {
             <div className="space-y-1">
                 <label className="text-[10px] font-bold text-slate-400 uppercase flex items-center gap-1"><Phone size={10} /> {isHe ? 'טלפון' : 'Phone'}</label>
                 <input className="w-full p-2 border border-slate-200 rounded-xl text-sm" value={footer.contact.phone || ''} onChange={(e) => onChange('phone', e.target.value)} />
+            </div>
+
+            <div className="space-y-1">
+                <label className="text-[10px] font-bold text-slate-400 uppercase flex items-center gap-1"><Printer size={10} /> {isHe ? 'פקס' : 'Fax'}</label>
+                <input className="w-full p-2 border border-slate-200 rounded-xl text-sm" value={footer.contact.fax || ''} onChange={(e) => onChange('fax', e.target.value)} />
             </div>
 
             <div className="md:col-span-2 space-y-1 bg-slate-50 p-3 rounded-xl border border-slate-100">

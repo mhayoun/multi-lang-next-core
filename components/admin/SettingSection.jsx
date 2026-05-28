@@ -3,7 +3,6 @@ import LogoSection from '@/components/admin/LogoSection';
 import {Download, Upload, Database} from 'lucide-react'; // Added Upload icon
 
 const SettingSection = ({
-                            logic,
                             isHe,
                             exportData,
                             exportFullData,
@@ -13,10 +12,6 @@ const SettingSection = ({
                             setLogo,
                             updateLogo
                         }) => {
-    const settings = logic?.siteSettings || {
-        contact: {email: '', address: {he: '', en: ''}}
-    };
-
     return (
         <div className="space-y-6 animate-in fade-in slide-in-from-top-4 duration-300">
             {/* Logo Management */}

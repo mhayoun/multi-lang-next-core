@@ -24,8 +24,7 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
         handleFileUpload, removeFile,
         addMenu, addNews, removeMenu, removeNews,
         logo, setLogo, setMenuData, setNewsData, setFooterData,
-        setHomeData,
-        siteSettings, setSiteSettings, t
+        setHomeData, t
     } = logic;
 
     const exportData = () => {
@@ -45,15 +44,16 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
         downloadJSON(menuData, 'DEFAULT_MENU.json');
         downloadJSON(newsData, 'DEFAULT_NEWS.json');
         downloadJSON(footerData, 'DEFAULT_FOOTER.json');
+        downloadJSON(homeData, 'DEFAULT_HOME.json');
     };
 
     const exportFullData = () => {
         const fullConfig = {
+            logo,
             menuData,
             newsData,
-            logo,
-            siteSettings,
-            footerData
+            footerData,
+            homeData
         };
 
         const blob = new Blob([JSON.stringify(fullConfig, null, 2)], {type: 'application/json'});
@@ -117,7 +117,6 @@ const AdminInterface = ({logic, currentLang = 'he'}) => {
                     if (json.newsData) setNewsData(json.newsData);
                     if (json.footerData) setFooterData(json.footerData);
                     if (json.logo !== undefined) setLogo(json.logo);
-                    if (json.siteSettings && setSiteSettings) setSiteSettings(json.siteSettings);
                     alert(isHe ? "הגדרות המערכת עודכנו בהצלחה" : "System configuration updated successfully");
                 } else {
                     alert("Invalid config format");
