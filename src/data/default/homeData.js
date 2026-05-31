@@ -7,9 +7,9 @@ export const DEFAULT_HOME = {
     "settings": {
         "showGallery": false,
         "title": {
-            "he": "הגלריה שלנו",
-            "en": "Our Gallery",
-            "fr": "Notre Galerie"
+            "he": "",
+            "en": "",
+            "fr": ""
         }
     }
 };

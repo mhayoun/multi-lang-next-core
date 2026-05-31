@@ -68,7 +68,7 @@ const UserInterface = ({logic, uiText}) => {
     };
 
     return (
-        <div className="space-y-12" dir={isHe ? 'rtl' : 'ltr'}>
+        <div className="space-y-6" dir={isHe ? 'rtl' : 'ltr'}>
             <HomeNewsSlider
                 newsData={visibleNews}
                 menuData={menuData}
@@ -86,7 +86,8 @@ const UserInterface = ({logic, uiText}) => {
 
             {/* Remplacez la section fixe par celle-ci */}
             {homeData?.settings?.showGallery !== false && ( // Affiche par défaut sauf si showGallery est explicitement false
-                <div className="pt-12">
+                //className="pt-2"
+                <div>
                     <h3 className="text-2xl font-bold text-center mb-8">
                         {t(homeData?.settings?.title)}
                     </h3>
