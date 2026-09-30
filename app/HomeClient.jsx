@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import AdminInterface from '@/components/AdminInterface';
 import UserInterface from '@/components/UserInterface';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 /**
  * HomeClient Component
@@ -49,6 +50,11 @@ export default function HomeClient() {
           menuData={logic.menuData}
           setActiveSubItem={logic.setActiveSubItem}
         />
+      )}
+
+      {/* 4. Floating WhatsApp button: opens a chat with the first footer phone number */}
+      {logic.view !== 'admin' && (
+        <WhatsAppButton phone={logic.footerData?.contact?.phones?.[0]?.number} isHe={isHe} />
       )}
     </div>
   );

@@ -30,7 +30,7 @@ export const DesktopNavigation = ({ menuData, translate, onSubItemClick }) => {
           <div key={menu.id} className="relative group h-full flex items-center px-1">
             <button
               onClick={handleMainMenuClick}
-              className={`px-3 py-1.5 rounded-md text-[12px] font-bold uppercase tracking-wider transition-all flex items-center gap-1 hover:scale-105 ${
+              className={`px-3 py-1.5 rounded-md text-[13px] lg:text-[15px] font-bold uppercase tracking-wider transition-all flex items-center gap-1 hover:scale-105 ${
                 isSingleItem || isContact
                   ? 'hover:text-blue-600 hover:font-black hover:bg-slate-50 cursor-pointer'
                   : 'text-slate-600 cursor-default group-hover:font-black group-hover:text-slate-900'
@@ -40,7 +40,7 @@ export const DesktopNavigation = ({ menuData, translate, onSubItemClick }) => {
 
               {hasSubItems && !isSingleItem && !isContact && (
                 <ChevronDown
-                  size={12}
+                  size={14}
                   className="text-slate-400 group-hover:text-blue-600 transition-transform group-hover:rotate-180"
                 />
               )}
@@ -62,7 +62,7 @@ export const DesktopNavigation = ({ menuData, translate, onSubItemClick }) => {
                     <button
                       key={sub.id}
                       onClick={() => onSubItemClick(sub)}
-                      className="w-full text-start px-3 py-2 hover:bg-blue-50 hover:text-blue-700 hover:font-black rounded-lg text-[12px] font-bold transition-all"
+                      className="w-full text-start px-3 py-2 hover:bg-blue-50 hover:text-blue-700 hover:font-black rounded-lg text-[13px] lg:text-[14px] font-bold transition-all"
                     >
                       {translate(sub.title)}
                     </button>
