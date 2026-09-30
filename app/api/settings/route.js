@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getClientSettings } from '@/lib/settings';
 import { Redis } from '@upstash/redis';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 // Initialize Redis only for the POST method here
 const redis = Redis.fromEnv();
@@ -34,8 +36,19 @@ export async function GET() {
  * Updates the data in Redis.
  */
 export async function POST(request) {
+    // Only signed-in admins may write (sign-in is restricted to allowed emails in lib/auth.ts)
+    const session = await getServerSession(authOptions);
+    if (!session) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     try {
         const body = await request.json();
+
+        // Refuse payloads that would wipe or corrupt the site data
+        if (!Array.isArray(body?.menuData) || !Array.isArray(body?.newsData)) {
+            return NextResponse.json({ error: "Invalid data" }, { status: 400 });
+        }
 
         console.log(`[API POST] Saving data to key: ${STORAGE_KEY}`);
 

@@ -4,7 +4,7 @@ export const useAdminLogic = (logic) => {
     // 1. Ensure 'logo' is extracted from the logic passed in
     const {
         menuData, setMenuData, newsData, setNewsData,
-        logo, setLogo, moveMenu, moveNews, homeData, setHomeData
+        logo, setLogo, moveMenu, moveNews, homeData, setHomeData, footerData
     } = logic;
 
     const [activeTab, setActiveTab] = useState('menu');
@@ -144,6 +144,7 @@ export const useAdminLogic = (logic) => {
                     logo,
                     menuData,
                     newsData,
+                    footerData,
                     homeData
                 }),
             });
