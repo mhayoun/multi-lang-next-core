@@ -32,7 +32,7 @@ const SliderLinker = ({
         <option value="">{isHe ? '-- בחר פריט --' : '-- Select item --'}</option>
         {menuData.map(category => (
           <optgroup key={category.id} label={t(category.title)}>
-            {category.subItems.map(sub => (
+            {(category.subItems || []).map(sub => (
               <option key={sub.id} value={sub.id}>{t(sub.title)}</option>
             ))}
           </optgroup>

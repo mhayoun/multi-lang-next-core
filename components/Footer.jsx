@@ -17,7 +17,7 @@ const Footer = ({ data, isHe = true, menuData = [], setActiveSubItem }) => {
 
         let targetItem = null;
         menuData.forEach(category => {
-            const found = category.subItems.find(sub => String(sub.id) === String(linkedId));
+            const found = (category.subItems || []).find(sub => String(sub.id) === String(linkedId));
             if (found) targetItem = found;
         });
 

@@ -55,7 +55,7 @@ const CardGrid = ({menuData, setActiveSubItem, t, isHe}) => {
 
                         {/* Buttons List Section */}
                         <div className="p-4 space-y-2">
-                            {menu.subItems.map((sub) => (
+                            {(menu.subItems || []).map((sub) => (
                                 <button
                                     key={sub.id}
                                     onClick={() => handleItemClick(sub)}

@@ -86,12 +86,12 @@ const MenuSection = ({
                         </h4>
 
                         <div className="space-y-3">
-                            {menu.subItems.map((sub, subIndex) => (
+                            {(menu.subItems || []).map((sub, subIndex) => (
                                 <EditorAccordionItem
                                     key={sub.id}
                                     id={sub.id}
                                     index={subIndex}
-                                    totalItems={menu.subItems.length}
+                                    totalItems={menu.subItems?.length || 0}
                                     isOpen={openItems[sub.id]} // Ensure your toggle logic supports sub-ids
                                     onToggle={toggleAccordion}
                                     onRemove={() => removeSubMenu(menu.id, sub.id)}

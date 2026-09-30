@@ -95,7 +95,7 @@ const HoursSection = ({footer, lang, isHe, menuData, t, onTitleChange, onItemCha
                                     <option value="">{isHe ? '-- בחר פריט --' : '-- Select Item --'}</option>
                                     {menuData.map(cat => (
                                         <optgroup key={cat.id} label={t(cat.title)}>
-                                            {cat.subItems.map(sub => <option key={sub.id}
+                                            {(cat.subItems || []).map(sub => <option key={sub.id}
                                                                              value={sub.id}>{t(sub.title)}</option>)}
                                         </optgroup>
                                     ))}
