@@ -56,12 +56,12 @@ const ContactSection = ({footer, lang, isHe, onChange}) => {
                 <div key={index} className="space-y-1">
                     <label className="text-[10px] font-bold text-slate-400 uppercase flex items-center gap-1">
                         {/* Affiche l'icône Printer si le label contient 'fax', sinon Phone */}
-                        {phoneObj.label.en.toLowerCase().includes('fax') ? <Printer size={10}/> : <Phone size={10}/>}
-                        {phoneObj.label[lang] || phoneObj.label.en}
+                        {phoneObj?.label?.en?.toLowerCase().includes('fax') ? <Printer size={10}/> : <Phone size={10}/>}
+                        {phoneObj?.label?.[lang] || phoneObj?.label?.en || (isHe ? `טלפון ${index + 1}` : `Phone ${index + 1}`)}
                     </label>
                     <input
                         className="w-full p-2 border border-slate-200 rounded-xl text-sm"
-                        value={phoneObj.number || ''}
+                        value={phoneObj?.number || ''}
                         onChange={(e) => handlePhoneChange(index, e.target.value)}
                     />
                 </div>
@@ -69,9 +69,9 @@ const ContactSection = ({footer, lang, isHe, onChange}) => {
 
             <div className="md:col-span-2 space-y-1 bg-slate-50 p-3 rounded-xl border border-slate-100">
                 <label className="text-[10px] font-bold text-slate-400 uppercase flex items-center gap-1"><Bus
-                    size={12}/> {footer.contact.transport.title[lang]}</label>
+                    size={12}/> {footer.contact.transport?.title?.[lang]}</label>
                 <input className="w-full p-2 border border-slate-200 rounded-lg text-sm bg-white"
-                       placeholder={isHe ? 'קווי אוטובוס' : 'Bus lines'} value={footer.contact.transport.he || ''}
+                       placeholder={isHe ? 'קווי אוטובוס' : 'Bus lines'} value={footer.contact.transport?.he || ''}
                        onChange={(e) => onChange('transport', e.target.value)}/>
             </div>
         </div>

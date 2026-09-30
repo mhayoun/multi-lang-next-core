@@ -48,9 +48,12 @@ const FooterSection = ({logic, isHe}) => {
                 f.contact[field][lang] = value;
             } else if (field === 'phone' || field === 'fax') {
                 const idx = field === 'phone' ? 0 : 1;
-                f.contact.phones[idx] = {number: value};
+                f.contact.phones[idx] = {...f.contact.phones[idx], number: value};
                 f.contact[field] = value;
-            } else if (field === 'transport') f.contact.transport.he = value;
+            } else if (field === 'transport') {
+                if (!f.contact.transport) f.contact.transport = {title: {he: '', en: ''}, lines: ''};
+                f.contact.transport.he = value;
+            }
             else if (field === 'title') f.contact.title[lang] = value;
             else f.contact[field] = value;
         });
